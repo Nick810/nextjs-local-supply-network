@@ -1,7 +1,7 @@
 import ContactForm from '@/components/contact/form';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import logo from '../../../public/powerberry-logo.svg';
+import logo from '../../../public/lsn-logo.png';
 
 export const metadata: Metadata = {
   title: 'Contact Us',

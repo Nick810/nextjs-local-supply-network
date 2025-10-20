@@ -1,7 +1,6 @@
 import { ShopifyCollectionByHandleResponse, ShopifyMetaobjectsResponse } from '@/lib/shopify/types';
 import { getCollectionByHandle, getMetaObjects } from "@/lib/shopify/api";
 import Hero from "@/components/home/hero";
-import ProductCard from '@/components/collections/product-card';
 
 type Position = 'top' | 'middle' | 'bottom'
 

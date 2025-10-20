@@ -14,6 +14,11 @@ import { ToastContainer } from "react-toastify";
 import { GoogleTagManager } from "@next/third-parties/google";
 // import CookieConsent from "@/components/cookie-consent";
 
+interface KeyValue {
+  key: string
+  value: string
+}
+
 interface MarqueeProps {
   marquee_text_1: string
   marquee_color_1: string

@@ -42,13 +42,13 @@ const AllProducts: React.FC<ProductProps> = ({ data }) => {
         <h2 className="text-4xl text-center my-8!">SHOP COLLECTION</h2>
       </div>
 
-      <ul className="flex flex-wrap mb-12 gap-y-8">
+      {/* <ul className="flex flex-wrap mb-12 gap-y-8">
         {
           data.map((product, index) => (
             <ProductCard product={ product } key={index + 1} />
           ))
         }
-      </ul>
+      </ul> */}
 
       <Link 
         href="/all-products" 

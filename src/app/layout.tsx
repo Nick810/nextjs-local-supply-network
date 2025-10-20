@@ -33,7 +33,7 @@ const getBaseUrl = () => {
     return window.location.origin;
   }
   // Server-side: Use environment variable or fallback
-  return process.env.NEXT_PUBLIC_SITE_URL || 'https://local-supply-network.com';
+  return process.env.NEXT_PUBLIC_SITE_URL || 'https://localsupply.network';
 };
 
 const baseUrl = getBaseUrl();
@@ -46,15 +46,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Powerberry',
-    default: 'Powerberry - Fruit of Youthfulness'
+    template: '%s - Local Supply Network',
+    default: 'Local Supply Network - Simplest Way to Buy Weed'
   },
-  description: 'Powerberry is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
+  description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
   openGraph: {
-    title: 'Powerberry - Fruit of Youthfulness',
-    description: 'Powerberry is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
+    title: 'Local Supply Network - Simplest Way to Buy Weed',
+    description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
     url: baseUrl,
-    siteName: 'Powerberry Harvest',
+    siteName: 'Local Supply Network Harvest',
     images: [
       {
         url: `https://cdn.shopify.com/s/files/1/0948/0618/0125/files/meta-image.jpg?v=1755860664`,
@@ -77,8 +77,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Powerberry - Fruit of Youthfulness',
-    description: 'Powerberry is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
+    title: 'Local Supply Network',
+    description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
     images: ['https://cdn.shopify.com/s/files/1/0948/0618/0125/files/meta-image.jpg?v=1755860664'],
   },
 }

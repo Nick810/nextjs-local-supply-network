@@ -7,7 +7,7 @@ function safeISOString(date: string | number | Date): string | undefined {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://local-supply-network.com';
+  const baseUrl = 'https://localsupply.network';
   const { collections } = await getAllProducstFromAllCollections();
   const urls: MetadataRoute.Sitemap = []
   

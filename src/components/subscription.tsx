@@ -24,7 +24,7 @@ const Subscribe = () => {
   };
 
   return (
-    <div className="mb-16">
+    <div className="container py-16">
       <h2 className="uppercase text-2xl mb-6!">15% Off on your first order</h2>
       
       <form onSubmit={handleSubmit} className="max-w-md mr-auto p-4 bg-white shadow rounded">

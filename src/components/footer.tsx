@@ -6,9 +6,6 @@ import Subscribe from "./subscription"
 const Footer = () => {
   return (
     <footer className="text-[#333] mt-16 pb-12">
-      <div className="container">
-        <Subscribe />
-      </div>
       <div className="flex w-full container">
         <div className="w-4/5 flex flex-col gap-12">
           <ul className="flex flex-col items-start gap-4">

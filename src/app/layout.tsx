@@ -12,6 +12,7 @@ import { getMetaObjects } from "@/lib/shopify/api";
 import { ThemeHydrator } from "@/components/theme-hydrator";
 import { ToastContainer } from "react-toastify";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Subscribe from "@/components/subscription";
 // import CookieConsent from "@/components/cookie-consent";
 
 interface KeyValue {
@@ -110,6 +111,7 @@ export default async function RootLayout({
         <GoogleTagManager gtmId=""/>
         <Header bgColor={bgColor} marqueeText={marqueeText}/>
         {children}
+        <Subscribe />
         <Footer />
         <ThemeHydrator handle="theme_color"/>
         <ToastContainer />

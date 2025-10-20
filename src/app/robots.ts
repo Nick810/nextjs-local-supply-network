@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://powerberryharvest.com/sitemap.xml',
+    sitemap: 'https://local-supply-network.com/sitemap.xml',
   }
 }

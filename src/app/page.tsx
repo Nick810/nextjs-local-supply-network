@@ -26,11 +26,11 @@ export default async function Home() {
     heading:  heroRaw.heading ?? '',
     position: (heroRaw.position as Position) ?? 'middle',
   }
-  const res = await fetch(`${API_URL}/api/shopify/files/hero-desktop.png,hero.png`, {
-    method: 'GET',
-    cache: 'no-store', // optional: disable caching
-  })
-  const { files } = await res.json()
+  // const res = await fetch(`${API_URL}/api/shopify/files/hero-desktop.png,hero.png`, {
+  //   method: 'GET',
+  //   cache: 'no-store', // optional: disable caching
+  // })
+  // const { files } = await res.json()
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -52,7 +52,7 @@ export default async function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <Hero data={heroData} images={files} /> 
+      {/* <Hero data={heroData} images={files} />  */}
 
       <div className="bg-gray-200 py-16! w-full">
         <div className="container">

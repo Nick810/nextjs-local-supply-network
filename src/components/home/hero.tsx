@@ -42,6 +42,8 @@ const Hero: React.FC<HeroProps> = ({ data, images }) => {
     setHasMounted(true)
   }, [])
 
+  if (!images || !images.length) return <></>
+
    if (!hasMounted) {
     return (
       <div className="w-screen h-screen flex items-center justify-center bg-gray-200 animate-pulse">

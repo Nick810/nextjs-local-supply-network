@@ -26,11 +26,30 @@ export default async function Home() {
     heading:  heroRaw.heading ?? '',
     position: (heroRaw.position as Position) ?? 'middle',
   }
-  // const res = await fetch(`${API_URL}/api/shopify/files/hero-desktop.png,hero.png`, {
-  //   method: 'GET',
-  //   cache: 'no-store', // optional: disable caching
-  // })
-  // const { files } = await res.json()
+  const getHeroImages = async() => {
+    try {
+      const res = await fetch(`${API_URL}/api/shopify/files/hero-desktop.png,hero.png`, {
+        method: 'GET',
+        cache: 'no-store',
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status} ${res.statusText}`);
+      }
+
+      const { files } = await res.json();
+
+      return files
+    } catch (error) {
+      console.error('Failed to fetch files:', error);
+
+      alert('Sorry, we couldn’t load the images. Please try again later.');
+
+      return error;
+    }
+
+  }
+  const files = await getHeroImages();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -52,7 +71,7 @@ export default async function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      {/* <Hero data={heroData} images={files} />  */}
+      <Hero data={heroData} images={files} /> 
 
       <div className="bg-gray-200 py-16! w-full">
         <div className="container">

@@ -1,0 +1,44 @@
+{
+  "name": "powerberry-real",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fontsource/comic-relief": "^5.2.1",
+    "@gsap/react": "^2.1.2",
+    "@next/third-parties": "^15.5.0",
+    "@react-email/components": "^0.5.0",
+    "@react-email/render": "^1.2.0",
+    "@shopify/graphql-client": "^1.4.1",
+    "cross-fetch": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
+    "graphql-request": "^7.2.0",
+    "hamburger-react": "^2.5.2",
+    "next": "^15.5.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-email": "^4.2.8",
+    "react-loading-skeleton": "^3.5.0",
+    "react-responsive": "^10.0.1",
+    "react-share": "^5.2.2",
+    "react-toastify": "^11.0.5",
+    "resend": "^6.0.1",
+    "zustand": "^5.0.6"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

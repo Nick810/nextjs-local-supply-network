@@ -29,6 +29,7 @@ const Subscribe = () => {
       
       <form onSubmit={handleSubmit} className="max-w-md mr-auto p-4 bg-white shadow rounded">
       <input
+        suppressHydrationWarning
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

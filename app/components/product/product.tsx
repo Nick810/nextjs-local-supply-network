@@ -7,7 +7,6 @@ import ProductDrawer from "./product-drawer";
 import VariantSelector from "./variant-selector";
 import EmblaCarousel from "./carousel/image-carousel";
 import Image from "next/image";
-import sizeChartImage from '../../../public/size-chart.jpg'
 import BuyButton from "./buy-button";
 import WaitlistButton from "./waiting-list-button";
 import RichTextRenderer from "../rich-text-renderer";
@@ -75,10 +74,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   const selected = variants[selectedIndex]
   const isSizeChart = product?.metafield2?.value;
   const isPreorder = selected.variantMetafield1?.value === 'true';
-  const sizeChart = 
-    <div className="relative max-w-[400px] max-h-[456px] w-full h-full mb-8!">
-      <Image src={sizeChartImage} alt="Size Chart" width={400} height={456} className="object-cover" />
-    </div>
   const price = useMemo(
     () => selectedVariant?.priceV2?.amount || "0",
     [selectedVariant]
@@ -214,7 +209,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
         <div className="mt-8 max-w-[560px]">
           <ProductDrawer data={{ title: 'Details', details: product?.descriptionHtml, html: true, isCollapsible: false }} />
-          { isSizeChart && <ProductDrawer data={{ title: 'Size Chart', details: sizeChart, html: false, isCollapsible: true}} /> }
           <ProductDrawer data={{ title: 'Shipping & Returns', details: shippingInfo, html: true, isCollapsible: false }} />
         </div>
 

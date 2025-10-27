@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff;
+  --foreground: #333;
+  --color-secondary: #FFC107;
+  --color-neutral: #F4F4F4;
+  --color-dark: #2B2B2B;
+  --font-comic-relief: 'Comic Relief', cursive;
+  --sm: '640px';
+  --md: '768px';
+  --lg: '1024px';
+  --xl: '1280px';
+  --2xl: '1440px';
+  --max-width-container: 1440px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-lazy-dog: var(--font-lazy-dog);
+  --sm: var(--sm);
+  --md: var(--md);
+  --lg: var(--lg);
+  --xl: var(--xl);
+  --2xl: var(--2xl);
+  --max: var(--max-width-container);
+  --main-button-color: var(--main-button-color);
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fff;
+    --foreground: #fff;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "avenir-next-world", sans-serif;
+  font-weight: bold;
+  color: #333;
+  line-height: 0.85;
+}
+
+strong {
+  font-weight: bolder !important;
+}
+
+main {
+  overflow: hidden;
+}
+
+.avenir-light {
+  font-family: "avenir-next-world", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.avenir-regular {
+  font-family: "avenir-next-world", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.avenir-bold {
+  font-family: "avenir-next-world", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+p, a, span, li, select, option, label, input, textarea, button {
+  font-family: "avenir-next-world", sans-serif;
+  font-weight: 400;
+  color: #333
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-comic-relief);
+}
+
+.container {
+  max-width: var(--max-width-container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.btn {
+  font-family: "avenir-next-world", sans-serif;
+  width: 100%;
+  display: block;
+  padding: 16px 48px;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: .75rem 3rem;
+    font-size: 1.25rem;
+  }
+}
+
+.text-stroke-v {
+  -webkit-text-stroke: 0.75px #000;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1.5px #B69877;
+}
+
+.text-stroke-sm {
+  -webkit-text-stroke: 0.75px #B69877;
+}
+
+.prose p {
+  margin-bottom: 1.5rem;
+}
+
+.btn-main-color {
+  background-color: var(--main-button-color);
+}
+
+.prose ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.prose li {
+  margin-bottom: 16px !important;
+}
+
+.embed-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 66%; /* Aspect ratio for 352px height */
+}
+
+.embed-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.text-red p {
+  color: #e7000b !important;
+}

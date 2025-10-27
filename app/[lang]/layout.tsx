@@ -1,3 +1,8 @@
+import Footer from "../components/footer";
+import Header from "../components/header";
+import Subscribe from "../components/subscription";
+
+
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'th' }]
 }
@@ -13,7 +18,11 @@ export default async function RootLayout({
   
   return (
     <div data-lang={lang}>
+      <Header bgColor={"fff"} lang={lang}/>
       {children}
+      <Subscribe />
+      <Footer lang={lang} />
+      {/* <ThemeHydrator handle="theme_color"/> */}
     </div>
   )
 }

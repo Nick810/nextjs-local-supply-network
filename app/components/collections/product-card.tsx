@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
           </div>
         )}
         <div className="flex flex-col">
-          <h3 className="text-md avenir-regular mt-2 leading-4.5!">{product.title}</h3>
+          <h3 className="text-xl mt-2 leading-4.5!">{product.title}</h3>
           <p className="mt-2 text-sm font-bold!">
             ฿{(Number(product.priceRange.minVariantPrice.amount) * 1).toLocaleString()}
           </p>

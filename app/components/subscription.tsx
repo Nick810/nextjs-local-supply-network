@@ -24,10 +24,10 @@ const Subscribe = () => {
   };
 
   return (
-    <div className="container py-16">
-      <h2 className="uppercase text-2xl mb-6!">15% Off on your first order</h2>
+    <div className="py-16">
+      <h2 className="uppercase text-2xl mb-6! text-white!">15% Off on your first order</h2>
       
-      <form onSubmit={handleSubmit} className="max-w-md mr-auto p-4 bg-white shadow rounded">
+      <form onSubmit={handleSubmit} className="w-full p-4 bg-white shadow rounded">
       <input
         suppressHydrationWarning
         type="email"
@@ -37,7 +37,7 @@ const Subscribe = () => {
         required
         className="w-full p-2 border border-gray-300 rounded mb-2"
       />
-      <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
+      <button type="submit" className="w-full bg-black text-white! p-2 rounded">
         Subscribe
       </button>
       {status && <p className="mt-2 text-sm text-gray-600">{status}</p>}

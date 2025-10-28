@@ -6,7 +6,7 @@ type ParagraphProps = ComponentPropsWithoutRef<'p'>;
 
 const components: MDXComponents = {
   h1: (props: HeadingProps) => (
-    <h1 className="text-xl pt-12 mb-0 fade-in" {...props} />
+    <h1 className="text-2xl mb-12! fade-in" {...props} />
   ),
   p: (props: ParagraphProps) => (
     <p className="mb-8!" {...props} />

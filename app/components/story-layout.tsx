@@ -55,7 +55,7 @@ export default function StoryLayout({
         </ul>
 
         {/* Story Content */}
-        <div className="lg:w-4/5 w-full px-4 py-6">{children}</div>
+        <div className="lg:w-4/5 w-full px-4 py-6 lg:pt-0">{children}</div>
       </div>
 
       {/* Bottom Menu (Mobile only) */}

@@ -1,5 +1,8 @@
 {
   "products": {
     "cart": "Add to Cart"
+  },
+  "home": {
+    "title": "Hello World"
   }
 }

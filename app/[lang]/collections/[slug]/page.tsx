@@ -114,7 +114,7 @@ export default async function Page({
   }
   
   return (
-    <main className="pt-24">
+    <main className="py-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

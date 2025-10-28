@@ -3,16 +3,9 @@
 import { useMediaQuery } from 'react-responsive'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import localFont from 'next/font/local';
 import { extractImageVariants } from '@/app/lib/utils';
 import Image from 'next/image';
 
-const headerFont = localFont({
-  src: '../../fonts/ashford-bold-webfont.woff2',
-  weight: '700',
-  variable: '--font-header',
-  display: 'swap',
-});
 
 type HeroProps = {
   data: {
@@ -58,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ data, images, lang }) => {
     <div className="relative w-full h-screen">
       {isTablet ? (
         // 16:9 aspect ratio for desktop
-        <div className="relative w-full aspect-[16/9] max-h-screen">
+        <div className="relative w-full aspect-video max-h-screen">
           <Image 
             src={desktopImage as string}
             alt="Hero"
@@ -68,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ data, images, lang }) => {
         </div>
       ) : (
         // 9:16 aspect ratio for mobile
-        <div className="relative w-full h-full aspect-[9/16]">
+        <div className="relative w-full h-full aspect-9/16">
           <Image 
             src={mobileImage as string}
             alt="Hero"
@@ -80,8 +73,7 @@ const Hero: React.FC<HeroProps> = ({ data, images, lang }) => {
 
       <div className={`absolute ${positionClass} transform text-center w-full px-[5%] max-w-[800px]`}>
         <h1 
-          className={`${headerFont.variable} text-[16vw] md:text-8xl lg:text-9xl text-stroke text-white! mb-4! scale-y-115 hidden`}
-          style={{ fontFamily: 'var(--font-header)'}}>
+          className={`text-[16vw] md:text-8xl lg:text-9xl text-stroke text-white! mb-4! scale-y-115 hidden`}>
             {data.heading || ''}
         </h1>
         <p className={`mb-8! md:mb-16! text-white! text-4xl text-stroke-sm font-bold!`}>{data.text || ''}</p>

@@ -35,20 +35,11 @@ interface ShopifyEdge {
 }
 
 const AllProducts: React.FC<ProductProps> = ({ data }) => {
-  console.log(data)
   return (
     <section className="pb-1 w-full">
       <div>
         <h2 className="text-4xl text-center my-8!">SHOP COLLECTION</h2>
       </div>
-
-      {/* <ul className="flex flex-wrap mb-12 gap-y-8">
-        {
-          data.map((product, index) => (
-            <ProductCard product={ product } key={index + 1} />
-          ))
-        }
-      </ul> */}
 
       <Link 
         href="/all-products" 

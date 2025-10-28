@@ -70,6 +70,8 @@ export default async function Page({
       "query-input": "required name=search_term_string"
     }
   }
+
+  console.log(VENDORS)
   
   return (
     <main className="flex flex-col items-center">
@@ -87,15 +89,16 @@ export default async function Page({
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4 h-full">
             {
               collection?.products?.nodes.map(( node ) => (
-                <li key={node.id} className="shrink-0 w-[60vw] max-w-lg aspect-7/8 relative">
-                  <ImageWithSkeleton 
-                    src={node.featuredImage.url}
-                    alt={node.featuredImage.altText || `Product image`}
-                    className="object-cover"
-                  />
-                  {/* <p className='text-black'>{node.title}</p> */}
-                  <p className='text-black'>{"name"}</p>
-                  <p>{node.priceRange.minVariantPrice.amount}</p>
+                <li key={node.id} className="shrink-0 w-[60vw] md:w-[50vw] lg:w-[35vw] max-w-md aspect-7/8 relative">
+                  <Link href={`/${lang}/collections/all/product/${node.handle}`}>
+                    <ImageWithSkeleton 
+                      src={node.featuredImage.url}
+                      alt={node.featuredImage.altText || `Product image`}
+                      className="object-cover"
+                      />
+                    <h3 className="text-xl mt-2 leading-4.5!">{node.title}</h3>
+                    <p className="mt-2">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
+                  </Link>
                 </li>
               ))
             }
@@ -112,13 +115,13 @@ export default async function Page({
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4">
             {
               VENDORS.map(( ven ) => (
-                
-                <li key={ven.name} className="shrink-0 w-[35vw] max-w-sm! aspect-square relative">
+                <li key={ven.name} className={`shrink-0 w-[35vw] md:w-[28vw] lg:w-[15vw]! aspect-${ven.aspectRatio} relative`}>
                   <Link href={`/${lang}/collections/all?vendor=${encodeURIComponent(ven.name)}`}>
                     <Image 
                       src={ven.logo}
                       alt={''}
                       fill
+                      objectFit="contain"
                       loading="lazy"
                     />
                   </Link>

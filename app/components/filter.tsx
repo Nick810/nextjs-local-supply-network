@@ -75,98 +75,102 @@ export default function Filter({ lang }: Props) {
   };
 
   return (
-    <>
-    <div className="flex container justify-end mb-4">
-      <button className="relative border border-black py-2 px-4 cursor-pointer" onClick={() => setToggle(true)}>
-        Filter
-      </button>
-    </div>
-    
-    <div className={`${toggle ? 'fixed' : 'hidden'} top-0 right-0 w-screen h-screen bg-white z-100 px-[5%]`}>
-      <div className="flex flex-row justify-between my-4 items-center">
-        <h2>Filter</h2>
-        <button onClick={() => setToggle(false)} className="cursor-pointer">
-          <Image src="/close.svg" alt="Close Button" width={60} height={60} priority />
+    <div className="lg:w-1/3">
+      <div className="flex justify-end mb-4 lg:hidden">
+        <button className="relative border border-black py-2 px-4 cursor-pointer" onClick={() => setToggle(true)}>
+          Filter
         </button>
       </div>
       
-      <div className="flex flex-col space-y-12 mb-8">
-        <div>
-          <h3 className="mb-4!">Growers</h3>
-          <ul>
-            {vendors.map(vendor => (
-              <li key={vendor}>
-                <label className="cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="cursor-pointer"
-                    checked={selectedVendors.includes(vendor)}
-                    onChange={() => handleVendorToggle(vendor)}
-                  />
-                  {vendor.charAt(0).toUpperCase() + vendor.slice(1)}
-                </label>
-              </li>
-            ))}
-          </ul>
+      <div className={`${toggle ? 'fixed' : 'hidden'} lg:static lg:block top-0 right-0 w-screen lg:w-auto h-screen lg:h-auto bg-white z-100 px-[5%] md:pl-0`}>
+        <div className="flex flex-row justify-between my-4 items-center lg:hidden">
+          <h2 className="">Filter</h2>
+          <button onClick={() => setToggle(false)} className="cursor-pointer lg:hidden">
+            <Image src="/close.svg" alt="Close Button" width={60} height={60} priority />
+          </button>
         </div>
         
-        <div>
-          <h3 className="mb-4!">Types</h3>
-          <ul>
-            {tags.map(tag => (
-              <li key={tag}>
-                <label className="cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="cursor-pointer"
-                    checked={selectedTags.includes(tag)}
-                    onChange={() => handleTypeToggle(tag)}
-                  />
-                  {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                </label>
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-col space-y-8 mb-8">
+          <div>
+            <h3 className="mb-4! text-xl">Growers</h3>
+            <ul>
+              {vendors.map(vendor => (
+                <li key={vendor}>
+                  <label className="cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="cursor-pointer mr-2"
+                      checked={selectedVendors.includes(vendor)}
+                      onChange={() => handleVendorToggle(vendor)}
+                    />
+                    {vendor.charAt(0).toUpperCase() + vendor.slice(1)}
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <hr className="mt-8 border-t border-gray-300" />
+          </div>
+          
+          <div>
+            <h3 className="mb-4! text-xl">Types</h3>
+            <ul>
+              {tags.map(tag => (
+                <li key={tag}>
+                  <label className="cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="cursor-pointer mr-2"
+                      checked={selectedTags.includes(tag)}
+                      onChange={() => handleTypeToggle(tag)}
+                    />
+                    {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <hr className="mt-8 border-t border-gray-300" />
+          </div>
+
+
+          <div>
+            <h3 className="mb-4! text-xl">Indoor or Sungrown</h3>
+            <ul>
+              {growTypes.map(type => (
+                <li key={type}>
+                  <label className="cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="cursor-pointer mr-2"
+                      checked={selectedGrowTypes.includes(type)}
+                      onChange={() => handleGrowTypeToggle(type)}
+                    />
+                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <hr className="mt-8 border-t border-gray-300" />
+          </div>
+
+          
+          <div>
+            <h3 className="mb-4! text-xl">Sort by Price</h3>
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value)}
+              className="border p-2"
+            >
+              <option value="">Select</option>
+              <option value="price-ascending">Lowest to Highest</option>
+              <option value="price-descending">Highest to Lowest</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <h3 className="mb-4!">Indoor or Sungrown</h3>
-          <ul>
-            {growTypes.map(type => (
-              <li key={type}>
-                <label className="cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="cursor-pointer"
-                    checked={selectedGrowTypes.includes(type)}
-                    onChange={() => handleGrowTypeToggle(type)}
-                  />
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
-                </label>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        
-        <div>
-          <h3 className="mb-4!">Sort by Price</h3>
-          <select
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
-            className="border p-2"
-          >
-            <option value="">Select</option>
-            <option value="price-ascending">Lowest to Highest</option>
-            <option value="price-descending">Highest to Lowest</option>
-          </select>
-        </div>
+        <button onClick={handleFilterClick} className="btn bg-black max-w-40 text-center">
+          Filter
+        </button>
       </div>
-
-      <button onClick={handleFilterClick} className="btn bg-black">
-        Submit
-      </button>
     </div>
-    </>
   );
 }

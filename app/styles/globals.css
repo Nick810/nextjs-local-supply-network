@@ -6,13 +6,13 @@
   --color-secondary: #FFC107;
   --color-neutral: #F4F4F4;
   --color-dark: #2B2B2B;
-  --font-comic-relief: 'Comic Relief', cursive;
+  --font-crimson-text: 'Crimson Text', serif;
   --sm: '640px';
   --md: '768px';
   --lg: '1024px';
   --xl: '1280px';
   --2xl: '1440px';
-  --max-width-container: 1440px;
+  --max-width-container: 1920px;
 }
 
 @theme inline {
@@ -46,23 +46,16 @@
   }
 }
 
-@layer utilities {
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-  }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "futura-100", sans-serif;
+  font-weight: 400;
+  font-style: normal
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Crimson Text', serif;
+  font-family: var(--font-crimson-text);
   font-weight: bold;
   color: #333;
   line-height: 0.85;
@@ -76,7 +69,6 @@ main {
   overflow: hidden;
 }
 
-
 p, a, span, li, select, option, label, input, textarea, button {
   font-weight: 400;
   color: #333
@@ -86,9 +78,29 @@ p, a, span, li, select, option, label, input, textarea, button {
   display: none;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+
+.futura-light {
+  font-family: "futura-100", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.futura-regular {
+  font-family: "futura-100", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.futura-bold {
+  font-family: "futura-100", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.futura-book {
+  font-family: "futura-100-book", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .container {
@@ -119,6 +131,11 @@ body {
   .btn {
     padding: .75rem 3rem;
     font-size: 1.25rem;
+  }
+
+  .container {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
   }
 }
 

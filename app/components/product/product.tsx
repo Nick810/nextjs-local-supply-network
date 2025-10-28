@@ -72,7 +72,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   const addItem = useCartStore(state => state.addItem);
   const limitAmount = product?.metafield1?.value;
   const selected = variants[selectedIndex]
-  const isSizeChart = product?.metafield2?.value;
   const isPreorder = selected.variantMetafield1?.value === 'true';
   const price = useMemo(
     () => selectedVariant?.priceV2?.amount || "0",

@@ -88,7 +88,9 @@ export default async function Page({ params }: Props) {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <Breadcrumb path={slug} lang={lang} subPath={product?.title} type="collections" />
+      <div className="container">
+        <Breadcrumb path={slug} lang={lang} subPath={product?.title} type="collections" />
+      </div>
       <Product product={product}  />
 
       <div className="pt-24 px-1">

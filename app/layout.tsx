@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "./styles/globals.css"
 import './styles/reset.css'
+import "./styles/globals.css"
 import './styles/embla.css';
 
 const getBaseUrl = () => {
@@ -67,6 +67,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/xsz1ojp.css" />
+      </head>
       <body
         className={`antialiased`}
       >

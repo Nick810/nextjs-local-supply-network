@@ -114,7 +114,7 @@ export default async function Page({
   }
   
   return (
-    <main className="py-24">
+    <main className="pt-16 pb-24 container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -122,15 +122,22 @@ export default async function Page({
         }}
       />
       <Breadcrumb path={slug} lang={lang} type="collections" isStaticPath/>
-      <h1 className="text-4xl text-center mb-8!">{collection?.title}</h1>
+      <h1 className="text-4xl text-center mb-8! lg:text-left md:mb-16!">{collection?.title}</h1>
 
-      <Filter lang={lang} />
+      <div className="flex flex-col lg:flex-row">
+        <Filter lang={lang} />
 
-        <ul className="flex flex-wrap space-y-4 md:space-y-8">
-          {sortedProducts.map((node) => (
-            <ProductCard product={node} key={node.id} slug={slug} lang={lang} />
-          ))}
-        </ul>
+        { sortedProducts.length ? 
+            <ul className="grid grid-cols-2 md:grid-cols-3 w-full gap-8">
+              {sortedProducts.map((node) => (
+                <ProductCard product={node} key={node.id} slug={slug} lang={lang} />
+              ))}
+            </ul>
+            :
+            <p className="text-md lg:text-lg px-8 mt-8">We couldn’t find any products that match your current filters. Try changing or removing some filters to see more results.</p>
+        } 
+        
+      </div>  
       
     </main>
   )

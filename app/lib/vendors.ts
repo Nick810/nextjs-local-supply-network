@@ -1,5 +1,13 @@
-// lib/vendors.ts
+import SMEAGOLZLOGO from '@/public/smeagolz-logo.png';
+import SAFEMODELOGO from '@/public/safemode.png';
+import GOODGASLOGO from '@/public/goodgas-logo.png'
+import POWERPUFFLOGO from '@/public/powerpuff-logo.jpg'
+import RASTARBUNLOGO from '@/public/rastarbun-logo.jpeg'
+
 export const VENDORS = [
-  { name: "safemode", logo: "https://cdn.shopify.com/s/files/1/0942/4479/8827/files/safemode-logo.jpg?v=1761362606" },
-  // { name: "T-REX", logo: "https://cdn.shopify.com/s/files/1/.../greengrow.png" },
+  { name: "safemode", logo: SAFEMODELOGO, aspectRatio: '[1/1]' },
+  { name: "smeagolz420", logo: SMEAGOLZLOGO, aspectRatio: '[1/1]' },
+  { name: "goodgas", logo: GOODGASLOGO, aspectRatio: '[1/1]' },
+  { name: "powerpuff", logo: POWERPUFFLOGO, aspectRatio: '[128/181]' },
+  { name: "rastarbun grower", logo: RASTARBUNLOGO, aspectRatio: '[512/231]' }
 ];

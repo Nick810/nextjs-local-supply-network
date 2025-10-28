@@ -10,7 +10,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ lang, type, path, subPath, isStaticPath = false }) => {
   return (
-    <nav className="my-4 container xl:mb-12">
+    <nav className="my-4 lg:mb-12">
       <ul className="flex flex-row items-center gap-3 text-sm">
         <li>
           <Link href={`/${lang}`} className="underline transition-colors duration-200 hover:text-neutral-400!">

@@ -3,9 +3,12 @@ import Link from "next/link";
 import ImageWithSkeleton from "../components/image-with-skeleton";
 import { ShopifyCollectionByHandleResponse, ShopifyMetaobjectsResponse } from "../lib/shopify/types";
 import { VENDORS } from "../lib/vendors";
+import { t } from "../lib/utils";
 import { getDictionary } from "./dictionaries";
 import { getCollectionByHandle, getMetaObjects } from "../lib/shopify/api";
 import Hero from "../components/home/hero";
+import Letter from "../components/home/letter";
+
 
 type Position = 'top' | 'middle' | 'bottom'
 
@@ -70,8 +73,6 @@ export default async function Page({
       "query-input": "required name=search_term_string"
     }
   }
-
-  console.log(VENDORS)
   
   return (
     <main className="flex flex-col items-center">
@@ -85,6 +86,9 @@ export default async function Page({
 
       <div className=" py-16! w-full">
         <div className="container pr-0! lg:mr-0! xl:pl-0!">
+          <h2 className="text-3xl mb-8!">
+            {t(dict, 'home.product_list.title')}
+          </h2>
           
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4 h-full">
             {
@@ -108,8 +112,8 @@ export default async function Page({
         
       <div className="bg-gray-200 py-16! w-full">
         <div className="container pr-0!">
-          <h2 className="text-2xl mb-8!">
-            {/* {t(dict, 'home.title')} */}
+          <h2 className="text-3xl mb-8!">
+            {t(dict, 'home.grower_list.title')}
           </h2>
           
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4">
@@ -129,6 +133,15 @@ export default async function Page({
               ))
             }
           </ul>
+        </div>
+      </div>
+
+      <div className="bg-gray-200 py-16! w-full">
+        <div className="container">
+          <h2 className="text-3xl mb-8!">
+            {t(dict, 'home.letter.title')}
+          </h2>
+          <Letter />
         </div>
       </div>
     

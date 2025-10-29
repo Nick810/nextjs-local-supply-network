@@ -3,6 +3,14 @@
     "cart": "Add to Cart"
   },
   "home": {
-    "title": "Hello World"
+    "product_list": {
+      "title": "Exclusive Local Selection"
+    },
+    "grower_list": {
+      "title": "Featured Cultivator"
+    },
+    "letter": {
+      "title": "LSN Letter"
+    }
   }
 }

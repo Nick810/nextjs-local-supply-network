@@ -160,7 +160,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       
       <div className="container mt-8 md:basis-[40%] lg:basis-[63%]">
         <div className="flex flex-row items-start gap-8 justify-between">
-          <h1 className="text-3xl lg:text-4xl leading-8! max-w-[560px]">{product?.title}</h1>
+          <h1 className="text-2xl lg:text-4xl leading-8! max-w-[560px]">{product?.title}</h1>
           <p className="text-xl"><span className="mr-1">฿</span>{(Number(price) * 1).toLocaleString()}</p>
         </div>
 
@@ -179,7 +179,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           )
         }
 
-        <div className="w-full border-b border-[#818181] py-2 mb-8 mt-4 max-w-[160px]">
+        <div className="w-full border-b border-[#818181] py-2 mb-8 mt-4 max-w-40">
           <div className="flex items-center justify-between text-black">
             <span className="text-sm font-medium">Quantity</span>
 
@@ -208,7 +208,15 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
         <div className="mt-8 max-w-[560px]">
           <ProductDrawer data={{ title: 'Details', details: product?.descriptionHtml, html: true, isCollapsible: false }} />
-          <ProductDrawer data={{ title: 'Shipping & Returns', details: shippingInfo, html: true, isCollapsible: false }} />
+        </div>
+
+        <div>
+          <span className="quote text-6xl">“</span>
+          <blockquote className="text-black">
+            Some super cool quote from mastergrower who masters
+            growing like a jedi. He may not be dared to challaenge
+          </blockquote>
+          <span className="quote text-6xl">“</span>
         </div>
 
       </div>

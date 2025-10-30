@@ -7,6 +7,7 @@ interface ProductProps {
     title: string
     handle: string
     tags: string[]
+    vendor: string;
     availableForSale: boolean
     priceRange: {
       minVariantPrice: {
@@ -42,7 +43,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
               <></>
               : !availableForSale ? 
               <>
-                <div className="absolute w-full h-full bg-black opacity-50 z-10" />
+                <div className="absolute w-full h-full bg-black opacity-50 z-10 rounded-md" />
                 <div className="absolute w-full h-full z-20 flex justify-center items-center">
                   <p className="text-white! text-md font-bold">SOLD OUT</p>
                 </div>
@@ -53,15 +54,16 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
             <ImageWithSkeleton 
               src={product.featuredImage.url} 
               alt={product.featuredImage.altText || ''}
-              className="object-cover"
+              className="object-cover rounded-lg!"
               width="100%"
               height="100%"
             />
           </div>
         )}
-        <div className="flex flex-col gap-1 mt-4">
-          <h3 className="text-xl lg:text-2xl mt-2 leading-4.5!">{product.title}</h3>
-          <p className="mt-2 text-sm lg:text-lg">
+        <div className="flex flex-col gap-3 mt-4">
+          <h3 className="text-md leading-4.5!">{product.title}</h3>
+          <p>{`by ${product.vendor}`}</p>
+          <p className="text-grey-200!">
             ฿{(Number(product.priceRange.minVariantPrice.amount) * 1).toLocaleString()}
           </p>
         </div>

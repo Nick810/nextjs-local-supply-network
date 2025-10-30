@@ -12,5 +12,8 @@
     "letter": {
       "title": "LSN Letter"
     }
+  },
+  "button": {
+    "see_all": "See All"
   }
 }

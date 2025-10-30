@@ -5,6 +5,7 @@
   --foreground: #333;
   --color-secondary: #FFC107;
   --color-neutral: #F4F4F4;
+  --color-accent: #F00F0F;
   --color-dark: #2B2B2B;
   --font-crimson-text: 'Crimson Text', serif;
   --sm: '640px';
@@ -18,6 +19,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--color-accent);
+  --color-grey-200: #7D7D7D;
+  --color-grey-100: #D6D6D6;
   --font-lazy-dog: var(--font-lazy-dog);
   --sm: var(--sm);
   --md: var(--md);
@@ -91,7 +95,8 @@ p, a, span, li, select, option, label, input, textarea, button {
   font-style: normal;
 }
 
-.futura-bold {
+.futura-bold,
+.quote {
   font-family: "futura-100", sans-serif;
   font-weight: 700;
   font-style: normal;

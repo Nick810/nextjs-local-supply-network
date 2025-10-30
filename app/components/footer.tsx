@@ -1,5 +1,4 @@
 import { FC } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import Subscribe from "./subscription"
 
@@ -9,22 +8,22 @@ type Props = {
 
 const Footer: FC<Props> = ({ lang }) => {
   return (
-    <footer className="bg-[#2D2D2D] pb-12">
+    <footer className="bg-[#C5C5C5] pb-12">
       <div className="flex flex-col w-full container">
         <Subscribe />
         <div className="w-4/5 flex flex-col gap-12">
           <ul className="flex flex-col items-start gap-8">
-            <li><Link href={`/${lang}`} className="text-xl text-white! uppercase transition-colors duration-200 hover:text-neutral-400!">Home</Link></li>
-            <li><Link href={`/${lang}/collections/all`} className="text-xl! uppercase text-white! hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
-            <li><Link href={`/${lang}/story`} className="text-xl! uppercase text-white! hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
-            <li><Link href={`/${lang}/about-us`} className="text-xl! uppercase text-white! hover:text-neutral-400! transition-colors duration-200">About</Link></li>
+            <li><Link href={`/${lang}`} className="text-md! text-[#474747] uppercase transition-colors duration-200 hover:text-neutral-400!">Home</Link></li>
+            <li><Link href={`/${lang}/collections/all`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
+            <li><Link href={`/${lang}/story`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
+            <li><Link href={`/${lang}/about-us`} className="text-m! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">About</Link></li>
           </ul>
           <div>
-            <p className="text-sm mb-4! text-white!">&copy; { new Date().getFullYear() } Local Supply Network </p>
+            <p className="text-sm mb-4! text-black!">&copy; { new Date().getFullYear() } Local Supply Network </p>
             <ul className="flex flex-rcol text-xs gap-8">
-              <Link className="transition-colors duration-200 text-white! hover:text-neutral-400!" href="/privacy-policy">Privacy Policy</Link>
-              <Link className="transition-colors duration-200 text-white! hover:text-neutral-400!" href="/terms-and-conditions">Terms of Service</Link>
-              <Link className="transition-colors duration-200 text-white! hover:text-neutral-400!" href="/return-policy">Return Policy</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/privacy-policy">Privacy Policy</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/terms-and-conditions">Terms of Service</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/return-policy">Return Policy</Link>
             </ul>
           </div>
         </div>

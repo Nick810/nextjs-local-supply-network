@@ -71,13 +71,13 @@ const Hero: React.FC<HeroProps> = ({ data, images, lang }) => {
         </div>
       )}
 
-      <div className={`absolute ${positionClass} transform text-center w-full px-[5%] max-w-[800px]`}>
+      <div className={`absolute ${positionClass} transform text-left w-full px-[5%] max-w-[800px]`}>
         <h1 
           className={`text-[16vw] md:text-8xl lg:text-9xl text-stroke text-white! mb-4! scale-y-115 hidden`}>
             {data.heading || ''}
         </h1>
         <p className={`mb-8! md:mb-16! text-white! text-4xl text-stroke-sm font-bold!`}>{data.text || ''}</p>
-        <Link href={`/${lang}/collections/all`} className="btn w-full max-w-[320px]! m-auto rounded-md bg-[#f3f3f3] border border-black text-black! hover:bg-[#f3f3f3] transition-all duration-200 ease-in">Shop Now</Link>
+        <Link href={`/${lang}/collections/all`} className="btn w-full m-auto rounded-md bg-accent  hover:bg-[#f3f3f3] transition-all duration-200 ease-in text-center text-white!">Shop Now</Link>
       </div>
     </div>
   )

@@ -24,23 +24,23 @@ const Subscribe = () => {
   };
 
   return (
-    <div className="py-16">
-      <h2 className="uppercase text-2xl mb-6! text-white!">15% Off on your first order</h2>
-      
-      <form onSubmit={handleSubmit} className="w-full p-4 bg-white shadow rounded">
-      <input
-        suppressHydrationWarning
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@example.com"
-        required
-        className="w-full p-2 border border-gray-300 rounded mb-2"
-      />
-      <button type="submit" className="w-full bg-black text-white! p-2 rounded">
-        Subscribe
-      </button>
-      {status && <p className="mt-2 text-sm text-gray-600">{status}</p>}
+    <div className="pt-16 pb-8">
+      <h2 className="text-2xl mb-4! text-black!">15% off on your first order?</h2>
+      <p className="mb-6!">subscribe below to get instant discounts, exclusive deals and news</p>
+      <form onSubmit={handleSubmit} className="w-full relative">
+        <input
+          suppressHydrationWarning
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email here. you@example.com"
+          required
+          className="w-full p-5 border border-[#949494] rounded mb-2"
+        />
+        <button type="submit" className="w-x border border-black text-black! p-2 rounded absolute right-0 top-1/2 -translate-y-[22px] mr-6 cursor-pointer">
+          Subscribe
+        </button>
+        {status && <p className="mt-2 text-sm text-gray-600">{status}</p>}
     </form>
     </div>
   )

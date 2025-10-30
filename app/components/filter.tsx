@@ -76,10 +76,13 @@ export default function Filter({ lang }: Props) {
 
   return (
     <div className="lg:w-1/3">
-      <div className="flex justify-end mb-4 lg:hidden">
-        <button className="relative border border-black py-2 px-4 cursor-pointer" onClick={() => setToggle(true)}>
-          Filter
-        </button>
+      <div className="flex justify-center">
+        <div className="inline-flex justify-center mb-8 lg:hidden border border-black rounded-md py-4 px-8 cursor-pointer" onClick={() => setToggle(true)}>
+          <Image src="/filter-icon.svg" alt="Filter Icon" width={24} height={24} priority />
+          <button className="relative cursor-pointer rounded-md ml-4" >
+            Filter
+          </button>
+        </div>
       </div>
       
       <div className={`${toggle ? 'fixed' : 'hidden'} lg:static lg:block top-0 right-0 w-screen lg:w-auto h-screen lg:h-auto bg-white z-100 px-[5%] md:pl-0`}>

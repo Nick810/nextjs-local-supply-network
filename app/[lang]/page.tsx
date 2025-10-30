@@ -86,22 +86,29 @@ export default async function Page({
 
       <div className=" py-16! w-full">
         <div className="container pr-0! lg:mr-0! xl:pl-0!">
-          <h2 className="text-3xl mb-8!">
-            {t(dict, 'home.product_list.title')}
-          </h2>
+          <div className="flex flex-row justify-between items-start">
+            <h2 className="text-3xl mb-8!">
+              {t(dict, 'home.product_list.title')}
+            </h2>
+
+            <Link href={`/${lang}/collection/all`} className="block -translate-x-[25%]">{t(dict, 'button.see_all')}</Link>
+          </div>
           
-          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4 h-full">
+          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-8 h-full">
             {
               collection?.products?.nodes.map(( node ) => (
-                <li key={node.id} className="shrink-0 w-[60vw] md:w-[50vw] lg:w-[35vw] max-w-md aspect-7/8 relative">
+                <li key={node.id} className="shrink-0 w-[45vw] md:w-[35vw] lg:w-[25vw] max-w-md aspect-4/5 relative">
                   <Link href={`/${lang}/collections/all/product/${node.handle}`}>
                     <ImageWithSkeleton 
                       src={node.featuredImage.url}
                       alt={node.featuredImage.altText || `Product image`}
-                      className="object-cover"
+                      className="object-cover rounded-lg"
                       />
-                    <h3 className="text-xl mt-2 leading-4.5!">{node.title}</h3>
-                    <p className="mt-2">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
+                    <div className="flex flex-col gap-3 mt-4">
+                      <h3 className="text-md leading-4.5!">{node.title}</h3>
+                      <p>{`by ${node.vendor}`}</p>
+                      <p className="text-grey-200!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
+                    </div>
                   </Link>
                 </li>
               ))
@@ -110,7 +117,7 @@ export default async function Page({
         </div>
       </div>
         
-      <div className="bg-gray-200 py-16! w-full">
+      <div className="pt-8! pb-16 w-full">
         <div className="container pr-0!">
           <h2 className="text-3xl mb-8!">
             {t(dict, 'home.grower_list.title')}
@@ -136,7 +143,7 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="bg-gray-200 py-16! w-full">
+      <div className="bg-gray-100 py-16! w-full">
         <div className="container">
           <h2 className="text-3xl mb-8!">
             {t(dict, 'home.letter.title')}

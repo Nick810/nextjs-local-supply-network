@@ -8,6 +8,7 @@
   --color-accent: #F00F0F;
   --color-dark: #2B2B2B;
   --font-crimson-text: 'Crimson Text', serif;
+  --xs: '320px';
   --sm: '640px';
   --md: '768px';
   --lg: '1024px';
@@ -23,6 +24,7 @@
   --color-grey-200: #7D7D7D;
   --color-grey-100: #D6D6D6;
   --font-lazy-dog: var(--font-lazy-dog);
+  --xs: var(--xs);
   --sm: var(--sm);
   --md: var(--md);
   --lg: var(--lg);

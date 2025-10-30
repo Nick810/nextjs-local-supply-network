@@ -11,13 +11,13 @@ const Footer: FC<Props> = ({ lang }) => {
     <footer className="bg-[#C5C5C5] pb-12 relative">
       <svg
         viewBox="0 0 1050 66"
-        className="absolute -top-6 w-screen h-auto"
+        className="absolute -top-3 xs:-top-6 sm:-top-[4%] w-screen h-auto"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
       >
         <g filter="url(#filter0_g_47_4)">
-          <rect x="0" y="13" width="100%" height="40" fill="#C5C5C5"/>
+          <rect x="0" y="13" width="100%" height="80" fill="#C5C5C5"/>
         </g>
         <defs>
           <filter id="filter0_g_47_4" x="0" y="0" width="1050" height="66" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">

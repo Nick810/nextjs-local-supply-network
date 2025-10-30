@@ -158,7 +158,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
 
       <div className="container flex flex-row items-end space-x-4 mt-4">
         <div className="relative aspect-square w-full max-w-12">
-          <Image src={vendorLogo} alt="" fill />
+          <Image src={vendorLogo || ''} alt="" fill />
         </div>
         <Link href={`/${lang}/story/${product?.vendor}`} className="text-black underline">by { product?.vendor }</Link>
       </div>

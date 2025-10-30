@@ -35,7 +35,7 @@ const Subscribe = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email here. you@example.com"
           required
-          className="w-full p-5 border border-[#949494] rounded mb-2"
+          className="w-full p-5 pr-32 border border-[#949494] rounded mb-2"
         />
         <button type="submit" className="w-x border border-black text-black! p-2 rounded absolute right-0 top-1/2 -translate-y-[22px] mr-6 cursor-pointer">
           Subscribe

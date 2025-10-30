@@ -8,7 +8,30 @@ type Props = {
 
 const Footer: FC<Props> = ({ lang }) => {
   return (
-    <footer className="bg-[#C5C5C5] pb-12">
+    <footer className="bg-[#C5C5C5] pb-12 relative">
+      <svg
+        viewBox="0 0 1050 66"
+        className="absolute -top-6 w-screen h-auto"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+      >
+        <g filter="url(#filter0_g_47_4)">
+          <rect x="0" y="13" width="100%" height="40" fill="#C5C5C5"/>
+        </g>
+        <defs>
+          <filter id="filter0_g_47_4" x="0" y="0" width="1050" height="66" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.0625 0.0625" numOctaves="3" seed="4273" />
+            <feDisplacementMap in="shape" scale="26" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+            <feMerge result="effect1_texture_47_4">
+            <feMergeNode in="displacedImage"/>
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+
       <div className="flex flex-col w-full container">
         <Subscribe />
         <div className="w-4/5 flex flex-col gap-12">

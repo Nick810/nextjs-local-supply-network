@@ -5,6 +5,7 @@ export const GET_PRODUCT_BY_HANDLE_QUERY = gql`
     product(handle: $handle) {
       title
       tags
+      vendor
       descriptionHtml
       priceRange {
         minVariantPrice {

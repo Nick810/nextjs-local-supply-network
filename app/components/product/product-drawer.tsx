@@ -17,7 +17,7 @@ const ProductDrawer: React.FC<ProductDrawerProps> = ({ data }) => {
   }
 
   return (
-    <div className={`border-b-1 border-[#818181] pt-4 ${data.isCollapsible ? 'cursor-pointer' : ''}`} onClick={toggleOpen}>
+    <div className={`pt-4 ${data.isCollapsible ? 'cursor-pointer' : ''}`} onClick={toggleOpen}>
       {
         data.html && data.details ?
         <div className="flex flex-col items-start justify-betwee py-4">

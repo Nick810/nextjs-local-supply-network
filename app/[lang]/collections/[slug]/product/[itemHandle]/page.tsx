@@ -91,7 +91,7 @@ export default async function Page({ params }: Props) {
       <div className="container">
         <Breadcrumb path={slug} lang={lang} subPath={product?.title} type="collections" />
       </div>
-      <Product product={product}  />
+      <Product product={product} lang={lang} />
 
       <div className="pt-24 px-1">
         { productRecommendations.length > 0 && <h2 className="text-4xl mb-8! pl-[5%]">Let&apos;s pair up</h2>}

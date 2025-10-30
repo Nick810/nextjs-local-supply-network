@@ -49,6 +49,7 @@ export interface ShopifyProductByHandle {
   title: string;
   descriptionHtml: string;
   tags: string[];
+  vendor: string;
   images?: {
     edges: ShopifyProductImage[];
   };

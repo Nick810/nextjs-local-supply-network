@@ -9,7 +9,6 @@ import { getCollectionByHandle, getMetaObjects } from "../lib/shopify/api";
 import Hero from "../components/home/hero";
 import Letter from "../components/home/letter";
 
-
 type Position = 'top' | 'middle' | 'bottom'
 
 export const dynamic = 'force-dynamic'; // Optional: forces SSR
@@ -91,7 +90,7 @@ export default async function Page({
               {t(dict, 'home.product_list.title')}
             </h2>
 
-            <Link href={`/${lang}/collection/all`} className="block -translate-x-[25%]">{t(dict, 'button.see_all')}</Link>
+            <Link href={`/${lang}/collections/all`} className="block -translate-x-[25%]">{t(dict, 'button.see_all')}</Link>
           </div>
           
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-8 h-full">

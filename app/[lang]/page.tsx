@@ -103,10 +103,10 @@ export default async function Page({
                       alt={node.featuredImage.altText || `Product image`}
                       className="object-cover rounded-lg"
                       />
-                    <div className="flex flex-col gap-3 mt-4">
+                    <div className="flex flex-col gap-1 mt-4">
                       <h3 className="text-md leading-4.5!">{node.title}</h3>
                       <p>{`by ${node.vendor}`}</p>
-                      <p className="text-grey-200!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
+                      <p className="text-grey-200! mt-2!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
                     </div>
                   </Link>
                 </li>

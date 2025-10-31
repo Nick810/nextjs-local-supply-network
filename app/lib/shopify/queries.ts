@@ -22,6 +22,9 @@ export const GET_PRODUCT_BY_HANDLE_QUERY = gql`
       metafield3: metafield(namespace: "custom", key: "preorder_message") {
         value
       }
+      metafield4: metafield(namespace: "custom", key: "quote_from_grower") {
+        value
+      }
       seo {
         title
         description

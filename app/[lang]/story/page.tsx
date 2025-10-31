@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import Image from 'next/image';
+import { VENDORS } from '@/app/lib/vendors';
 
 export default async function StoriesListPage({ 
   params,
@@ -19,16 +21,33 @@ export default async function StoriesListPage({
   }))
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Stories</h1>
-      <ul className="space-y-2">
-        {stories.map(({ slug, title }) => (
-          <li key={slug}>
-            <Link href={`/${lang}/story/${slug}`} className="text-blue-600 hover:underline">
-              {title}
-            </Link>
-          </li>
-        ))}
+    <main className="py-32 container">
+      <h1 className="text-4xl font-bold mb-8!">Stories</h1>
+      <ul className="space-y-8">
+        {stories.map(({ slug, title }) => {
+          const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());
+
+          return (
+            <li key={slug} className="flex items-center space-x-4 border-b pb-4">
+              <Link href={`/${lang}/story/${slug}`} className='flex flex-row justify-between w-full cursor-pointer'>
+                <div>
+                  {vendor && (
+                    <Image
+                      src={vendor.logo}
+                      alt={`${vendor.name} logo`}
+                      width={100}
+                      height={100}
+                      className="rounded mb-4"
+                    />
+                  )}
+                  
+                  {title}
+                </div>
+                <button>Read story</button>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </main>
   )

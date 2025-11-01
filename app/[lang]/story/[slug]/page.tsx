@@ -24,7 +24,9 @@ export default async function Page({
  
   return (
     <>
-      <Breadcrumb path={slug} lang={lang} type="story" isStaticPath />
+      <div className='container'>
+        <Breadcrumb path={slug} lang={lang} type="story" isStaticPath />
+      </div>
 
       <StoryLayout allPaths={allPaths} lang={lang}>
         <StoryClient slug={slug} />

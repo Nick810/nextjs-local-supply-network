@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
     <li key={product.id} className="relative">
       <Link href={`/${lang}/collections/${slug}/product/${product.handle}`}>
         {product.featuredImage && (
-          <div className="relative aspect-3/4 bg-gray-100">
+          <div className="relative aspect-4/5 bg-gray-100">
             {isPreorder ? <span className="text-red-600! text-xs! absolute bottom-0 left-0 z-30 bg-white">***PRE ORDER***</span> : <></>}
             <div className="absolute w-full h-full transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 z-10"
               style={{ backgroundColor: 'rgba(0, 0, 0, 1)' }}></div>

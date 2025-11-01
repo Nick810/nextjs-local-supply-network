@@ -51,7 +51,7 @@ const Header: FC<HeaderProps> = ({bgColor, lang}) => {
         </div>
       </header>
 
-      <Cart toggled={isCartOpen} toggle={setCartOpen} bgColor={bgColor} />
+      <Cart toggled={isCartOpen} toggle={setCartOpen} bgColor={"white"} />
       <MobileNav toggled={isOpen} toggle={setOpen} lang={lang} />
       
     </>

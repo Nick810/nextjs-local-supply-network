@@ -1,5 +1,7 @@
 import Link from "next/link"
 import ImageWithSkeleton from "../image-with-skeleton"
+import { VENDORS } from "@/app/lib/vendors"
+import Image from "next/image"
 
 interface ProductProps {
   product: {
@@ -29,6 +31,7 @@ interface ProductProps {
 const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
   const { availableForSale } = product;
   const isPreorder = product.tags.includes('pre-order');
+  const vendor = VENDORS.find(v => v.name.toLowerCase() === product.vendor.toLowerCase());
 
   return (
     <li key={product.id} className="relative">
@@ -60,12 +63,27 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
             />
           </div>
         )}
-        <div className="flex flex-col gap-1 mt-4">
-          <h3 className="text-md leading-4.5!">{product.title}</h3>
-          <p>{`by ${product.vendor}`}</p>
-          <p className="text-grey-200! mt-2!">
-            ฿{(Number(product.priceRange.minVariantPrice.amount) * 1).toLocaleString()}
-          </p>
+        <div className="flex flex-row justify-between items-start mt-4">
+          
+          <div className="flex flex-col gap-1">
+            <h3 className="text-md leading-4.5!">{product.title}</h3>
+            <p>{`by ${product.vendor}`}</p>
+            <p className="text-grey-200! mt-2!">
+              ฿{(Number(product.priceRange.minVariantPrice.amount) * 1).toLocaleString()}
+            </p>
+          </div>
+
+          <div>
+            {vendor && (
+              <Image
+                src={vendor.logo}
+                alt={`${vendor.name} logo`}
+                width={32}
+                height={32}
+                className="rounded mb-4"
+              />
+            )}
+          </div>
         </div>
       </Link>
     </li>

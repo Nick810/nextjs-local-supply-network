@@ -21,14 +21,14 @@ export default async function StoriesListPage({
   }))
 
   return (
-    <main className="py-32 container">
+    <main className="py-32 container overflow-x-hidden">
       <h1 className="text-4xl font-bold mb-8!">Stories</h1>
-      <ul className="space-y-8">
+      <ul className="gap-8 flex flex-wrap">
         {stories.map(({ slug, title }) => {
           const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());
 
           return (
-            <li key={slug} className="flex items-center space-x-4 border-b pb-4">
+            <li key={slug} className="flex items-center space-x-4 border-b pb-4 w-full md:w-[48%]">
               <Link href={`/${lang}/story/${slug}`} className='flex flex-row justify-between w-full cursor-pointer'>
                 <div>
                   {vendor && (
@@ -41,7 +41,7 @@ export default async function StoriesListPage({
                     />
                   )}
                   
-                  {title}
+                  {vendor?.label}
                 </div>
                 <button>Read story</button>
               </Link>

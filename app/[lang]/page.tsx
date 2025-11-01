@@ -73,8 +73,9 @@ export default async function Page({
     }
   }
   
+  
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -95,29 +96,46 @@ export default async function Page({
           
           <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-8 h-full">
             {
-              collection?.products?.nodes.map(( node ) => (
-                <li key={node.id} className="shrink-0 w-[45vw] md:w-[35vw] lg:w-[25vw] max-w-md aspect-4/5 relative">
-                  <Link href={`/${lang}/collections/all/product/${node.handle}`}>
-                    <ImageWithSkeleton 
-                      src={node.featuredImage.url}
-                      alt={node.featuredImage.altText || `Product image`}
-                      className="object-cover rounded-lg"
-                      />
-                    <div className="flex flex-col gap-1 mt-4">
-                      <h3 className="text-md leading-4.5!">{node.title}</h3>
-                      <p>{`by ${node.vendor}`}</p>
-                      <p className="text-grey-200! mt-2!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
-                    </div>
-                  </Link>
-                </li>
-              ))
+              collection?.products?.nodes.map(( node ) => {
+                const vendor = VENDORS.find(v => v.name.toLowerCase() === node.vendor.toLowerCase());
+                return (
+                  <li key={node.id} className="shrink-0 w-[45vw] md:w-[35vw] lg:w-[25vw] max-w-md aspect-4/5 relative">
+                    <Link href={`/${lang}/collections/all/product/${node.handle}`}>
+                      <ImageWithSkeleton 
+                        src={node.featuredImage.url}
+                        alt={node.featuredImage.altText || `Product image`}
+                        className="object-cover rounded-lg"
+                        />
+                      <div className="flex flex-row justify-between items-start mt-4">
+                        <div className="flex flex-col gap-1">
+                          <h3 className="text-md leading-4.5!">{node.title}</h3>
+                          <p>{`by ${node.vendor}`}</p>
+                          <p className="text-grey-200! mt-2!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
+                        </div>
+
+                        <div>
+                          {vendor && (
+                            <Image
+                              src={vendor.logo}
+                              alt={`${vendor.name} logo`}
+                              width={32}
+                              height={32}
+                              className="rounded mb-4"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                )
+              })
             }
           </ul>
         </div>
       </div>
         
-      <div className="pt-8! pb-16 w-full">
-        <div className="container pr-0!">
+      <div className="pt-8! pb-16 w-full relative">
+        <div className="container pr-0! relative z-1">
           <h2 className="text-3xl mb-8!">
             {t(dict, 'home.grower_list.title')}
           </h2>
@@ -140,6 +158,24 @@ export default async function Page({
             }
           </ul>
         </div>
+
+        <svg width="1120" height="310" viewBox="0 0 1120 310" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-screen -bottom-[35%] z-0 left-0">
+          <g filter="url(#filter0_g_47_4)">
+            <rect x="0" y="48" width="100%" height="214" fill="white"/>
+          </g>
+          <defs>
+            <filter id="filter0_g_47_4" x="0" y="0" width="1120" height="310" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.0625 0.0625" numOctaves="3" seed="4273" />
+              <feDisplacementMap in="shape" scale="96" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+              <feMerge result="effect1_texture_47_4">
+              <feMergeNode in="displacedImage"/>
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+
       </div>
 
       <div className="bg-gray-100 py-16! w-full">

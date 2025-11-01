@@ -130,7 +130,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
                 key={item.variantId}
                 className="flex items-center justify-between"
               >
-                <div className="flex flex-row min-w-full gap-4 border-b-1 border-[#818181] py-4">
+                <div className="flex flex-row min-w-full gap-4 border-b border-[#818181] py-4">
                   <div className="relative w-[20%]">
                     <ImageWithSkeleton
                       src={item.image || ''} 

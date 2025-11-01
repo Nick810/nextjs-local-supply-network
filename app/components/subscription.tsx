@@ -24,7 +24,7 @@ const Subscribe = () => {
   };
 
   return (
-    <div className="pt-16 pb-8 relative z-10">
+    <div className="pt-16 pb-8 relative z-10 md:w-[40%] md:order-2 md:pt-0">
       <h2 className="text-2xl mb-4! text-black!">15% off on your first order?</h2>
       <p className="mb-6!">subscribe below to get instant discounts, exclusive deals and news</p>
       <form onSubmit={handleSubmit} className="w-full relative">

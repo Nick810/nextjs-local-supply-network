@@ -87,7 +87,7 @@ export default function Filter({ lang }: Props) {
       
       <div className={`${toggle ? 'fixed' : 'hidden'} lg:static lg:block top-0 right-0 w-screen lg:w-auto h-screen lg:h-auto bg-white z-100 px-[5%] md:pl-0`}>
         <div className="flex flex-row justify-between my-4 items-center lg:hidden">
-          <h2 className="">Filter</h2>
+          <h2 className="text-2xl">Filter</h2>
           <button onClick={() => setToggle(false)} className="cursor-pointer lg:hidden">
             <Image src="/close.svg" alt="Close Button" width={60} height={60} priority />
           </button>

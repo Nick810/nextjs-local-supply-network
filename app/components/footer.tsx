@@ -8,7 +8,7 @@ type Props = {
 
 const Footer: FC<Props> = ({ lang }) => {
   return (
-    <footer className="bg-[#C5C5C5] pb-12 relative">
+    <footer className="bg-[#C5C5C5] pb-12 lg: pt-24 relative">
       <svg
         viewBox="0 0 1050 66"
         className="absolute -top-3 xs:-top-6 sm:-top-[4%] w-screen h-auto"
@@ -32,9 +32,9 @@ const Footer: FC<Props> = ({ lang }) => {
         </defs>
       </svg>
 
-      <div className="flex flex-col w-full container">
+      <div className="flex  md:flex-wrap w-full container">
         <Subscribe />
-        <div className="w-4/5 flex flex-col gap-12">
+        <div className="w-4/5 md:w-[48%] flex flex-col gap-12">
           <ul className="flex flex-col items-start gap-8">
             <li><Link href={`/${lang}`} className="text-md! text-[#474747] uppercase transition-colors duration-200 hover:text-neutral-400!">Home</Link></li>
             <li><Link href={`/${lang}/collections/all`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Products</Link></li>

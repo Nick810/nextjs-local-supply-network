@@ -3,6 +3,9 @@
     "cart": "Add to Cart"
   },
   "home": {
+    "hero": {
+      "title": "The #1 Marketplace for True-Craft Small Batch Local Growers"
+    },
     "product_list": {
       "title": "Exclusive Local Selection"
     },
@@ -12,6 +15,20 @@
     "letter": {
       "title": "LSN Letter"
     }
+  },
+  "about": {
+    "title": "LOCAL SUPPLY NETWORK (LSN)",
+    "mission": "was founded with one single purpose: to reclaim our economic territory of true craft cannabis grown by local home growers.",
+    "history": "Since decriminalization, the artisan growers who built this community and set the standard for quality have been mercilessly pushed out.",
+    "corporateShift": "They are being replaced by big corporate players whose business model shifts the focus from achieving the best possible harvest to simply producing the cheapest gram.",
+    "costVsQuality": "While there’s nothing wrong with controlling costs, when budget becomes the #1 goal, quality is the inevitable trade-off, especially in large-scale commercial operations.",
+    "techRejection": "We fundamentally reject the idea that any technology can replicate the love, care, and attention poured into a plant by a passionate grower.",
+    "growerDedication": "These true masters set business aside to dedicate their time to their sacred plants, treating their garden like a best friend.",
+    "communityBackbone": "They are not mass producers; they are the real backbone of the community, whose intimate knowledge of the land yields a quality of flower that is simply uncompromised.",
+    "curatedCollections": "LOCAL SUPPLY NETWORK (LSN) offers curated collections sourced exclusively from these original local growers—the true masters whose exceptional craft laid the foundation for today's industry.",
+    "authenticityChoice": "In a market increasingly defined by corporate scale and mediocrity, we choose authenticity and exclusivity.",
+    "perfectionOverProfit": "We stand for the grower who prioritizes perfection over profit, ensuring the legacy of top-shelf Thai quality endures.",
+    "purchaseMeaning": "When you choose LOCAL SUPPLY NETWORK (LSN), you're not just making a purchase — you're supporting and experiencing true Thai cannabis craftsmanship."
   },
   "button": {
     "see_all": "See All"

@@ -76,7 +76,7 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
       className={`${isVisible ? "fixed" : "hidden"} w-full max-w-screen h-screen top-0 left-0 overflow-hidden z-[100]`}>      
       <div
         ref={blurRef}
-        className="absolute inset-0 bg-white/80 -z-10 rounded-bl-xl"
+        className="absolute inset-0 bg-white -z-10 rounded-bl-xl"
         style={{ opacity: 0, transform: "scale(1.3)" }}
       />
       <div className="z-30 absolute top-0 left-0 pl-[4%] w-full">
@@ -86,10 +86,10 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
           </button>
         </div>
 
-        <ul className="flex flex-col items-start gap-6 px-6 mt-16">
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/collections/all`} className="text-xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/story`} className="text-xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/about-us`} className="text-xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">About</Link></li>
+        <ul className="flex flex-col items-start gap-12 px-6 mt-16">
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/collections/all`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/story`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/about-us`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">About</Link></li>
         </ul>
       </div>
     </nav>

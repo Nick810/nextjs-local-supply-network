@@ -134,7 +134,7 @@ export default async function Page({
               ))}
             </ul>
             :
-            <p className="text-md lg:text-lg px-8 mt-8">We couldn’t find any products that match your current filters. Try changing or removing some filters to see more results.</p>
+            <p className="text-md lg:text-lg px-8 mt-8">We couldn&apos;t find any products that match your current filters. Try changing or removing some filters to see more results.</p>
         } 
         
       </div>  

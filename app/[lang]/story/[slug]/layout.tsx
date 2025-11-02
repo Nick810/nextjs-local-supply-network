@@ -5,7 +5,7 @@ export default async function Layout({
 }>) {
   return (
     <main className="flex flex-col items-center">
-      <div className="py-24">
+      <div className="py-24 w-full">
         { children }
       </div>
     </main>

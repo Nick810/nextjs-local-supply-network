@@ -26,24 +26,21 @@ export default async function StoriesListPage({
       <ul className="gap-8 flex flex-wrap">
         {stories.map(({ slug, title }) => {
           const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());
-
+          if (!vendor) console.log(title)
           return (
-            <li key={slug} className="flex items-center space-x-4 border-b pb-4 w-full md:w-[48%]">
-              <Link href={`/${lang}/story/${slug}`} className='flex flex-row justify-between w-full cursor-pointer'>
+            <li key={slug} className="flex items-center space-x-4 w-[46%]">
+              <Link href={`/${lang}/story/${slug}`} className='w-full cursor-pointer'>
                 <div>
                   {vendor && (
                     <Image
-                      src={vendor.logo}
-                      alt={`${vendor.name} logo`}
-                      width={100}
-                      height={100}
-                      className="rounded mb-4"
+                      src={vendor.storyCover}
+                      alt={`${vendor.name} Story Cover`}
+                      width={600}
+                      height={600}
+                      className="rounded shadow-lg"
                     />
                   )}
-                  
-                  {vendor?.label}
                 </div>
-                <button>Read story</button>
               </Link>
             </li>
           );

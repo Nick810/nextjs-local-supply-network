@@ -1,12 +1,15 @@
 import { FC } from "react"
 import Link from "next/link"
 import Subscribe from "./subscription"
+import { useTranslations } from 'next-intl';
 
 type Props = {
   lang: string
 }
 
 const Footer: FC<Props> = ({ lang }) => {
+  const t = useTranslations('footer');
+
   return (
     <footer className="bg-[#C5C5C5] pb-12 lg: pt-24 relative">
       <svg
@@ -36,17 +39,17 @@ const Footer: FC<Props> = ({ lang }) => {
         <Subscribe />
         <div className="w-full md:w-[48%] flex flex-col gap-12">
           <ul className="flex flex-col items-start gap-8">
-            <li><Link href={`/${lang}`} className="text-md! text-[#474747] uppercase transition-colors duration-200 hover:text-neutral-400!">Home</Link></li>
-            <li><Link href={`/${lang}/collections/all`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
-            <li><Link href={`/${lang}/story`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
-            <li><Link href={`/${lang}/about-us`} className="text-m! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">About</Link></li>
+            <li><Link href={`/${lang}`} className="text-md! text-[#474747] uppercase transition-colors duration-200 hover:text-neutral-400!">{t('menu.home')}</Link></li>
+            <li><Link href={`/${lang}/collections/all`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">{t('menu.products')}</Link></li>
+            <li><Link href={`/${lang}/story`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">{t('menu.story')}</Link></li>
+            <li><Link href={`/${lang}/about`} className="text-m! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">{t('menu.about')}</Link></li>
           </ul>
           <div>
             <p className="text-sm mb-4! text-black!">&copy; { new Date().getFullYear() } Local Supply Network </p>
             <ul className="flex flex-rcol text-xs gap-8">
-              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/privacy-policy">Privacy Policy</Link>
-              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/terms-and-conditions">Terms of Service</Link>
-              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/return-policy">Return Policy</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/privacy-policy">{t('policies.privacy_policy')}</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/terms-and-conditions">{t('policies.terms_of_service')}</Link>
+              <Link className="transition-colors duration-200 text-[#474747]! hover:text-neutral-400!" href="/return-policy">{t('policies.return_policy')}</Link>
             </ul>
           </div>
         </div>

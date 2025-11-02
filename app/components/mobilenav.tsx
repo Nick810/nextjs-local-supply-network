@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
+import { useTranslations } from 'next-intl';
 
 type MobileNavProps = {
   toggled: boolean;
@@ -13,6 +14,7 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
   const navRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const blurRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations('menu');
 
   useEffect(() => {
     if (toggled) {
@@ -87,9 +89,10 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
         </div>
 
         <ul className="flex flex-col items-start gap-12 px-6 mt-16">
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/collections/all`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Products</Link></li>
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/story`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">Story</Link></li>
-          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/about-us`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">About</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('home')}</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/collections/all`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('products')}</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/story`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('story')}</Link></li>
+          <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/about`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('about')}</Link></li>
         </ul>
       </div>
     </nav>

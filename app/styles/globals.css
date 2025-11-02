@@ -104,6 +104,12 @@ p, a, span, li, select, option, label, input, textarea, button {
   font-style: normal;
 }
 
+.futura-bold-important {
+  font-family: "futura-100", sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal;
+}
+
 .futura-book {
   font-family: "futura-100-book", sans-serif;
   font-weight: 400;

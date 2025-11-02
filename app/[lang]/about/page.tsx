@@ -12,18 +12,18 @@ export default async function Page({
   return (
     <main className="py-32 container">
       <div className="flex flex-col gap-8 items-center text-center">
-        <h1>{t(dict, 'about.title')}</h1>
-        <p>{t(dict, 'about.mission')}</p>
-        <p>{t(dict, 'about.history')}</p>
-        <p>{t(dict, 'about.corporateShift')}</p>
-        <p>{t(dict, 'about.costVsQuality')}</p>
-        <p>{t(dict, 'about.techRejection')}</p>
-        <p>{t(dict, 'about.growerDedication')}</p>
-        <p>{t(dict, 'about.communityBackbone')}</p>
-        <p>{t(dict, 'about.curatedCollections')}</p>
-        <p>{t(dict, 'about.authenticityChoice')}</p>
-        <p>{t(dict, 'about.perfectionOverProfit')}</p>
-        <p>{t(dict, 'about.purchaseMeaning')}</p>
+        <h1 dangerouslySetInnerHTML={{ __html: t(dict, 'about.title') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.mission') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.history') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.corporateShift') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.costVsQuality') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.techRejection') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.growerDedication') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.communityBackbone') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.curatedCollections') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.authenticityChoice') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.perfectionOverProfit') }} />
+        <p dangerouslySetInnerHTML={{ __html: t(dict, 'about.purchaseMeaning') }} />
       </div>
     </main>
   )

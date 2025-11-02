@@ -14,7 +14,7 @@ import RASTARBUNGROWERSTORY from '@/public/rastarbungrower-story.jpg';
 import SHAVEDIZESTORY from '@/public/shaved-ize-story.jpg';
 import SMEAGOLZ420STORY from '@/public/smeagolz420-story.jpg';
 import SMOKING2JSTORY from '@/public/smoking2j-story.jpg';
-import WEEDGODFARM420STORY from '@/public/weedgodfarm420-story.jpg';
+// import WEEDGODFARM420STORY from '@/public/weedgodfarm420-story.jpg';
 
 export const VENDORS = [
   { name: "8_safemode", logo: SAFEMODELOGO, aspectRatio: '[1/1]', label: '8_SAFEMODE', storyCover: SAFEMODESTORY },

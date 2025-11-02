@@ -1,10 +1,7 @@
 {
-  "products": {
-    "cart": "Add to Cart"
-  },
   "home": {
     "hero": {
-      "title": "The #1 Marketplace for True-Craft Small Batch Local Growers"
+      "title": "The <span class='text-accent! futura-bold-important'>#1</span> <br />Marketplace<br /> for <span class='text-accent! futura-bold-important'>True-Craft</span> <br />Small Batch <br /><span class='text-accent! futura-bold-important'>Local Growers</span>"
     },
     "product_list": {
       "title": "Exclusive Local Selection"
@@ -17,20 +14,46 @@
     }
   },
   "about": {
-    "title": "LOCAL SUPPLY NETWORK (LSN)",
+    "title": "<strong>LOCAL SUPPLY NETWORK (LSN)",
     "mission": "was founded with one single purpose: to reclaim our economic territory of true craft cannabis grown by local home growers.",
     "history": "Since decriminalization, the artisan growers who built this community and set the standard for quality have been mercilessly pushed out.",
-    "corporateShift": "They are being replaced by big corporate players whose business model shifts the focus from achieving the best possible harvest to simply producing the cheapest gram.",
-    "costVsQuality": "While there’s nothing wrong with controlling costs, when budget becomes the #1 goal, quality is the inevitable trade-off, especially in large-scale commercial operations.",
+    "corporateShift": "They are being replaced by big corporate players whose business model shifts the focus from achieving the <strong>best possible harvest</strong> to simply producing the cheapest gram.",
+    "costVsQuality": "While there’s nothing wrong with controlling costs, when budget becomes the <strong>#1 goal</strong>, quality is the inevitable trade-off, especially in large-scale commercial operations.",
     "techRejection": "We fundamentally reject the idea that any technology can replicate the love, care, and attention poured into a plant by a passionate grower.",
     "growerDedication": "These true masters set business aside to dedicate their time to their sacred plants, treating their garden like a best friend.",
-    "communityBackbone": "They are not mass producers; they are the real backbone of the community, whose intimate knowledge of the land yields a quality of flower that is simply uncompromised.",
-    "curatedCollections": "LOCAL SUPPLY NETWORK (LSN) offers curated collections sourced exclusively from these original local growers—the true masters whose exceptional craft laid the foundation for today's industry.",
-    "authenticityChoice": "In a market increasingly defined by corporate scale and mediocrity, we choose authenticity and exclusivity.",
-    "perfectionOverProfit": "We stand for the grower who prioritizes perfection over profit, ensuring the legacy of top-shelf Thai quality endures.",
-    "purchaseMeaning": "When you choose LOCAL SUPPLY NETWORK (LSN), you're not just making a purchase — you're supporting and experiencing true Thai cannabis craftsmanship."
+    "communityBackbone": "They are not mass producers; they are the <strong>real backbone of the community</strong> , whose intimate knowledge of the land yields a quality of flower that is simply uncompromised.",
+    "curatedCollections": "<strong>LOCAL SUPPLY NETWORK (LSN)</strong> <br /> offers curated collections sourced exclusively from these <strong>original local growers</strong>—the true masters whose exceptional craft laid the foundation for today's industry.",
+    "authenticityChoice": "In a market increasingly defined by corporate scale and mediocrity, we choose <strong>authenticity</strong>  and <strong>exclusivity</strong> .",
+    "perfectionOverProfit": "We stand for the grower who <strong>prioritizes perfection over profit</strong>, ensuring the legacy of top-shelf Thai quality endures.",
+    "purchaseMeaning": "When you choose <strong>LOCAL SUPPLY NETWORK (LSN)</strong>, you're not just making a purchase — you're supporting and experiencing true Thai cannabis craftsmanship."
+  },
+  "menu": {
+    "home": "Home",
+    "products": "Products",
+    "story": "Story",
+    "about": "About"
+  },
+  "footer": {
+    "subscription_box": {
+      "title": "15% off on your first order?",
+      "paragraph": "subscribe below to get instant discounts, exclusive deals and news",
+      "btnText": "Subscribe",
+      "placeholder": "Enter your email here. you@example.com"
+    },
+    "menu": {
+      "home": "Home",
+      "products": "Products",
+      "story": "Story",
+      "about": "About"
+    },
+    "policies": {
+      "privacy_policy": "Privacy Policy",
+      "terms_of_service": "Terms of Service",
+      "return_policy": "Return Policy"
+    }
   },
   "button": {
+    "shop_now": "Show Now",
     "see_all": "See All"
   }
 }

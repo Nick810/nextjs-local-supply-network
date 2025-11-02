@@ -13,12 +13,10 @@ import DesktopMenu from "./desktop-menu";
 // import { TextData } from "./banner";
 
 interface HeaderProps {
-  bgColor: string
-  // marqueeText?: TextData
   lang: string
 }
 
-const Header: FC<HeaderProps> = ({bgColor, lang}) => {
+const Header: FC<HeaderProps> = ({ lang }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isCartOpen, setCartOpen] = useState<boolean>(false);
   const items = useCartStore(s => s.items);

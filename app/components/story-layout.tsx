@@ -40,7 +40,7 @@ export default function StoryLayout({
         {/* Top Menu */}
         <ul
           ref={topMenuRef}
-          className="lg:w-3/5 w-full px-4 py-6 space-y-2 bg-gray-50 rounded-md shadow-sm lg:h-[60vh] hidden lg:block"
+          className="w-full lg:w-3/5 px-4 py-6 space-y-2 bg-gray-50 rounded-md shadow-sm lg:h-[60vh] hidden lg:block"
         >
           {allPaths.map((path, index) => (
             <li key={index}>
@@ -55,7 +55,7 @@ export default function StoryLayout({
         </ul>
 
         {/* Story Content */}
-        <div className="lg:w-4/5 w-full px-[5%] lg:px-4 py-6 lg:pt-0">{children}</div>
+          <div className="w-full lg:w-4/5 px-4 py-6 lg:pt-0">{children}</div>
       </div>
 
       {/* Bottom Menu (Mobile only) */}

@@ -32,9 +32,9 @@ const Footer: FC<Props> = ({ lang }) => {
         </defs>
       </svg>
 
-      <div className="flex  md:flex-wrap w-full container">
+      <div className="flex flex-wrap w-full container">
         <Subscribe />
-        <div className="w-4/5 md:w-[48%] flex flex-col gap-12">
+        <div className="w-full md:w-[48%] flex flex-col gap-12">
           <ul className="flex flex-col items-start gap-8">
             <li><Link href={`/${lang}`} className="text-md! text-[#474747] uppercase transition-colors duration-200 hover:text-neutral-400!">Home</Link></li>
             <li><Link href={`/${lang}/collections/all`} className="text-md! uppercase text-[#474747] hover:text-neutral-400! transition-colors duration-200">Products</Link></li>

@@ -18,13 +18,13 @@ import SMOKING2JSTORY from '@/public/smoking2j-story.jpg';
 
 export const VENDORS = [
   { name: "8_safemode", logo: SAFEMODELOGO, aspectRatio: '[1/1]', label: '8_SAFEMODE', storyCover: SAFEMODESTORY },
-  { name: "aungritsananan", logo: SAFEMODELOGO, aspectRatio: '[1/1]', label: 'AUNGRITSANANAN', storyCover: AUNGRITSANANANSTORY },
-  { name: "joaquinboyz", logo: SAFEMODELOGO, aspectRatio: '[1/1]', label: 'JOAQUINBOYZ', storyCover: JOAQUINBOYZSTORY },
-  { name: "pumpkinz_420", logo: SAFEMODELOGO, aspectRatio: '[1/1]', label: 'PUMPKINZ_420', storyCover: PUMPKINZ420STORY },
+  { name: "aungritsananan", logo: '', aspectRatio: '[1/1]', label: 'AUNGRITSANANAN', storyCover: AUNGRITSANANANSTORY },
+  { name: "joaquinboyz", logo: '', aspectRatio: '[1/1]', label: 'JOAQUINBOYZ', storyCover: JOAQUINBOYZSTORY },
+  { name: "pumpkinz_420", logo: '', aspectRatio: '[1/1]', label: 'PUMPKINZ_420', storyCover: PUMPKINZ420STORY },
   { name: "smeagolz420", logo: SMEAGOLZLOGO, aspectRatio: '[1/1]', label: 'SMEAGOLZ420', storyCover: SMEAGOLZ420STORY },
   { name: "goodgaskkc", logo: GOODGASLOGO, aspectRatio: '[1/1]', label: 'GOODGASKKC', storyCover: GOODGASKKCSTORY },
-  { name: "powerpuffgo", logo: POWERPUFFLOGO, aspectRatio: '[128/181]', label: 'POWERPUFFGO', storyCover: POWERPUFFGOSTORY },
-  { name: "rastarbungrower", logo: RASTARBUNLOGO, aspectRatio: '[512/231]', label: 'RASTARBUNGROWER', storyCover: RASTARBUNGROWERSTORY },
+  { name: "powerpuffgo", logo: POWERPUFFLOGO, aspectRatio: '[128/181]', label: 'POWERPUFFF.GO', storyCover: POWERPUFFGOSTORY },
+  { name: "rastabungrower", logo: RASTARBUNLOGO, aspectRatio: '[512/231]', label: 'RASTABUNGROWER', storyCover: RASTARBUNGROWERSTORY },
   { name: "shavedize", logo: SHAVEDIZELOGO, aspectRatio: '[512/231]', label: 'SHAVEDIZE', storyCover: SHAVEDIZESTORY },
-  { name: "smokin2j", logo: SHAVEDIZELOGO, aspectRatio: '[512/231]', label: 'SHAVEDIZE', storyCover: SMOKING2JSTORY }
+  { name: "smokin2j", logo: '', aspectRatio: '[512/231]', label: 'SHAVEDIZE', storyCover: SMOKING2JSTORY }
 ];

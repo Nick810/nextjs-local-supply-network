@@ -3,6 +3,8 @@ import fs from 'fs'
 import path from 'path'
 import Image from 'next/image';
 import { VENDORS } from '@/app/lib/vendors';
+import { getDictionary } from '../dictionaries';
+import { t } from "../../lib/utils";
 
 export default async function StoriesListPage({ 
   params,
@@ -10,6 +12,7 @@ export default async function StoriesListPage({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params;
+  const dict = await getDictionary(lang as 'en' | 'th');
   const storiesDir = path.join(process.cwd(), 'app/[lang]/story', 'content')
   const filenames = fs.readdirSync(storiesDir)
 
@@ -22,7 +25,7 @@ export default async function StoriesListPage({
 
   return (
     <main className="py-32 container overflow-x-hidden">
-      <h1 className="text-4xl font-bold mb-8!">Stories</h1>
+      <h1 className="text-4xl font-bold mb-8!">{t(dict, 'interview.title')}</h1>
       <ul className="gap-8 flex flex-wrap">
         {stories.map(({ slug, title }) => {
           const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());

@@ -10,8 +10,11 @@
       "title": "Featured Cultivator"
     },
     "letter": {
-      "title": "LSN Letter"
+      "title": "Join LSN Market <span class='text-accent! futura-bold-important'>* For Local Growers</span>"
     }
+  },
+  "interview": {
+    "title": "Interview"
   },
   "about": {
     "title": "<strong>LOCAL SUPPLY NETWORK (LSN)",
@@ -30,7 +33,7 @@
   "menu": {
     "home": "Home",
     "products": "Products",
-    "story": "Story",
+    "story": "Interview",
     "about": "About"
   },
   "footer": {
@@ -43,7 +46,7 @@
     "menu": {
       "home": "Home",
       "products": "Products",
-      "story": "Story",
+      "story": "Interview",
       "about": "About"
     },
     "policies": {

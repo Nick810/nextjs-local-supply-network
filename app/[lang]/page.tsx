@@ -106,7 +106,7 @@ export default async function Page({
                         <div>
                           {vendor && (
                             <Image
-                              src={vendor.logo}
+                              src={vendor.logo || vendor.storyCover}
                               alt={`${vendor.name} logo`}
                               width={32}
                               height={32}
@@ -136,7 +136,7 @@ export default async function Page({
                 <li key={ven.name} className={`shrink-0 w-[35vw] md:w-[28vw] lg:w-[15vw]! aspect-${ven.aspectRatio} relative`}>
                   <Link href={`/${lang}/collections/all?vendor=${encodeURIComponent(ven.name)}`}>
                     <Image 
-                      src={ven.logo}
+                      src={ven.logo || ven.storyCover}
                       alt={''}
                       fill
                       objectFit="contain"
@@ -170,9 +170,9 @@ export default async function Page({
 
       <div className="bg-gray-100 py-16! w-full">
         <div className="container">
-          <h2 className="text-3xl mb-8!">
-            {t(dict, 'home.letter.title')}
-          </h2>
+          <h2 
+            className="text-3xl mb-8!" 
+            dangerouslySetInnerHTML={{ __html: t(dict, 'home.letter.title') }} />
           <Letter />
         </div>
       </div>

@@ -136,7 +136,7 @@ export default function Filter({ lang }: Props) {
 
 
           <div>
-            <h3 className="mb-4! text-xl">Indoor or Sungrown</h3>
+            <h3 className="mb-4! text-xl">Category</h3>
             <ul>
               {growTypes.map(type => (
                 <li key={type}>

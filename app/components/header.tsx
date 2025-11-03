@@ -7,9 +7,10 @@ import Cart from "./cart";
 import Link from "next/link";
 import Image from "next/image";
 import logo from '../../public/lsn-logo.png';
-import cart from '../../public/cart.svg';
+import Bag from '../../public/bag-icon.svg';
 import { useCartStore } from '@/app/lib/shopify/cart/cart-store'
 import DesktopMenu from "./desktop-menu";
+import LangSelector from "./lang-selector";
 // import { TextData } from "./banner";
 
 interface HeaderProps {
@@ -32,18 +33,18 @@ const Header: FC<HeaderProps> = ({ lang }) => {
         {/* <p className="bg-[#C5C5C5]"><span className="text-accent">FREE SHIPPING</span>ON ORDER OVER 2,000 THB</p> */}
         <div className="absolute inset-0 bg-white/60 backdrop-blur-md -z-10"></div>
         <div className="flex items-center justify-between">
-          <div className="lg:hidden">
+          <div className="lg:hidden -translate-x-2">
             <Hamburger toggle={setOpen} size={28} color="#464646" />
           </div>
           <Link href={`/${lang}`} className="text-black">
             <Image src={logo} alt="Powerberry Logo" width={100} height={70} priority/>
           </Link>
           <div className="flex items-center gap-2">
-            {/* <LangSelector /> */}
+            <LangSelector currentLang={lang} />
             <DesktopMenu lang={lang} />
             <button onClick={() => setCartOpen(true)} className="text-black cursor-pointer relative lg:shrink-0">
               { !!items.length && (<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-600 w-4 h-4 flex justify-center items-center text-white rounded-full text-[0.5rem]">{ items.length }</div>) }
-              <Image src={cart} alt="Cart Icon" width={36} height={36} priority />
+              <Image src={Bag} alt="Shopping Cart Icon" width={36} height={36} priority />
             </button>
           </div>
         </div>

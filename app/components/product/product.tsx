@@ -12,6 +12,7 @@ import WaitlistButton from "./waiting-list-button";
 import RichTextRenderer from "../rich-text-renderer";
 import Link from "next/link";
 import { VENDORS } from "@/app/lib/vendors";
+import { useTranslations } from "next-intl";
 
 interface ProductProps {
   lang: string;
@@ -92,6 +93,9 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
   const hasOneVariantAndDefaultTitle = variants.length === 1 && variants[0].title === 'Default Title'
 
   const OPTIONS: EmblaOptionsType = { axis: 'y' }
+
+  const t = useTranslations('product');
+  const tBtn = useTranslations('button');
 
   const renderPurchaseSection = () => {
     if (isPreorder) {
@@ -190,7 +194,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
 
         <div className="w-full border-b border-[#818181] py-2 mb-8 mt-4">
           <div className="flex items-center justify-between text-black">
-            <span className="text-sm font-medium">Quantity</span>
+            <span className="text-sm font-medium">{t('quantity')}</span>
 
             <div className="relative">
               <select
@@ -216,7 +220,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
         { renderPurchaseSection() }
 
         <div className="mt-8 max-w-[560px]">
-          <ProductDrawer data={{ title: 'Details', details: product?.descriptionHtml, html: true, isCollapsible: false }} />
+          <ProductDrawer data={{ title: t('details'), details: product?.descriptionHtml, html: true, isCollapsible: false }} />
         </div>
 
         <div className="">
@@ -243,7 +247,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
           </div>
           
           <div className="inline-flex flex-col justify-center items-center w-full mt-4">
-            <Link href={`/${lang}/story/${product?.vendor}`} className="text-black underline border py-5 px-8 m-auto block">read full story</Link>
+            <Link href={`/${lang}/story/${product?.vendor}`} className="text-black underline border py-5 px-8 m-auto block">{tBtn('read_full_story')}</Link>
           </div>
 
         </div>

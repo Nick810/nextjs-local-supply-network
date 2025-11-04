@@ -3,6 +3,9 @@
     "cart": "สั่งซื้อเลย"
   },
   "home": {
+    "hero": {
+      "title": "เข้าร่วมตลาด LSN <br/> <span class='text-accent! leading-12 futura-bold-important'>* สำหรับนักปลูกท้องถิ่น</span>"
+    },
     "product_list": {
       "title": "Exclusive Local Selection"
     },
@@ -12,6 +15,9 @@
     "letter": {
       "title": "LSN Letter"
     }
+  },
+  "interview": {
+    "title": "บทสัมภาษ"
   },
   "about": {
     "title": "LOCAL SUPPLY NETWORK (LSN)",
@@ -27,7 +33,59 @@
     "perfectionOverProfit": "<strong>LOCAL SUPPLY NETWORK (LSN)</strong><br /> ยืนหยัดเคียงข้าง<strong>ผู้ปลูกที่ทุ่มเทให้ ความสุดยอดที่อยู่เหนือผลกำไร</strong> เพื่อปกป้องและสืบสานคุณภาพของกัญชาไทยที่สมควรได้รับการจดจำ",
     "purchaseMeaning": "เมื่อคุณเลือก <strong>LOCAL SUPPLY NETWORK (LSN)</strong> คุณไม่ได้เป็นเพียงลูกค้า แต่ยังเป็นส่วนหนึ่งของการร่วมสนับสนุนมาตรฐานอันเป็นเลิศของกัญชาไทยอย่างแท้จริง"
   },
-  "story": {
-    "title": "บทสัมภาษ"
+  "filter": {
+    "title": "ตัวกรอง",
+    "grower": "นักปลูก",
+    "types": "ประเภท",
+    "category": "หมวดหมู่",
+    "sort_by_price": "เรียงตามราคา",
+    "select": {
+      "title": "เลือก",
+      "lth": "ราคาต่ำไปสูง",
+      "htl": "ราคาสูงไปต่ำ"
+    }
+  },
+  "product": {
+    "sizes": "ขนาด",
+    "quantity": "จำนวน",
+    "details": "รายละเอียด",
+    "recommended_products": {
+      "title": "คุณอาจสนใจ"
+    }
+  },
+  "cart": {
+    "title": "ตะกร้าสินค้า",
+    "empty_pg": "ยังไม่มีสินค้าในตะกร้า"
+  },
+  "menu": {
+    "home": "หน้าแรก",
+    "products": "สินค้า",
+    "story": "บทสัมภาษ",
+    "about": "เกี่ยวกับเรา"
+  },
+  "footer": {
+    "subscription_box": {
+      "title": "รับส่วนลด 15% สำหรับการสั่งซื้อครั้งแรก?",
+      "paragraph": "สมัครรับข่าวสารเพื่อรับส่วนลด ข้อเสนอพิเศษ และข่าวอัปเดตทันที",
+      "btnText": "สมัครรับข่าวสาร",
+      "placeholder": "กรอกอีเมลของคุณ เช่น you@example.com"
+    },
+    "menu": {
+      "home": "หน้าแรก",
+      "products": "สินค้า",
+      "story": "บทสัมภาษ",
+      "about": "เกี่ยวกับเรา"
+    },
+    "policies": {
+      "privacy_policy": "นโยบายความเป็นส่วนตัว",
+      "terms_of_service": "ข้อกำหนดการให้บริการ",
+      "return_policy": "นโยบายการคืนสินค้า"
+    }
+  },
+  "button": {
+    "shop_now": "ซื้อเลย",
+    "see_all": "ดูทั้งหมด",
+    "filter": "กรอง",
+    "read_full_story": "อ่านเรื่องราวเต็ม"
   }
 }

@@ -4,6 +4,7 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import ImageWithSkeleton from "./image-with-skeleton";
 import AuthPromptModal from "./auth-prompt-modal";
 import gsap from "gsap";
+import { useTranslations } from 'next-intl';
 
 type CartProps = {
   toggled: boolean;
@@ -18,6 +19,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
   const cartRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const items = useCartStore((s) => s.items)
+  const t = useTranslations('cart');
   const removeItem = useCartStore((s) => s.removeItem)
   const updateQuantity = useCartStore((s) => s.updateQuantity)
   const checkout = useCartStore((s) => s.checkout)
@@ -110,7 +112,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
        }}
     >
       <div className="flex flex-row items-center justify-between py-6 px-[5%]">
-        <h2 className="text-3xl">Cart</h2>
+        <h2 className="text-3xl">{t('title')}</h2>
         <button onClick={() => toggle(false)} className="text-black cursor-pointer">
           <Image src="/close.svg" alt="Close Button" width={48} height={48} priority />
         </button>
@@ -118,7 +120,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
 
       { 
           items.length === 0 ? (
-          <p className="px-[5%]">Your cart is empty.</p>
+          <p className="px-[5%]">{t('empty_pg')}</p>
         ) : (
         <ul className="px-[5%] space-y-4 mt-8 w-full">
           {

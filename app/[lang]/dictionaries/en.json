@@ -1,7 +1,7 @@
 {
   "home": {
     "hero": {
-      "title": "The <span class='text-accent! futura-bold-important'>#1</span> <br />Marketplace<br /> for <span class='text-accent! futura-bold-important'>True-Craft</span> <br />Small Batch <br /><span class='text-accent! futura-bold-important'>Local Growers</span>"
+      "title": "<span class='text-accent! futura-bold-important'>#1</span><br />Marketplace<br />for <span class='text-accent! futura-bold-important'>True-Craft</span><br />Small Batch<br /><span class='text-accent! futura-bold-important'>Local Growers</span>"
     },
     "product_list": {
       "title": "Exclusive Local Selection"
@@ -10,7 +10,7 @@
       "title": "Featured Cultivator"
     },
     "letter": {
-      "title": "Join LSN Market <span class='text-accent! futura-bold-important'>* For Local Growers</span>"
+      "title": "Join LSN Market <br/> <span class='text-accent! leading-12 futura-bold-important'>* For Local Growers</span>"
     }
   },
   "interview": {
@@ -29,6 +29,30 @@
     "authenticityChoice": "In a market increasingly defined by corporate scale and mediocrity, we choose <strong>authenticity</strong>  and <strong>exclusivity</strong> .",
     "perfectionOverProfit": "We stand for the grower who <strong>prioritizes perfection over profit</strong>, ensuring the legacy of top-shelf Thai quality endures.",
     "purchaseMeaning": "When you choose <strong>LOCAL SUPPLY NETWORK (LSN)</strong>, you're not just making a purchase — you're supporting and experiencing true Thai cannabis craftsmanship."
+  },
+  "filter": {
+    "title": "Filter",
+    "grower": "Grower",
+    "types": "Types",
+    "category": "Category",
+    "sort_by_price": "Sory by Price",
+    "select": {
+      "title": "Select",
+      "lth": "Lowest to Highest",
+      "htl": "Highest to Lowest"
+    }
+  },
+  "product": {
+    "sizes": "Sizes",
+    "quantity": "Quantity",
+    "details": "Details",
+    "recommended_products": {
+      "title": "You may also like"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "empty_pg": "Your cart is empty"
   },
   "menu": {
     "home": "Home",
@@ -56,7 +80,9 @@
     }
   },
   "button": {
-    "shop_now": "Show Now",
-    "see_all": "See All"
+    "shop_now": "Shop Now",
+    "see_all": "See All",
+    "filter": "Filter",
+    "read_full_story": "Read Full Story"
   }
 }

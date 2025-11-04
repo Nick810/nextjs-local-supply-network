@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
+import { useTranslations } from 'next-intl';
 
 type Props = {
   lang: string
@@ -25,6 +26,8 @@ export default function Filter({ lang }: Props) {
   const [priceMin, setPriceMin] = useState('');
   const [priceMax, setPriceMax] = useState('');
   const [sortBy, setSortBy] = useState('');
+  const t = useTranslations('filter');
+  const tButton = useTranslations('button');
 
   useEffect(() => {
     async function fetchFilters() {
@@ -80,14 +83,14 @@ export default function Filter({ lang }: Props) {
         <div className="inline-flex justify-center mb-8 lg:hidden border border-black rounded-md py-4 px-8 cursor-pointer" onClick={() => setToggle(true)}>
           <Image src="/filter-icon.svg" alt="Filter Icon" width={24} height={24} priority />
           <button className="relative cursor-pointer rounded-md ml-4" >
-            Filter
+            {t('title')}
           </button>
         </div>
       </div>
       
       <div className={`${toggle ? 'fixed' : 'hidden'} lg:static lg:block top-0 right-0 w-screen lg:w-auto h-screen lg:h-auto bg-white z-100 px-[5%] md:pl-0`}>
         <div className="flex flex-row justify-between my-4 items-center lg:hidden">
-          <h2 className="text-2xl">Filter</h2>
+          <h2 className="text-2xl">{t('title')}</h2>
           <button onClick={() => setToggle(false)} className="cursor-pointer lg:hidden">
             <Image src="/close.svg" alt="Close Button" width={60} height={60} priority />
           </button>
@@ -95,83 +98,109 @@ export default function Filter({ lang }: Props) {
         
         <div className="flex flex-col space-y-8 mb-8">
           <div>
-            <h3 className="mb-4! text-xl">Growers</h3>
-            <ul>
-              {vendors.map(vendor => (
-                <li key={vendor}>
-                  <label className="cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer mr-2"
-                      checked={selectedVendors.includes(vendor)}
-                      onChange={() => handleVendorToggle(vendor)}
-                    />
-                    {vendor.charAt(0).toUpperCase() + vendor.slice(1)}
-                  </label>
-                </li>
-              ))}
-            </ul>
+            <h3 className="mb-4! text-xl">{t('grower')}</h3>
+            
+            {vendors.length > 0 ? (
+              <ul>
+                {vendors.map(vendor => (
+                  <li key={vendor}>
+                    <label className="cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer mr-2"
+                        checked={selectedVendors.includes(vendor)}
+                        onChange={() => handleVendorToggle(vendor)}
+                      />
+                      {vendor.charAt(0).toUpperCase() + vendor.slice(1)}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="min-h-[100px] animate-pulse">
+                {[...Array(5)].map((_, i) => (
+                  <li key={i} className="h-5 bg-gray-200 rounded mb-2" />
+                ))}
+              </ul>
+            )}
+
             <hr className="mt-8 border-t border-gray-300" />
           </div>
           
           <div>
-            <h3 className="mb-4! text-xl">Types</h3>
-            <ul>
-              {tags.map(tag => (
-                <li key={tag}>
-                  <label className="cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer mr-2"
-                      checked={selectedTags.includes(tag)}
-                      onChange={() => handleTypeToggle(tag)}
-                    />
-                    {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                  </label>
-                </li>
-              ))}
+            <h3 className="mb-4! text-xl">{t('types')}</h3>
+            
+            <ul className="">
+              {tags.length > 0 ? (
+                tags.map(tag => (
+                  <li key={tag}>
+                    <label className="cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer mr-2"
+                        checked={selectedTags.includes(tag)}
+                        onChange={() => handleTypeToggle(tag)}
+                      />
+                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                    </label>
+                  </li>
+                ))
+              ) : (
+                [...Array(2)].map((_, i) => (
+                  <li key={i} className="h-5 bg-gray-200 rounded mb-2 animate-pulse" />
+                ))
+              )}
             </ul>
+
             <hr className="mt-8 border-t border-gray-300" />
           </div>
 
 
           <div>
-            <h3 className="mb-4! text-xl">Category</h3>
-            <ul>
-              {growTypes.map(type => (
-                <li key={type}>
-                  <label className="cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="cursor-pointer mr-2"
-                      checked={selectedGrowTypes.includes(type)}
-                      onChange={() => handleGrowTypeToggle(type)}
-                    />
-                    {type.charAt(0).toUpperCase() + type.slice(1)}
-                  </label>
-                </li>
-              ))}
+            <h3 className="mb-4! text-xl">{t('category')}</h3>
+            
+            <ul className="">
+              {growTypes.length > 0 ? (
+                growTypes.map(type => (
+                  <li key={type}>
+                    <label className="cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer mr-2"
+                        checked={selectedGrowTypes.includes(type)}
+                        onChange={() => handleGrowTypeToggle(type)}
+                      />
+                      {type.charAt(0).toUpperCase() + type.slice(1)}
+                    </label>
+                  </li>
+                ))
+              ) : (
+                [...Array(2)].map((_, i) => (
+                  <li key={i} className="h-5 bg-gray-200 rounded mb-2 animate-pulse" />
+                ))
+              )}
             </ul>
+
             <hr className="mt-8 border-t border-gray-300" />
           </div>
 
           
           <div>
-            <h3 className="mb-4! text-xl">Sort by Price</h3>
+            <h3 className="mb-4! text-xl">{t('sort_by_price')}</h3>
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
               className="border p-2"
             >
-              <option value="">Select</option>
-              <option value="price-ascending">Lowest to Highest</option>
-              <option value="price-descending">Highest to Lowest</option>
+              <option value="">{t('select.title')}</option>
+              <option value="price-ascending">{t('select.lth')}</option>
+              <option value="price-descending">{t('select.htl')}</option>
             </select>
           </div>
         </div>
 
         <button onClick={handleFilterClick} className="btn bg-black max-w-40 text-center">
-          Filter
+          {tButton('filter')}
         </button>
       </div>
     </div>

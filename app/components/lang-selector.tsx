@@ -20,7 +20,7 @@ export default function LangSelector({ currentLang }: { currentLang: string }) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="text-black px-2 py-1 border border-gray-300 rounded-md"
+        className="text-black px-2 py-1 border border-gray-300 rounded-md cursor-pointer"
       >
         {currentLang.toUpperCase()}
       </button>

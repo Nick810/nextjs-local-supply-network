@@ -1,14 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 type HeroProps = {
   title: string
   lang: string
-  btnText: string
 }
 
-const Hero: React.FC<HeroProps> = ({ title, btnText, lang }) => {
+const Hero: React.FC<HeroProps> = ({ lang, title }) => {
+  const tBtn = useTranslations('button');
 
   return (
     <div className="relative w-full h-screen">
@@ -18,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ title, btnText, lang }) => {
           dangerouslySetInnerHTML={{ __html: title }} /> 
         <Link
           href={`/${lang}/collections/all`}
-          className="btn w-full rounded-md border mt-16 text-ไ้ระำ bg-accent max-w-lg hover:bg-[#f3f3f3] transition-all duration-200 ease-in text-center">{btnText}</Link>
+          className="btn w-full rounded-md border mt-16 bg-accent max-w-lg hover:bg-[#f3f3f3] transition-all duration-200 ease-in text-center">{ tBtn('shop_now') }</Link>
       </div>
     </div>
   )

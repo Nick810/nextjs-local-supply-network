@@ -24,28 +24,8 @@ export default async function Page({
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'th');
   const { collection }: ShopifyCollectionByHandleResponse = await getCollectionByHandle('all');
-  // const getHeroImages = async() => {
-  //   try {
-  //     const res = await fetch(new URL(`${API_URL}/en/api/shopify/files/hero-desktop.png,hero.png`), {
-  //       method: 'GET',
-  //       cache: 'no-store',
-  //     });
-
-  //     if (!res.ok) {
-  //       throw new Error(`HTTP error! Status: ${res.status} ${res.statusText}`);
-  //     }
-
-  //     const { files } = await res.json();
-
-  //     return files
-  //   } catch (error) {
-  //     console.error('Failed to fetch files:', error);
-
-  //     return error;
-  //   }
-
-  // }
-  // const files = await getHeroImages();
+  const heroTitle = t(dict, 'home.hero.title')
+  console.log(VENDORS)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -70,8 +50,7 @@ export default async function Page({
       />
 
       <Hero 
-        title={t(dict, 'home.hero.title')} 
-        btnText={t(dict, 'button.shop_now')}
+        title={heroTitle}
         lang={lang} /> 
 
       <div className="pb-16! w-full">
@@ -130,7 +109,7 @@ export default async function Page({
             {t(dict, 'home.grower_list.title')}
           </h2>
           
-          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4">
+          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4 min-h-[200px] h-full">
             {
               VENDORS.map(( ven ) => (
                 <li key={ven.name} className={`shrink-0 w-[35vw] md:w-[28vw] lg:w-[15vw]! aspect-${ven.aspectRatio} relative`}>
@@ -139,7 +118,7 @@ export default async function Page({
                       src={ven.logo || ven.storyCover}
                       alt={''}
                       fill
-                      objectFit="contain"
+                      className="object-contain"
                       loading="lazy"
                     />
                   </Link>

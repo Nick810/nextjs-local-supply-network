@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
           <div>
             {vendor && (
               <Image
-                src={vendor.logo}
+                src={vendor.logo || ''}
                 alt={`${vendor.name} logo`}
                 width={32}
                 height={32}

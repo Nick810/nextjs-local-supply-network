@@ -65,7 +65,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
         )}
         <div className="flex flex-row justify-between items-start mt-4">
           
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 mr-4">
             <h3 className="text-md leading-4.5!">{product.title}</h3>
             <p>{`by ${product.vendor}`}</p>
             <p className="text-grey-200! mt-2!">
@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, slug, lang }) => {
           <div>
             {vendor && (
               <Image
-                src={vendor.logo || ''}
+                src={vendor.logo || vendor.storyCover}
                 alt={`${vendor.name} logo`}
                 width={32}
                 height={32}

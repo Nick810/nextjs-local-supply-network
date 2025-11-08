@@ -39,12 +39,12 @@ const Header: FC<HeaderProps> = ({ lang }) => {
           <Link href={`/${lang}`} className="text-black">
             <Image src={logo} alt="Powerberry Logo" width={100} height={70} priority/>
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <LangSelector currentLang={lang} />
             <DesktopMenu lang={lang} />
             <button onClick={() => setCartOpen(true)} className="text-black cursor-pointer relative lg:shrink-0">
               { !!items.length && (<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-600 w-4 h-4 flex justify-center items-center text-white rounded-full text-[0.5rem]">{ items.length }</div>) }
-              <Image src={Bag} alt="Shopping Cart Icon" width={36} height={36} priority />
+              <Image src={Bag} alt="Shopping Cart Icon" width={28} height={28} priority />
             </button>
           </div>
         </div>

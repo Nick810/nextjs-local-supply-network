@@ -26,12 +26,12 @@ export default async function StoriesListPage({
   return (
     <main className="py-32 container overflow-x-hidden">
       <h1 className="text-4xl font-bold mb-8!">{t(dict, 'interview.title')}</h1>
-      <ul className="gap-8 flex flex-wrap">
+      <ul className="gap-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {stories.map(({ slug, title }) => {
           const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());
           if (!vendor) console.log(title)
           return (
-            <li key={slug} className="flex items-center space-x-4 w-[46%]">
+            <li key={slug} className="">
               <Link href={`/${lang}/story/${slug}`} className='w-full cursor-pointer'>
                 <div>
                   {vendor && (

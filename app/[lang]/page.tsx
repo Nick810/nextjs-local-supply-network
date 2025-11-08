@@ -25,7 +25,7 @@ export default async function Page({
   const dict = await getDictionary(lang as 'en' | 'th');
   const { collection }: ShopifyCollectionByHandleResponse = await getCollectionByHandle('all');
   const heroTitle = t(dict, 'home.hero.title')
-  console.log(VENDORS)
+  
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -54,7 +54,7 @@ export default async function Page({
         lang={lang} /> 
 
       <div className="pb-16! w-full">
-        <div className="container pr-0! lg:mr-0! xl:pl-0!">
+        <div className="container pr-0! lg:mr-0!">
           <div className="flex flex-row justify-between items-start">
             <h2 className="text-3xl mb-8!">
               {t(dict, 'home.product_list.title')}
@@ -63,20 +63,24 @@ export default async function Page({
             <Link href={`/${lang}/collections/all`} className="block -translate-x-[25%] pl-8">{t(dict, 'button.see_all')}</Link>
           </div>
           
-          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-8 h-full">
-            {
+          <div className="overflow-x-auto scrollbar-hide">
+            <ul className="grid grid-flow-col auto-cols-[12rem] md:auto-cols-[16rem] lg:auto-cols-[20rem] gap-4">
+              {
               collection?.products?.nodes.map(( node ) => {
                 const vendor = VENDORS.find(v => v.name.toLowerCase() === node.vendor.toLowerCase());
+
                 return (
-                  <li key={node.id} className="shrink-0 w-[45vw] md:w-[35vw] lg:w-[25vw] max-w-md aspect-4/5 relative">
+                  <li 
+                    key={node.id} 
+                    className="shrink-0 aspect-3/4 relative">
                     <Link href={`/${lang}/collections/all/product/${node.handle}`}>
                       <ImageWithSkeleton 
                         src={node.featuredImage.url}
                         alt={node.featuredImage.altText || `Product image`}
-                        className="object-cover rounded-lg"
+                        className="object-cover rounded-lg w-full h-full"
                         />
                       <div className="flex flex-row justify-between items-start mt-4">
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1 mr-4">
                           <h3 className="text-md leading-4.5!">{node.title}</h3>
                           <p>{`by ${node.vendor}`}</p>
                           <p className="text-grey-200! mt-2!">฿{(Number(node.priceRange.minVariantPrice.amount) * 1).toLocaleString()}</p>
@@ -99,36 +103,42 @@ export default async function Page({
                 )
               })
             }
-          </ul>
+            </ul>
+          </div>
+          
         </div>
       </div>
         
       <div className="pt-8! pb-16 w-full relative">
         <div className="container pr-0! relative z-1">
-          <h2 className="text-3xl mb-8!">
+          <h2 className="text-3xl mb-8! z-1 relative">
             {t(dict, 'home.grower_list.title')}
           </h2>
           
-          <ul className="flex flex-row overflow-x-auto scrollbar-hide space-x-4 min-h-[200px] h-full">
-            {
-              VENDORS.map(( ven ) => (
-                <li key={ven.name} className={`shrink-0 w-[35vw] md:w-[28vw] lg:w-[15vw]! aspect-${ven.aspectRatio} relative`}>
+          <div className="overflow-x-auto scrollbar-hide">
+            <ul className="grid grid-flow-col auto-cols-[30vw] md:auto-cols-[24vw] lg:auto-cols-[15vw] gap-4 h-full">
+              {VENDORS.map((ven) => (
+                <li
+                  key={ven.name}
+                  style={{ aspectRatio: ven.aspectRatio.replace(/\[|\]/g, "") }}
+                  className={`relative`}
+                >
                   <Link href={`/${lang}/collections/all?vendor=${encodeURIComponent(ven.name)}`}>
-                    <Image 
+                    <Image
                       src={ven.logo || ven.storyCover}
-                      alt={''}
+                      alt=""
                       fill
-                      className="object-contain"
+                      className="object-contain w-full h-full"
                       loading="lazy"
                     />
                   </Link>
                 </li>
-              ))
-            }
-          </ul>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <svg width="1120" height="310" viewBox="0 0 1120 310" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-screen -bottom-[35%] z-0 left-0">
+        <svg viewBox="0 0 1120 310" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-screen -bottom-[35%] z-0 left-0">
           <g filter="url(#filter0_g_47_4)">
             <rect x="0" y="48" width="100%" height="214" fill="white"/>
           </g>
@@ -147,10 +157,10 @@ export default async function Page({
 
       </div>
 
-      <div className="bg-gray-100 py-16! w-full">
+      <div className="bg-gray-100 py-16! md:py-32! md:pt-40! lg:py-32! lg:pt-48! w-full">
         <div className="container">
           <h2 
-            className="text-3xl mb-8!" 
+            className="text-3xl mb-8! relative z-1" 
             dangerouslySetInnerHTML={{ __html: t(dict, 'home.letter.title') }} />
           <Letter />
         </div>

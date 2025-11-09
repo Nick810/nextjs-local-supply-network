@@ -4,20 +4,20 @@
   },
   "home": {
     "hero": {
-      "title": "เข้าร่วมตลาด LSN <br/> <span class='text-accent! leading-12 futura-bold-important'>* สำหรับนักปลูกท้องถิ่น</span>"
+      "title": "ตลาดกลางอันดับหนึ่ง <br/> <span class='text-accent! leading-12 futura-bold-important'>สำหรับผู้ปลูกกัญชารายย่อย</span>"
     },
     "product_list": {
       "title": "Exclusive Local Selection"
     },
     "grower_list": {
-      "title": "ผลงานจากนักปลูกไทยที่น่าจับตามอง"
+      "title": "บทสัมภาษณ์"
     },
     "letter": {
-      "title": "LSN Letter"
+      "title": "เข้าร่วมเป็นส่วนหนึ่งของ <br/> <span class='text-accent! leading-12 futura-bold-important'>LSN Movement</span>"
     }
   },
   "interview": {
-    "title": "บทสัมภาษ"
+    "title": "บทสัมภาษณ์"
   },
   "about": {
     "title": "LOCAL SUPPLY NETWORK (LSN)",

@@ -53,7 +53,7 @@ export default async function Page({
         title={heroTitle}
         lang={lang} /> 
 
-      <div className="pb-16! w-full">
+      <div className="py-16! w-full">
         <div className="container pr-0! lg:mr-0!">
           <div className="flex flex-row justify-between items-start">
             <h2 className="text-3xl mb-8!">
@@ -116,7 +116,7 @@ export default async function Page({
           </h2>
           
           <div className="overflow-x-auto scrollbar-hide">
-            <ul className="grid grid-flow-col auto-cols-[30vw] md:auto-cols-[24vw] lg:auto-cols-[15vw] gap-4 h-full">
+            <ul className="grid grid-flow-col auto-cols-[35vw] md:auto-cols-[24vw] lg:auto-cols-[15vw] gap-4 h-full">
               {VENDORS.map((ven) => (
                 <li
                   key={ven.name}
@@ -138,7 +138,7 @@ export default async function Page({
           </div>
         </div>
 
-        <svg viewBox="0 0 1120 310" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-screen -bottom-[35%] z-0 left-0">
+        <svg viewBox="0 0 1120 310" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-screen -bottom-[15%] md:-bottom-[35%] z-0 left-0">
           <g filter="url(#filter0_g_47_4)">
             <rect x="0" y="48" width="100%" height="214" fill="white"/>
           </g>

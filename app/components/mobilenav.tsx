@@ -75,7 +75,7 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
   return (
     <nav
       ref={navRef} 
-      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-screen h-screen top-0 left-0 overflow-hidden z-[100]`}>      
+      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-screen h-screen top-0 left-0 overflow-hidden z-100`}>      
       <div
         ref={blurRef}
         className="absolute inset-0 bg-white -z-10 rounded-bl-xl"

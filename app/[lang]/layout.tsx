@@ -25,9 +25,9 @@ export default async function RootLayout({
   return (
     <div data-lang={lang}>
       <NextIntlClientProvider>
-      <Header lang={lang}/>
-      {children}
-      <Footer lang={lang} />
+        <Header lang={lang}/>
+          {children}
+        <Footer lang={lang} />
       </NextIntlClientProvider>
     </div>
   )

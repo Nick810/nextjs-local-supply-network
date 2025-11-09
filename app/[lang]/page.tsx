@@ -8,6 +8,7 @@ import { getDictionary } from "./dictionaries";
 import { getCollectionByHandle } from "../lib/shopify/api";
 import Hero from "../components/home/hero";
 import Letter from "../components/home/letter";
+import { setRequestLocale } from "next-intl/server";
 
 
 export const dynamic = 'force-dynamic'; // Optional: forces SSR
@@ -25,8 +26,7 @@ export default async function Page({
   const dict = await getDictionary(lang as 'en' | 'th');
   const { collection }: ShopifyCollectionByHandleResponse = await getCollectionByHandle('all');
   const heroTitle = t(dict, 'home.hero.title')
-  
-
+    
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -39,6 +39,7 @@ export default async function Page({
     }
   }
   
+  setRequestLocale(lang);
   
   return (
     <main className="flex flex-col items-center overflow-hidden">

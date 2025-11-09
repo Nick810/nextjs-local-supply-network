@@ -24,7 +24,7 @@ export default function LangSelector({ currentLang }: { currentLang: string }) {
         onClick={() => setIsOpen(!isOpen)}
         className="text-sm! text-black p-2 border border-gray-300 rounded-md cursor-pointer"
       >
-        {currentLang.toUpperCase()}
+        { AVAILABLE_LANGUAGES.find(lang => lang.code === currentLang)?.label || currentLang.toUpperCase()}
       </button>
       {isOpen && (
         <div className="absolute right-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-50">

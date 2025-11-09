@@ -162,17 +162,17 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
   return (
     <div className="md:flex">
       {product?.images?.edges[0] && (<EmblaCarousel  options={OPTIONS} data={images} />)}
-
-      <div className="container mt-4">
-        <Link href={`/${lang}/story/${product?.vendor}`} className="flex flex-row items-end space-x-4">
-          <div className="relative aspect-square w-full max-w-12">
-            <Image src={vendorLogo || ''} alt="" fill />
-          </div>
-          <p className="text-black underline">by { product?.vendor }</p>
-        </Link>
-      </div>
       
-      <div className="container mt-6 md:basis-[40%] lg:basis-[63%]">
+      <div className="container mt-6 md:basis-[40%] lg:basis-[63%] lg:mt-0">
+        <div className="my-4 lg:mt-0 lg:mb-8">
+          <Link href={`/${lang}/story/${product?.vendor}`} className="flex flex-row items-end space-x-4">
+            <div className="relative aspect-square w-full max-w-12">
+              <Image src={vendorLogo || ''} alt="" fill />
+            </div>
+            <p className="text-black underline">by { product?.vendor }</p>
+          </Link>
+        </div>
+
         <div className="flex flex-row items-start gap-8 justify-between">
           <h1 className="text-2xl lg:text-4xl leading-8! max-w-[560px]">{product?.title}</h1>
           <p className="text-xl"><span className="mr-1">฿</span>{(Number(price) * 1).toLocaleString()}</p>
@@ -192,7 +192,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
           )
         }
 
-        <div className="w-full border-b border-[#818181] py-2 mb-8 mt-4">
+        <div className="w-full max-w-60 border-b border-[#818181] py-2 mb-8 mt-4">
           <div className="flex items-center justify-between text-black">
             <span className="text-sm font-medium">{t('quantity')}</span>
 

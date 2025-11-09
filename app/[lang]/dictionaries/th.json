@@ -7,7 +7,7 @@
       "title": "ตลาดกลางอันดับหนึ่ง <br/> <span class='text-accent! leading-12 futura-bold-important'>สำหรับผู้ปลูกกัญชารายย่อย</span>"
     },
     "product_list": {
-      "title": "Exclusive Local Selection"
+      "title": "คัดสรรโดย LSN"
     },
     "grower_list": {
       "title": "บทสัมภาษณ์"
@@ -60,7 +60,7 @@
   "menu": {
     "home": "หน้าแรก",
     "products": "สินค้า",
-    "story": "บทสัมภาษ",
+    "story": "บทสัมภาษณ์",
     "about": "เกี่ยวกับเรา"
   },
   "footer": {
@@ -73,7 +73,7 @@
     "menu": {
       "home": "หน้าแรก",
       "products": "สินค้า",
-      "story": "บทสัมภาษ",
+      "story": "บทสัมภาษณ์",
       "about": "เกี่ยวกับเรา"
     },
     "policies": {

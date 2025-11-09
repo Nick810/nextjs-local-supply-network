@@ -1,4 +1,4 @@
 export const AVAILABLE_LANGUAGES = [
   { code: 'en', label: 'English' },
-  { code: 'th', label: 'Thai' },
+  { code: 'th', label: 'ไทย' },
 ];

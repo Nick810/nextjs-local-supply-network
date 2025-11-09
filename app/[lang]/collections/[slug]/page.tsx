@@ -3,6 +3,7 @@ import ProductCard from "@/app/components/collections/product-card";
 import Filter from "@/app/components/filter";
 import { getAllCollections, getCollectionByHandle } from "@/app/lib/shopify/api"
 import { ShopifyCollectionsResponse } from "@/app/lib/shopify/types";
+import { setRequestLocale } from "next-intl/server";
 
 type Props = {
   params: Promise<{ slug: string, lang: string }>
@@ -108,6 +109,8 @@ export default async function Page({
       ))
     }
   }
+
+  setRequestLocale(lang);
   
   if (!collection) {
     return <main className="pt-24"><h1>Collection not found</h1></main>;

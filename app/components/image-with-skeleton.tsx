@@ -17,6 +17,9 @@ const ImageWithSkeleton: React.FC<ImageProps> = ({ src, alt, className, quality 
 
   return (
     <div className="relative w-full h-full">
+      {loading && (
+        <div className="absolute inset-0 animate-pulse bg-gray-200 rounded-lg z-10" />
+      )}
       <Image
         src={src}
         alt={alt || ''}

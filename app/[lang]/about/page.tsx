@@ -1,5 +1,6 @@
 import { t } from "@/app/lib/utils";
 import { getDictionary } from "../dictionaries";
+import { setRequestLocale } from "next-intl/server";
 
 export default async function Page({
   params,
@@ -8,6 +9,8 @@ export default async function Page({
 }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'th');
+
+  setRequestLocale(lang);
 
   return (
     <main className="py-32 container">

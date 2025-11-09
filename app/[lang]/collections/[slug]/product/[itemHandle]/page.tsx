@@ -3,6 +3,7 @@ import Product from "@/app/components/product/product";
 import RecommendedProducts from "@/app/components/product/recommended-products";
 import { getAllProducts, getProductByHandle, getRecommendedProducts } from "@/app/lib/shopify/api";
 import { ShopifyProductResponse } from "@/app/lib/shopify/types";
+import { setRequestLocale } from "next-intl/server";
 
 type Props = {
   params: Promise<{ slug: string; itemHandle: string, lang: string }>
@@ -79,6 +80,8 @@ export default async function Page({ params }: Props) {
       "itemCondition": "https://schema.org/NewCondition"
     }
   }
+
+  setRequestLocale(lang);
   
   return (
     <main className="pt-24">

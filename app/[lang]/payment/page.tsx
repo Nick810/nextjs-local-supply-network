@@ -5,13 +5,9 @@ const API_URL = process.env.NODE_ENV === 'development'
                   ? 'http://localhost:3000'
                   : process.env.NEXT_PUBLIC_SITE_URL;
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: string }>
-}) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang as 'en' | 'th');
+export default async function Page() {
+  // const { lang } = await params;
+  // const dict = await getDictionary(lang as 'en' | 'th');
   const res = await fetch(`${API_URL}/api/promptpay`, {
     method: 'POST',
     cache: 'no-store'
@@ -30,7 +26,6 @@ export default async function Page({
         <p className="text-gray-400">Generating QR code...</p>
       )}
 
-      <p className="text-xs text-gray-400 mt-4">Recipient: 081-234-5678</p>
     </main>
   );
 }

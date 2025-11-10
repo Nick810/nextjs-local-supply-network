@@ -5,7 +5,7 @@ import FileUpload from '@/app/components/dropzone';
 // import Image from 'next/image';
 // import { useState } from 'react';
 
-export default function UploadReceiptPage() {
+export default function Page() {
   // const [file, setFile] = useState<File | null>(null);
   // const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
 

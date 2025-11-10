@@ -8,11 +8,11 @@ const API_URL = process.env.NODE_ENV === 'development'
 export default async function Page() {
   // const { lang } = await params;
   // const dict = await getDictionary(lang as 'en' | 'th');
-  const res = await fetch(`${API_URL}/api/promptpay`, {
-    method: 'POST',
-    cache: 'no-store'
-  })
-  const data = await res.json();
+  // const res = await fetch(`${API_URL}/api/promptpay`, {
+  //   method: 'POST',
+  //   cache: 'no-store'
+  // })
+  // const data = await res.json();
 
   return (
     <main className="py-24 container">
@@ -20,11 +20,12 @@ export default async function Page() {
       <p className="text-gray-600 mb-2">Scan the QR code below using your banking app</p>
       <p className="text-sm text-gray-500 mb-4">Amount: <strong>฿500</strong></p>
 
-      {data.qr ? (
+      {/* {data.qr ? (
         <QRrenderer data={data.qr} />
       ) : (
         <p className="text-gray-400">Generating QR code...</p>
-      )}
+      )} */}
+      <QRrenderer />
 
     </main>
   );

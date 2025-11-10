@@ -12,6 +12,11 @@ const nextConfig = {
         port: '',
         pathname: '/**', // Optional: allows all paths
       },
+      {
+        protocol: 'https',
+        hostname: '**.supabase.co',
+        pathname: '/storage/**',
+      },
     ],
     qualities: [75, 85, 100]
   },

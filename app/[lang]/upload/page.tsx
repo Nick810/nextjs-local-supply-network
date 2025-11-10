@@ -2,28 +2,28 @@
 'use client';
 
 import FileUpload from '@/app/components/dropzone';
-import Image from 'next/image';
-import { useState } from 'react';
+// import Image from 'next/image';
+// import { useState } from 'react';
 
 export default function UploadReceiptPage() {
-  const [file, setFile] = useState<File | null>(null);
-  const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
+  // const [file, setFile] = useState<File | null>(null);
+  // const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
 
-  const handleUpload = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!file) return;
+  // const handleUpload = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!file) return;
 
-    const formData = new FormData();
-    formData.append('receipt', file);
+  //   const formData = new FormData();
+  //   formData.append('receipt', file);
 
-    setStatus('uploading');
-    const res = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    });
+  //   setStatus('uploading');
+  //   const res = await fetch('/api/upload', {
+  //     method: 'POST',
+  //     body: formData,
+  //   });
 
-    setStatus(res.ok ? 'success' : 'error');
-  };
+  //   setStatus(res.ok ? 'success' : 'error');
+  // };
 
   return (
     <main className="py-32 container">

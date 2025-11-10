@@ -32,7 +32,7 @@ export default function Filter({ lang }: Props) {
   useEffect(() => {
     async function fetchFilters() {
       try {
-        const res = await fetch(new URL(`${API_URL}/${lang}/api/shopify/get-tags-and-vendors`));
+        const res = await fetch(`/api/shopify/get-tags-and-vendors`);
         const data = await res.json();
         setVendors(data.vendors || []);
         setTags(data.tags || []);

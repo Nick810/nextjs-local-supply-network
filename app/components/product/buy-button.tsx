@@ -35,7 +35,7 @@ const BuyButton: React.FC<BuyButtonProps> = ({ onClick, isAvailable, productTitl
 
   return (
     <button
-      className={`btn text-white! cursor-pointer btn-accent-color max-w-[480px] 
+      className={`btn text-white! text-sm! cursor-pointer bg-accent max-w-[480px] 
       ${!canBuy ? 'bg-[#d9d9d9]! cursor-not-allowed!' : ''}`}
       disabled={!canBuy}
       onClick={canBuy ? handleClick : undefined}

@@ -5,6 +5,7 @@ import ImageWithSkeleton from "./image-with-skeleton";
 import AuthPromptModal from "./auth-prompt-modal";
 import gsap from "gsap";
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 type CartProps = {
   toggled: boolean;
@@ -23,19 +24,19 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
   const removeItem = useCartStore((s) => s.removeItem)
   const updateQuantity = useCartStore((s) => s.updateQuantity)
   const checkout = useCartStore((s) => s.checkout)
+  const router = useRouter();
   const handleCheckout = async () => {
     setError(null);
     setCheckingOut(true);
 
     try {
-      const url = await checkout()
-      if (url) window.location.href = url
-    } catch (err) {
-      setCheckingOut(false);
-      setError('Could not proceed to checkout. Please try again later.')
-      console.error('Checkout error:', err)
-      alert('Could not proceed to checkout.')
-    }
+    const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    router.push(`/en/payment?amount=${totalAmount}`);
+  } catch (err) {
+    setCheckingOut(false);
+    setError('Could not proceed to payment. Please try again later.');
+    console.error('Redirect error:', err);
+  }
   }
   // compute total price
   const total = useMemo(
@@ -196,7 +197,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
           <div>
             {items.length > 0 && (
               <button
-                className="mt-4 btn m-auto z-21 btn-main-color"
+                className="mt-4 btn m-auto z-21 bg-accent text-sm!"
                 disabled={checkingOut}
                 onClick={handleCheckout}
               >

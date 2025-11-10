@@ -1,31 +1,32 @@
 import QRrenderer from '@/app/components/qr-renderer';
 import { getDictionary } from '../dictionaries';
+import Link from 'next/link';
 
-const API_URL = process.env.NODE_ENV === 'development'
-                  ? 'http://localhost:3000'
-                  : process.env.NEXT_PUBLIC_SITE_URL;
+type Props = {
+  searchParams: Promise<{ amount: string }>
+  params: Promise<{ lang: string }>
+}
 
-export default async function Page() {
-  // const { lang } = await params;
-  // const dict = await getDictionary(lang as 'en' | 'th');
-  // const res = await fetch(`${API_URL}/api/promptpay`, {
-  //   method: 'POST',
-  //   cache: 'no-store'
-  // })
-  // const data = await res.json();
+export default async function Page({ searchParams, params }: Props) {
+  const { lang } = await params;
+  const resolvedSearchParams = await searchParams;
+  const { amount } = resolvedSearchParams;
 
   return (
-    <main className="py-24 container">
+    <main className="py-32 container">
       <h1 className="text-xl font-semibold mb-4">Complete Your Payment</h1>
       <p className="text-gray-600 mb-2">Scan the QR code below using your banking app</p>
-      <p className="text-sm text-gray-500 mb-4">Amount: <strong>฿500</strong></p>
+      <p className="text-sm text-gray-500 mb-4">Amount: <strong>฿{Number(amount).toLocaleString()}</strong></p>
 
-      {/* {data.qr ? (
-        <QRrenderer data={data.qr} />
-      ) : (
-        <p className="text-gray-400">Generating QR code...</p>
-      )} */}
-      <QRrenderer />
+      <QRrenderer amount={amount}/>
+
+      <p className="mb-4! text-gray-700">After completing your payment, please upload your payment slip so we can verify your order.</p>
+      <Link
+        href={`/${lang}/upload?amount=${amount}`}
+        className="bg-accent text-white! rounded btn text-center text-sm!"
+      >
+        Upload Payment Slip
+      </Link>
 
     </main>
   );

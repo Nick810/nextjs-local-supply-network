@@ -1,42 +1,109 @@
-import Breadcrumb from '@/app/components/breadcrumb'
-import StoryClient from '@/app/components/story-client'
-import StoryLayout from '@/app/components/story-layout'
+  // import Breadcrumb from '@/app/components/breadcrumb'
+  // import StoryClient from '@/app/components/story-client'
+  // import StoryLayout from '@/app/components/story-layout'
+  // import fs from 'fs'
+  // import path from 'path'
+
+  // const getAllPaths = (lang: string) => {
+  //   const storiesDir = path.join(process.cwd(), 'content', lang)
+  //   const filenames = fs.readdirSync(storiesDir)
+  //   return filenames
+  //     .filter((file) => file.endsWith('.mdx'))
+  //     .map((file) => ({
+  //       slug: file.replace(/\.mdx$/, ''),
+  //     }))
+  // }
+
+  // export default async function Page({
+  //   params,
+  // }: {
+  //   params: Promise<{ slug: string, lang: string }>
+  // }) {
+  //   const { slug, lang } = await params;
+  //   const allPaths = getAllPaths(lang);
+  
+  //   return (
+  //     <>
+  //       <div className='container'>
+  //         <Breadcrumb path={slug} lang={lang} type="story" isStaticPath />
+  //       </div>
+
+  //       <StoryLayout allPaths={allPaths} lang={lang}>
+  //         <StoryClient slug={slug} lang={lang} />
+  //       </StoryLayout>
+  //     </>
+  //   )
+  // }
+  
+  // export function generateStaticParams() {
+  //   const locales = ['en', 'th'];
+  //   return locales.flatMap((lang) => getAllPaths(lang));
+  // }
+
+  // export const dynamicParams = false
+
+  // app/[lang]/story/[slug]/page.tsx
+// app/[lang]/story/[slug]/page.tsx
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import fs from 'fs'
 import path from 'path'
+import { notFound } from 'next/navigation'
+import matter from 'gray-matter'
+// import StorySkeleton from '@/components/story-skeleton'
+import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
+import Breadcrumb from '@/app/components/breadcrumb'
+import StoryLayout from '@/app/components/story-layout'
 
-const getAllPaths = () => {
-  const storiesDir = path.join(process.cwd(), 'app/[lang]/story', 'content')
-  const filenames = fs.readdirSync(storiesDir)
-  return filenames
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => ({
-      slug: file.replace(/\.mdx$/, ''),
-    }))
-}
+const getAllPaths = (lang: string) => {
+    const storiesDir = path.join(process.cwd(), 'content', lang)
+    const filenames = fs.readdirSync(storiesDir)
+    return filenames
+      .filter((file) => file.endsWith('.mdx'))
+      .map((file) => ({
+        slug: file.replace(/\.mdx$/, ''),
+      }))
+  }
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string, lang: string }>
+  params: Promise<{ lang: string; slug: string }>
 }) {
-  const { slug, lang } = await params;
-  const allPaths = getAllPaths();
- 
+  const { lang, slug } = await params
+  const allPaths = getAllPaths(lang);
+
+  const filePath = path.join(process.cwd(), 'content', lang, `${slug}.mdx`)
+
+  if (!fs.existsSync(filePath)) {
+    notFound()
+  }
+
+  const source = fs.readFileSync(filePath, 'utf-8')
+  const { content, data } = matter(source)
+
   return (
     <>
       <div className='container'>
         <Breadcrumb path={slug} lang={lang} type="story" isStaticPath />
       </div>
-
       <StoryLayout allPaths={allPaths} lang={lang}>
-        <StoryClient slug={slug} />
+        <article className="prose prose-invert max-w-none py-32 container">
+          {data.title && <h1 className="text-4xl font-bold mb-8">{data.title}</h1>}
+          <MDXRemote
+            source={content}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [rehypeHighlight],
+              },
+            }}
+          />
+        </article>
       </StoryLayout>
     </>
   )
 }
- 
-export function generateStaticParams() {
-  return getAllPaths();
-}
 
-export const dynamicParams = false
+// REMOVE generateStaticParams FROM HERE — it breaks!
+// (Next.js will use the one from parent `story/page.tsx`)

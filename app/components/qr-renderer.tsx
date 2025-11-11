@@ -23,7 +23,14 @@ export default function QRrenderer({ amount }: { amount: string } ) {
 
   return (
     <div>
-      <Image src={qr} alt="PromptPay QR" width={300} height={300} />
+      {/* <Image src={qr} alt="PromptPay QR" width={300} height={300} /> */}
+      <img 
+        src={qr} 
+        alt="PromptPay QR Code" 
+        width={300} 
+        height={300}
+        className="rounded-lg"
+      />
     </div>
   )
 }

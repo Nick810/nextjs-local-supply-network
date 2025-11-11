@@ -58,39 +58,39 @@ export default async function Page({ params }: Props) {
   const { product } = await getProductByHandle(itemHandle);
   const { productRecommendations } = await getRecommendedProducts(itemHandle);
   const { seo } = product;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": `${product.title}`,
-    "image": [
-      `${process.env.NEXT_PUBLIC_SITE_URL}/images/product.jpg`
-    ],
-    "description": seo.description,
-    // "sku": "SKU12345",
-    "brand": {
-      "@type": "Brand",
-      "name": "Powerberry"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": `${process.env.NEXT_PUBLIC_SITE_URL}/collections/${slug}/products/${itemHandle}`,
-      "priceCurrency": "THB",
-      "price": `${product.priceRange.minVariantPrice.amount}`,
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-  }
+  // const jsonLd = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Product",
+  //   "name": `${product.title}`,
+  //   "image": [
+  //     `${process.env.NEXT_PUBLIC_SITE_URL}/images/product.jpg`
+  //   ],
+  //   "description": seo.description,
+  //   // "sku": "SKU12345",
+  //   "brand": {
+  //     "@type": "Brand",
+  //     "name": "Powerberry"
+  //   },
+  //   "offers": {
+  //     "@type": "Offer",
+  //     "url": `${process.env.NEXT_PUBLIC_SITE_URL}/collections/${slug}/products/${itemHandle}`,
+  //     "priceCurrency": "THB",
+  //     "price": `${product.priceRange.minVariantPrice.amount}`,
+  //     "availability": "https://schema.org/InStock",
+  //     "itemCondition": "https://schema.org/NewCondition"
+  //   }
+  // }
 
   setRequestLocale(lang);
   
   return (
     <main className="pt-24">
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
-      />
+      /> */}
       <div className="container">
         <Breadcrumb path={slug} lang={lang} subPath={product?.title} type="collections" />
       </div>

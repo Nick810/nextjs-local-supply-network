@@ -11,7 +11,7 @@ import Letter from "../components/home/letter";
 import { setRequestLocale } from "next-intl/server";
 
 
-export const dynamic = 'force-dynamic'; // Optional: forces SSR
+// export const dynamic = 'force-dynamic'; // Optional: forces SSR
 
 // const API_URL = process.env.NODE_ENV === 'development'
 //                   ? 'http://localhost:3000'
@@ -27,28 +27,28 @@ export default async function Page({
   const { collection }: ShopifyCollectionByHandleResponse = await getCollectionByHandle('all');
   const heroTitle = t(dict, 'home.hero.title')
     
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Powerberry",
-    "url": `${process.env.NEXT_PUBLIC_SITE_URL}`,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
-  }
+  // const jsonLd = {
+  //   "@context": "https://schema.org",
+  //   "@type": "WebSite",
+  //   "name": "Powerberry",
+  //   "url": `${process.env.NEXT_PUBLIC_SITE_URL}`,
+  //   "potentialAction": {
+  //     "@type": "SearchAction",
+  //     "target": `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}`,
+  //     "query-input": "required name=search_term_string"
+  //   }
+  // }
   
   setRequestLocale(lang);
   
   return (
     <main className="flex flex-col items-center overflow-hidden">
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
-      />
+      /> */}
 
       <Hero 
         title={heroTitle}

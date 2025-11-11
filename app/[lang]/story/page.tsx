@@ -29,7 +29,7 @@ export default async function StoriesListPage({
       <ul className="gap-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {stories.map(({ slug, title }) => {
           const vendor = VENDORS.find(v => v.name.toLowerCase() === title.toLowerCase());
-          if (!vendor) console.log(title)
+          
           return (
             <li key={slug} className="">
               <Link href={`/${lang}/story/${slug}`} className='w-full cursor-pointer'>

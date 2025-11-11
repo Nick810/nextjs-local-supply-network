@@ -25,8 +25,6 @@ const FileUpload: React.FC = () => {
         }),
       });
 
-      // Optional: show toast or redirect
-      console.log('Uploaded:', file.publicUrl);
     },
   })
 

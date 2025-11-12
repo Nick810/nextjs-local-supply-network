@@ -14,7 +14,7 @@ type Props = {
 }
 
 // เปลี่ยนตรงนี้เป็น CDN ของคุณ
-const CDN_URL = process.env.CDN_URL!
+const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL!
 
 const shippingSchema = z.object({
   fullName: z.string().min(3, 'กรุณากรอกชื่อ-นามสกุล').regex(/^[\u0E00-\u0E7F\s]+$/, 'ใช้ได้เฉพาะตัวอักษรไทย'),

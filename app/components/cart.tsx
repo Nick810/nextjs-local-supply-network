@@ -22,7 +22,6 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
   const t = useTranslations('cart');
   const removeItem = useCartStore((s) => s.removeItem)
   const updateQuantity = useCartStore((s) => s.updateQuantity)
-  const checkout = useCartStore((s) => s.checkout)
   const router = useRouter();
   const handleCheckout = async () => {
     setError(null);
@@ -107,7 +106,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
   return (
     <div 
       ref={cartRef}
-      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-[600px] h-screen top-0 right-0 z-100`}
+      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-[600px] h-screen top-26 right-0 z-100`}
       style={{ backgroundColor: bgColor,
         boxShadow: '4px 0 30px -2px rgba(0,0,0,0.1)'
        }}
@@ -134,7 +133,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
                 className="flex items-center justify-between"
               >
                 <div className="flex flex-row min-w-full gap-4 border-b border-[#818181] py-4">
-                  <div className="relative w-[20%]">
+                  <div className="relative aspect-square w-full h-full max-w-[20%]!">
                     <ImageWithSkeleton
                       src={item.image || ''} 
                       alt={item.title} 
@@ -145,18 +144,20 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
                   <div className="flex-1 flex flex-col gap-1">
                     <p className="text-sm leading-4">{item.title}</p>
                     <p className="">{size}</p>
-                    <p className="">{color !== 'Default Title' ? color : ''}</p>
-                    <div className="flex items-center space-x-3">
+                    <p className="text-gray-400!">{color !== 'Default Title' ? color : ''}</p>
+                    <div className="flex items-center space-x-3 mt-2">
                       <button
-                        className="w-6 h-6 flex items-center justify-center border border-[#818181] rounded-full text-sm cursor-pointer"                        onClick={() =>
+                        className="w-8 h-8 flex items-center justify-center border border-[#818181] rounded-full text-sm cursor-pointer" 
+                        onClick={() =>
                           updateQuantity(item.variantId, item.quantity - 1)
                         }
                       >
                         –
                       </button>
-                      <span>{item.quantity}</span>
+                      <span className="">{item.quantity}</span>
                       <button
-                        className="w-6 h-6 flex items-center justify-center border border-[#818181] rounded-full text-sm cursor-pointer"                        onClick={() =>
+                        className="w-8 h-8 flex items-center justify-center border border-[#818181] rounded-full text-sm cursor-pointer"                        
+                        onClick={() =>
                           updateQuantity(item.variantId, item.quantity + 1)
                         }
                       >
@@ -186,7 +187,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
       <div className="mt-6 pt-4">
 
         {items.length !== 0 && (<div className="flex flex-row items-center justify-between px-[5%]">
-          <p className="text-xl font-bold!">Subtotal:</p>
+          <p className="text-xl font-bold!">{t('subtotal')}:</p>
           <p className="text-lg font-bold!">฿{(total * 1).toLocaleString()}</p>
         </div>)}
         {
@@ -201,7 +202,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
                 disabled={checkingOut}
                 onClick={handleCheckout}
               >
-                { checkingOut ? 'Please wait...' : 'Checkout'}
+                { checkingOut ? t('button.loading') : t('button.checkout')}
               </button>
             )  }
           </div>

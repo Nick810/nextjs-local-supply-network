@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ lang, title }) => {
           dangerouslySetInnerHTML={{ __html: title }} /> 
         <Link
           href={`/${lang}/collections/all`}
-          className="btn w-full rounded-md border mt-16 bg-accent max-w-lg hover:bg-[#b30000] transition-all duration-200 ease-in text-center">{ tBtn('shop_now') }</Link>
+          className="btn w-full rounded-md border mt-8 bg-accent max-w-lg hover:bg-[#b30000] transition-all duration-200 ease-in text-center">{ tBtn('shop_now') }</Link>
       </div>
     </div>
   )

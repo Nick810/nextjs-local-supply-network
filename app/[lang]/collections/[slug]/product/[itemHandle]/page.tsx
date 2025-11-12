@@ -4,6 +4,8 @@ import RecommendedProducts from "@/app/components/product/recommended-products";
 import { getAllProducts, getProductByHandle, getRecommendedProducts } from "@/app/lib/shopify/api";
 import { ShopifyProductResponse } from "@/app/lib/shopify/types";
 import { setRequestLocale } from "next-intl/server";
+import { t } from "@/app/lib/utils";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 type Props = {
   params: Promise<{ slug: string; itemHandle: string, lang: string }>
@@ -58,6 +60,7 @@ export default async function Page({ params }: Props) {
   const { product } = await getProductByHandle(itemHandle);
   const { productRecommendations } = await getRecommendedProducts(itemHandle);
   const { seo } = product;
+  const dict = await getDictionary(lang as 'en' | 'th');
   // const jsonLd = {
   //   "@context": "https://schema.org",
   //   "@type": "Product",
@@ -96,8 +99,8 @@ export default async function Page({ params }: Props) {
       </div>
       <Product product={product} lang={lang} />
 
-      <div className="pt-24 px-1">
-        { productRecommendations.length > 0 && <h2 className="text-4xl mb-8! pl-[5%]">Let&apos;s pair up</h2>}
+      <div className="py-24 pl-[5%]">
+        { productRecommendations.length > 0 && <h2 className="text-4xl mb-8!">{t(dict, 'product.recommended_products.title')}</h2>}
         <RecommendedProducts products={productRecommendations} collectionHandle={slug} />
       </div>
     </main>

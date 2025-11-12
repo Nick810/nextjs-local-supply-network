@@ -209,6 +209,7 @@ export const GET_RECOMMENDED_PRODUCTS_QUERY = gql`
       availableForSale
       title
       handle
+      vendor
       priceRange {
         minVariantPrice {
           amount

@@ -27,7 +27,7 @@ export default function LangSelector({ currentLang }: { currentLang: string }) {
         { AVAILABLE_LANGUAGES.find(lang => lang.code === currentLang)?.label || currentLang.toUpperCase()}
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-50">
+        <div className="absolute right-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-100">
           <ul className="flex flex-col">
             {AVAILABLE_LANGUAGES.map((loc) => (
               <li key={loc.code}>

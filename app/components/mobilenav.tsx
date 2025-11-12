@@ -75,20 +75,20 @@ const MobileNav: React.FC<MobileNavProps> = ({toggled, toggle, lang}) => {
   return (
     <nav
       ref={navRef} 
-      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-screen h-screen top-0 left-0 overflow-hidden z-100`}>      
+      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-screen h-screen top-10 left-0 overflow-hidden z-100`}>      
       <div
         ref={blurRef}
         className="absolute inset-0 bg-white -z-10 rounded-bl-xl"
         style={{ opacity: 0, transform: "scale(1.3)" }}
       />
-      <div className="z-30 absolute top-0 left-0 pl-[4%] w-full">
-        <div className="flex flex-row items-center justify-start pt-10 pb-3">
+      <div className="z-30 absolute top-0 left-0 pl-[2.5%] w-full">
+        <div className="flex flex-row items-center justify-start pt-0 pb-3">
           <button onClick={() => toggle(false)} className="cursor-pointer">
             <Image src="/close.svg" alt="Close Button" width={60} height={60} />
           </button>
         </div>
 
-        <ul className="flex flex-col items-start gap-12 px-6 mt-16">
+        <ul className="flex flex-col items-start gap-12 px-4 mt-16">
           <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('home')}</Link></li>
           <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/collections/all`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('products')}</Link></li>
           <li><Link prefetch onClick={() => toggle(false)} href={`/${lang}/story`} className="text-2xl! uppercase text-black! hover:text-neutral-400! transition-colors duration-200">{t('story')}</Link></li>

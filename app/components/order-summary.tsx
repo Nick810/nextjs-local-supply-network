@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCartStore } from "../lib/shopify/cart/cart-store";
 import ImageWithSkeleton from "./image-with-skeleton";
 import { ChevronDown } from 'lucide-react';
+import { useTranslations } from "next-intl";
 
 type Props = {
   amount: string
@@ -12,20 +13,21 @@ type Props = {
 export default function OrderSummary({ amount }: Props) {
   const items = useCartStore((s) => s.items)
   const [isVisible, setIsvisible] = useState(false);
+  const t = useTranslations('order_summary');
 
   return (
     <div className="grid lg:order-2">
       <div className="border-t border-b lg:hidden">
         <div className="flex items-center justify-between max-w-xl! container py-4" onClick={() => setIsvisible(!isVisible)}>
           <div className="flex items-center gap-2">
-            Order Summary
+            {t('title')}
             <ChevronDown className=""/>
           </div>
           ฿{ (amount || 0).toLocaleString() }
         </div>
       </div>
 
-      <div className={`${isVisible ? 'block' : 'hidden'} container bg-gray-300 py-8`}>
+      <div className={`${isVisible ? 'block' : 'hidden'} container bg-gray-100 py-8`}>
         <div className="max-w-xl! mx-auto">
           <ul>
             {

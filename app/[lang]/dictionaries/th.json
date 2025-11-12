@@ -4,7 +4,7 @@
   },
   "home": {
     "hero": {
-      "title": "ตลาดกลาง<br/>อันดับหนึ่ง <br/> <span class='text-accent! leading-12 futura-bold-important'>สำหรับผู้ปลูกกัญชารายย่อย</span>"
+      "title": "ตลาดกลาง<br/><span class='text-accent! leading-12 futura-bold-important'>อันดับหนึ่ง</span> <br/>สำหรับผู้ปลูก<span class='text-accent! leading-12 futura-bold-important'><br />กัญชารายย่อย</span>"
     },
     "product_list": {
       "title": "คัดสรรโดย LSN"
@@ -55,7 +55,34 @@
   },
   "cart": {
     "title": "ตะกร้าสินค้า",
-    "empty_pg": "ยังไม่มีสินค้าในตะกร้า"
+    "empty_pg": "ยังไม่มีสินค้าในตะกร้า",
+    "subtotal": "ยอดรวม",
+    "button": {
+      "checkout": "ชำระเงิน",
+      "loading": "รอสักครู่..."
+    }
+  },
+  "order_summary": {
+  "title": "สรุปคำสั่งซื้อ"
+  },
+  "checkout": {
+    "contact": "ข้อมูลติดต่อ",
+    "address": "ที่อยู่จัดส่ง",
+    "placeholder": {
+      "name": "ชื่อ - นามสกุล",
+      "phone": "เบอร์โทรศัพท์",
+      "email": "อีเมลของคุณ",
+      "address": "บ้านเลขที่, หมู่, ซอย, ถนน",
+      "sub_dis": "ตำบล/แขวง",
+      "dis": "อำเภอ/เขต",
+      "prov": "จังหวัด",
+      "postal": "รหัสไปรษณีย์"
+    },
+    "payment_method": {
+      "title": "วิธีชำระเงิน",
+      "method": "พร้อมเพย์ คิวอาร์",
+      "description": "สแกนจ่ายผ่านแอปธนาคาร"
+    }
   },
   "menu": {
     "home": "หน้าแรก",

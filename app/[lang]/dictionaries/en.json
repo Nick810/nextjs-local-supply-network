@@ -52,7 +52,34 @@
   },
   "cart": {
     "title": "Cart",
-    "empty_pg": "Your cart is empty"
+    "empty_pg": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "button": {
+      "checkout": "Check out",
+      "loading": "Please wait..."
+    }
+  },
+  "order_summary": {
+    "title": "Order Summary"
+  },
+  "checkout": {
+    "contact": "Contact Information",
+    "address": "Shipping Address",
+    "placeholder": {
+      "name": "Full name",
+      "phone": "Phone number",
+      "email": "Email address",
+      "address": "Address line (house no., village, street)",
+      "sub_dis": "Sub-district / Tambon",
+      "dis": "District / Amphoe",
+      "prov": "Province",
+      "postal": "ZIP code"
+    },
+    "payment_method": {
+      "title": "Payment Method",
+      "method": "PromptPay QR",
+      "description": "Scan with your banking app to pay"
+    }
   },
   "menu": {
     "home": "Home",

@@ -217,6 +217,7 @@ export interface ShopifyCollectionByHandleResponse {
 export interface ShopifyRecommendedProduct {
   title: string;
   handle: string;
+  vendor: string;
   priceRange: {
     minVariantPrice: {
       amount: number;

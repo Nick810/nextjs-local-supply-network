@@ -14,7 +14,7 @@ type Props = {
 }
 
 // เปลี่ยนตรงนี้เป็น CDN ของคุณ
-const CDN_URL = 'https://cdn.jsdelivr.net/gh/Nick810/thailand-address-cdn@latest/src/geography.json'
+const CDN_URL = process.env.CDN_URL!
 
 const shippingSchema = z.object({
   fullName: z.string().min(3, 'กรุณากรอกชื่อ-นามสกุล').regex(/^[\u0E00-\u0E7F\s]+$/, 'ใช้ได้เฉพาะตัวอักษรไทย'),
@@ -143,11 +143,11 @@ export default function CheckoutForm({ lang, amount }: Props) {
   }
 
   return (
-    <div className="max-w-xl w-full container mt-8 md:mt-0">
+    <div className="max-w-xl w-full container mt-8 md:mt-0 mb-16">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
 
         {/* Contact */}
-        <section>
+        <section className='lg:mt-12'>
           <h2 className="text-2xl font-bold mb-4!">{t('contact')}</h2>
           <div className='mb-4'>
             <input {...register('fullName')} placeholder={t('placeholder.name')} className="w-full px-3 py-4 text-xl border border-gray-300 rounded-md focus:border-black outline-none transition" />

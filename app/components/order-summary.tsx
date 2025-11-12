@@ -27,7 +27,7 @@ export default function OrderSummary({ amount }: Props) {
         </div>
       </div>
 
-      <div className={`${isVisible ? 'block' : 'hidden'} container bg-gray-100 py-8`}>
+      <div className={`${isVisible ? 'block' : 'hidden'} lg:block container bg-gray-100 py-8`}>
         <div className="max-w-xl! mx-auto">
           <ul>
             {

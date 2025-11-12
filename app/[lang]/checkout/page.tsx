@@ -1,8 +1,6 @@
 import CheckoutForm from "@/app/components/checkout";
 import OrderSummary from "@/app/components/order-summary";
 
-
-
 type Props = {
   params: Promise<{ lang: string }>
   searchParams: Promise<Record<string, string>>
@@ -19,8 +17,8 @@ export default async function Page({
   const { amount } = resolvedSearchParams;
 
   return (
-    <main className="py-32">
-      <div className="grid lg:grid-cols-2">
+    <main className="relative z-1000">
+      <div className="grid lg:grid-cols-2 bg-white">
         <OrderSummary amount={amount} />
         <CheckoutForm lang={lang} amount={amount} />
       </div>

@@ -13,7 +13,6 @@ type Props = {
   amount: string
 }
 
-// เปลี่ยนตรงนี้เป็น CDN ของคุณ
 const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL!
 
 const shippingSchema = z.object({

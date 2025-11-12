@@ -3,7 +3,11 @@
 import { Dropzone, DropzoneContent, DropzoneEmptyState } from '@/components/dropzone'
 import { useSupabaseUpload } from '@/hooks/use-supabase-upload'
 
-const FileUpload: React.FC = () => {
+type Props = {
+  lang: string
+}
+
+const FileUpload: React.FC<Props> = ({ lang }) => {
   const props = useSupabaseUpload({
     bucketName: 'receipts',
     path: '11mr9mj1_0',
@@ -27,12 +31,13 @@ const FileUpload: React.FC = () => {
 
     },
   })
+  
 
   return (
-    <div className="w-[500px]">
+    <div className="w-full max-w-lg mx-auto">
       <Dropzone {...props}>
         <DropzoneEmptyState />
-        <DropzoneContent />
+        <DropzoneContent lang={lang} />
       </Dropzone>
     </div>
   )

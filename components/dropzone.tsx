@@ -4,7 +4,8 @@ import { cn } from '@/lib/utils'
 import { type UseSupabaseUploadReturn } from '@/hooks/use-supabase-upload'
 import { Button } from '@/components/ui/button'
 import { CheckCircle, File, Loader2, Upload, X } from 'lucide-react'
-import { createContext, type PropsWithChildren, useCallback, useContext } from 'react'
+import { createContext, type PropsWithChildren, useCallback, useContext, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export const formatBytes = (
   bytes: number,
@@ -61,7 +62,8 @@ const Dropzone = ({
     </DropzoneContext.Provider>
   )
 }
-const DropzoneContent = ({ className }: { className?: string }) => {
+const DropzoneContent = ({ className, lang }: { className?: string, lang: string }) => {
+  console.log(lang)
   const {
     files,
     setFiles,
@@ -82,6 +84,19 @@ const DropzoneContent = ({ className }: { className?: string }) => {
     },
     [files, setFiles]
   )
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSuccess) {
+      // รอสัก 1 วิให้ลูกค้าเห็น "Success" ก่อนรีไดเรกต์ (UX ดี)
+      const timer = setTimeout(() => {
+        router.push(`/${lang}/thank-you`) // เปลี่ยนตามที่ต้องการ
+      }, 1200)
+
+      return () => clearTimeout(timer) // cleanup
+    }
+  }, [isSuccess, router])
 
   if (isSuccess) {
     return (

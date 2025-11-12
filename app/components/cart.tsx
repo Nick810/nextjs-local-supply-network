@@ -2,7 +2,6 @@ import { useCartStore } from "@/app/lib/shopify/cart/cart-store";
 import Image from "next/image";
 import { useMemo, useState, useRef, useEffect } from "react";
 import ImageWithSkeleton from "./image-with-skeleton";
-import AuthPromptModal from "./auth-prompt-modal";
 import gsap from "gsap";
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -11,10 +10,10 @@ type CartProps = {
   toggled: boolean;
   toggle: (open: boolean) => void;
   bgColor: string
+  lang: string
 };
 
-const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
-  const [showAuthPrompt, setShowAuthPrompt] = useState<boolean>(false);
+const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
   const [checkingOut, setCheckingOut] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const cartRef = useRef<HTMLDivElement>(null);
@@ -31,7 +30,8 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
 
     try {
     const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    router.push(`/en/payment?amount=${totalAmount}`);
+    setIsVisible(false)
+    router.push(`/${lang}/checkout?amount=${totalAmount}`);
   } catch (err) {
     setCheckingOut(false);
     setError('Could not proceed to payment. Please try again later.');
@@ -209,20 +209,6 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor}) => {
         </div>
 
       </div>
-      {showAuthPrompt && (
-        <AuthPromptModal
-          onContinueAsGuest={async () => {
-            setShowAuthPrompt(false);
-            setCheckingOut(true);
-            const url = await checkout();
-            if (url) window.location.href = url;
-          }}
-          onSignIn={() => {
-            window.location.href = '/account/login';
-          }}
-          onClose={() => setShowAuthPrompt(false)}
-        />
-      )}
     </div>
   )
 }

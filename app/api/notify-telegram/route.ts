@@ -75,32 +75,41 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
     }
 
-    // ใช้ HTML แทน Markdown → ไม่ต้อง escape อะไรเลย!
-    const itemList = items.map((item: any, i: number) => 
-      `${i + 1}. <b>${item.title}</b>\n    └ ${item.color || ''} ${item.size || ''} ×1 = ฿${Number(item.price).toLocaleString()}`
-    ).join('\n')
+    const itemList = items.map((item: any, i: number) => {
+      const qty = Number(item.quantity) || 1
+      const totalPrice = Number(item.price) * qty
+      const color = item.color ? item.color : ''
+      const size = item.size ? item.size : ''
+
+      return `${i + 1}. <b>${item.title}</b>\n    └ ${color} ${size} ×${qty} = ฿${totalPrice.toLocaleString()}`
+    }).join('\n')
+
+    // ตรวจสอบยอดรวม
+    const calculatedTotal = items.reduce((sum: number, item: any) => 
+      sum + (Number(item.price) * (Number(item.quantity) || 1)), 0
+    )
 
     const message = `
-      <b>ออเดอร์ใหม่มาแล้ว!</b>
-      <b>Order No:</b> <code>#${order_number}</code> 
-      <b>Order ID:</b> <code>${order_id}</code>
-      <b>สถานะ:</b> <code>${status.toUpperCase()}</code>
+    <b>ออเดอร์ใหม่มาแล้ว!</b>
+    <b>Order No:</b> <code>#${order_number}</code> 
+    <b>Order ID:</b> <code>${order_id}</code>
+    <b>สถานะ:</b> <code>${status.toUpperCase()}</code>
 
-      <b>ลูกค้า:</b>
-      ${full_name}
-      ${phone}
-      ${email ? email : '<i>ไม่มีอีเมล</i>'}
+    <b>ลูกค้า:</b>
+    ${full_name}
+    ${phone}
+    ${email ? email : '<i>ไม่มีอีเมล</i>'}
 
-      <b>ที่อยู่จัดส่ง:</b>
-      ${address_line}
-      ${district} ${amphoe} ${province} ${zipcode}
+    <b>ที่อยู่จัดส่ง:</b>
+    ${address_line}
+    ${district} ${amphoe} ${province} ${zipcode}
 
-      <b>สินค้า:</b>
-      ${itemList}
+    <b>สินค้า:</b>
+    ${itemList}
 
-      <b>ยอดรวม:</b> ฿${Number(total_amount).toLocaleString()}
-      <a href="https://yourdomain.com/payment?order_id=${order_id}">ชำระเงินที่นี่</a>
-      `.trim()
+    <b>ยอดรวม:</b> ฿${calculatedTotal.toLocaleString()}
+    <a href="https://yourdomain.com/payment?order_id=${order_id}">ชำระเงินที่นี่</a>
+    `.trim()
 
     const telegramRes = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,

@@ -1,7 +1,6 @@
 import QRrenderer from '@/app/components/qr-renderer';
-import { getDictionary } from '../dictionaries';
 import Link from 'next/link';
-import NotFound from '../not-found';
+import NotFound from '../../not-found';
 
 type Props = {
   searchParams: Promise<{ amount: string }>

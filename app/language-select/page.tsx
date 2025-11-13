@@ -27,8 +27,9 @@ export default function LanguageSelect() {
     <>
       <Image 
         src={logo}
-        className='absolute w-1/2 top-[10%] left-1/2 -translate-x-1/2 max-w-[100px]!' 
+        className='absolute w-1/2 top-[10%] left-1/2 -translate-x-1/2 max-w-[160px]!' 
         alt="LSN Logo" 
+        priority
       />
       <div className="min-h-screen bg-linear-to-br from-blue-50 to-purple-50 flex flex-col items-center justify-center p-8">
         <div className="bg-white rounded-3xl shadow-2xl p-12 max-w-md w-full text-center">
@@ -58,13 +59,13 @@ export default function LanguageSelect() {
               onClick={() => changeLanguage('th')}
               className="w-full py-6 px-8 bg-[#F7F7F7] text-black text-2xl font-bold rounded-2xl hover:scale-105 btn--hover-green curosr-pointer transition shadow-lg"
             >
-              ไทย
+              🇹🇭 ไทย
             </button>
             <button
               onClick={() => changeLanguage('en')}
-              className="w-full py-6 px-8 bg-[#F7F7F7] text-black text-4xl font-bold rounded-2xl hover:scale-105 transition cursor-pointer btn--hover-green shadow-lg lang-selected"
+              className="w-full py-6 px-8 bg-[#F7F7F7] text-black text-4xl font-bold rounded-2xl hover:scale-105 transition cursor-pointer btn--hover-green shadow-lg border-2 border-gray-400 lang-selected"
             >
-              English
+              🇬🇧 English
             </button>
           </div>
           )}

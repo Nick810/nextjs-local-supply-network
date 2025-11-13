@@ -98,6 +98,13 @@
       "description": "Scan with your banking app to pay"
     }
   },
+  "404": {
+    "title": "Oops! Lost in the Weed Forest",
+    "description": "The page you're looking for seems to have vanished in a cloud of smoke. Or maybe we accidentally smoked it.",
+    "home": "Take Me Home",
+    "back": "Go Back",
+    "footer": "If you're lost again, we got the good stuff to make you forget the way home"
+  },
   "menu": {
     "home": "Home",
     "products": "Products",

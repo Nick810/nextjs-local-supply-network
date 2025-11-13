@@ -2,6 +2,12 @@ import type { Metadata, Viewport } from "next";
 import './styles/reset.css'
 import "./styles/globals.css"
 import './styles/embla.css';
+import { notFound } from 'next/navigation';
+
+type Props = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
 
 const getBaseUrl = () => {
   if (typeof window !== 'undefined') {
@@ -14,30 +20,23 @@ const getBaseUrl = () => {
 
 const baseUrl = getBaseUrl();
 
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#FDF2E3"
-};
-
 export const metadata: Metadata = {
   title: {
     template: '%s - Local Supply Network',
     default: 'Local Supply Network - Simplest Way to Buy Weed'
   },
-  description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
+  description: 'Local Supply Network is a ...',
   openGraph: {
     title: 'Local Supply Network - Simplest Way to Buy Weed',
-    description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
+    description: 'Local Supply Network is a ...',
     url: baseUrl,
-    siteName: 'Local Supply Network Harvest',
+    siteName: 'Local Supply Network',
     images: [
       {
-        url: `https://cdn.shopify.com/s/files/1/0948/0618/0125/files/meta-image.jpg?v=1755860664`,
+        url: `https://cdn.shopify.com/s/files/1/0942/4479/8827/files/lsn-meta-image.jpg?v=1763004994`,
         width: 1200,
         height: 630,
-        alt: 'Powerberry: Fruit of Youthfulness',
+        alt: 'Local Supply Network',
       },
     ],
     locale: 'th_TH',
@@ -55,16 +54,34 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Local Supply Network',
-    description: 'Local Supply Network is a representative of youthfulness, a humble unity and a friendly reminder that we all have a younger version of ourselves, that life is beautiful, sometimes trippy while dreams can come true and full of possibilities.',
-    images: ['https://cdn.shopify.com/s/files/1/0948/0618/0125/files/meta-image.jpg?v=1755860664'],
+    description: 'Local Supply Network is a ...',
+    images: ['https://cdn.shopify.com/s/files/1/0942/4479/8827/files/lsn-meta-image.jpg?v=1763004994'],
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale;
+  return {
+    openGraph: {
+      locale: locale === 'th' ? 'th_TH' : 'en_US',
+    },
+  };
+}
+
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f7f7f7"
+};
+
+
+export default function RootLayout({ children, params }: Props) {
+  const { locale } = params;
+
+  if (!['th', 'en'].includes(locale)) notFound();
+
   return (
     <html lang="en">
       <head>

@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { useForm, useWatch } from 'react-hook-form' // เพิ่ม useWatch
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Check, Package } from 'lucide-react'
+import { Check, Package, UserPen } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from "next-intl"
 import { useCartStore } from '../lib/shopify/cart/cart-store'
@@ -194,7 +194,10 @@ export default function CheckoutForm({ lang, amount }: Props) {
 
         {/* Contact */}
         <section className='lg:mt-12'>
-          <h2 className="text-2xl font-bold mb-4!">{t('contact')}</h2>
+          <h2 className="text-2xl font-bold mb-4! flex items-center gap-3">
+            <UserPen className="w-8 h-8" />
+            {t('contact')}
+          </h2>
           <div className='mb-4'>
             <input {...register('fullName')} placeholder={t('placeholder.name')} className="w-full px-3 py-4 text-xl border border-gray-300 rounded-md focus:border-black outline-none transition" />
             {errors.fullName && <p className="text-red-500! text-sm mt-1">{errors.fullName.message}</p>}

@@ -1,30 +1,42 @@
-'use client'
+import { CheckCircle2, Package, Truck, Motorbike } from 'lucide-react'
+import { t } from '@/app/lib/utils';
+import { getDictionary } from '../dictionaries';
 
-import { CheckCircle2, Package, Truck } from 'lucide-react'
+type Props = {
+  params: Promise<{ lang: string }>
+}
 
-export default function Page() {
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as 'en' | 'th');
+  console.log(dict)
+
   return (
-    <main className="py-32">
+    <main className="py-32 absolute top-0 w-screen h-screen right-0 z-2000 bg-white">
       <div className="max-w-2xl mx-auto text-center container">
-        <CheckCircle2 className="w-32 h-32 text-emerald-600 mx-auto mb-8" />
-        <h1 className="text-5xl font-bold mb-4!">ชำระเงินสำเร็จ!</h1>
-        <p className="text-2xl text-gray-700 mb-8!">ขอบคุณที่อุดหนุน เราจะจัดส่งสินค้าภายใน 24 ชม.</p>
+        <CheckCircle2 className="w-16 h-16 text-[#28a745] mx-auto mb-8" />
+        <h1 className="text-3xl font-bold mb-4!">{t(dict, 'thank_you.title')}</h1>
+        <p className="text-md text-gray-700 mb-8!">{t(dict, 'thank_you.paragraph')}</p>
 
         <div className="bg-white rounded-3xl shadow-2xl p-10 space-y-6">
-          <div className="flex items-center justify-center gap-4 text-xl">
-            <Package className="w-10 h-10 text-emerald-600" />
-            <span>เตรียมแพ็คสินค้า</span>
+          <div className="flex items-center justify-center gap-4 text-md">
+            <Package className="w-8 h-8 text-[#28a745]" />
+            <span>{t(dict, 'thank_you.list_1')}</span>
           </div>
-          <div className="flex items-center justify-center gap-4 text-xl">
-            <Truck className="w-10 h-10 text-emerald-600" />
-            <span>ส่ง Kerry Express พรุ่งนี้</span>
+          <div className="flex items-center justify-center gap-4 text-md">
+            <Truck className="w-8 h-8 text-[#28a745]" />
+            <span>{t(dict, 'thank_you.list_2')}</span>
+          </div>
+          <div className="flex items-center justify-center gap-4 text-md">
+            <Motorbike className="w-8 h-8 text-[#28a745]" />
+            <span>{t(dict, 'thank_you.list_3')}</span>
           </div>
 
           <a
-            href="https://www.google.com"
-            className="block mt-10 bg-emerald-600 text-white py-5 rounded-2xl text-xl font-bold"
+            href="https://www.facebook.com/lsn.thailand"
+            className="btn block mt-10 bg-[#28a745] text-white! py-5 rounded-2xl text-md font-bold"
           >
-            ติดตามสถานะพัสดุ
+            {t(dict, 'thank_you.button')}
           </a>
         </div>
       </div>

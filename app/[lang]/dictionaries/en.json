@@ -105,6 +105,14 @@
       "submitting": "Checking out..." 
     }
   },
+  "thank_you": {
+    "title": "Payment successful!",
+    "paragraph": "Thank you for your purchase. We will ship your items within 24 hours.",
+    "list_1": "Preparing to pack the items",
+    "list_2": "Shipping via Kerry Express tomorrow",
+    "list_3": "Sending via Messenger within the day",
+    "button": "Track your package"
+  },
   "404": {
     "title": "Oops! Lost in the Weed Forest",
     "description": "The page you're looking for seems to have vanished in a cloud of smoke. Or maybe we accidentally smoked it.",

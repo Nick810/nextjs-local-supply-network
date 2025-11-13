@@ -92,7 +92,7 @@ const DropzoneContent = ({ className, lang }: { className?: string, lang: string
       // รอสัก 1 วิให้ลูกค้าเห็น "Success" ก่อนรีไดเรกต์ (UX ดี)
       const timer = setTimeout(() => {
         router.push(`/${lang}/thank-you`) // เปลี่ยนตามที่ต้องการ
-      }, 1200)
+      }, 300)
 
       return () => clearTimeout(timer) // cleanup
     }

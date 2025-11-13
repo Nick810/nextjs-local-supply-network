@@ -10,13 +10,6 @@ import Hero from "../components/home/hero";
 import Letter from "../components/home/letter";
 import { setRequestLocale } from "next-intl/server";
 
-
-// export const dynamic = 'force-dynamic'; // Optional: forces SSR
-
-// const API_URL = process.env.NODE_ENV === 'development'
-//                   ? 'http://localhost:3000'
-//                   : process.env.NEXT_PUBLIC_SITE_URL;
-
 export default async function Page({
   params,
 }: {

@@ -1,12 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form' // เพิ่ม useWatch
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Check, Package } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from "next-intl"
+import { useCartStore } from '../lib/shopify/cart/cart-store'
+import { toast } from 'sonner'
 
 type Props = {
   lang: string
@@ -23,7 +25,7 @@ const shippingSchema = z.object({
   district: z.string().min(1),
   amphoe: z.string().min(1),
   province: z.string().min(1),
-  zipcode: z.string().length(5, 'รหัสไปรษณีย์ 5 หลัก'),
+  zipcode: z.string().regex(/^\d{5}$/, 'รหัสไปรษณีย์ต้องเป็นตัวเลข 5 หลัก'),
 })
 
 type ShippingForm = z.infer<typeof shippingSchema>
@@ -44,6 +46,9 @@ export default function CheckoutForm({ lang, amount }: Props) {
   const t = useTranslations('checkout')
   const router = useRouter()
   const isEN = lang === 'en'
+  
+  // เพิ่มบรรทัดนี้
+  const items = useCartStore((s) => s.items)
 
   const [data, setData] = useState<GeoItem[]>([])
   const [provinces, setProvinces] = useState<GeoItem[]>([])
@@ -57,7 +62,9 @@ export default function CheckoutForm({ lang, amount }: Props) {
     register,
     handleSubmit,
     setValue,
+    control, // เพิ่ม control
     formState: { errors, isSubmitting },
+    setValue: setFormValue // ตั้งชื่อใหม่เพื่อไม่ซ้ำ
   } = useForm<ShippingForm>({
     resolver: zodResolver(shippingSchema),
     mode: 'onChange',
@@ -69,6 +76,9 @@ export default function CheckoutForm({ lang, amount }: Props) {
     },
   })
 
+  // เพิ่ม useWatch
+  const watch = useWatch({ control })
+
   // โหลดข้อมูลครั้งเดียว
   useEffect(() => {
     fetch(CDN_URL)
@@ -76,7 +86,6 @@ export default function CheckoutForm({ lang, amount }: Props) {
       .then((raw: GeoItem[]) => {
         setData(raw)
 
-        // ดึงจังหวัดไม่ซ้ำ (ใช้ provinceCode เป็น key)
         const provMap = new Map<number, GeoItem>()
         raw.forEach(item => {
           if (!provMap.has(item.provinceCode)) {
@@ -95,13 +104,12 @@ export default function CheckoutForm({ lang, amount }: Props) {
     setSelectedDistCode(0)
     setDistricts([])
     setSubdistricts([])
-    setValue('amphoe', '')
-    setValue('district', '')
-    setValue('zipcode', '')
-    setValue('province', isEN ? data.find(d => d.provinceCode === codeNum)?.provinceNameEn || '' 
+    setFormValue('amphoe', '')
+    setFormValue('district', '')
+    setFormValue('zipcode', '')
+    setFormValue('province', isEN ? data.find(d => d.provinceCode === codeNum)?.provinceNameEn || '' 
                               : data.find(d => d.provinceCode === codeNum)?.provinceNameTh || '')
 
-    // ดึงอำเภอในจังหวัดนี้
     const distMap = new Map<number, GeoItem>()
     data.forEach(item => {
       if (item.provinceCode === codeNum && !distMap.has(item.districtCode)) {
@@ -116,29 +124,63 @@ export default function CheckoutForm({ lang, amount }: Props) {
     const codeNum = Number(code)
     setSelectedDistCode(codeNum)
     setSubdistricts([])
-    setValue('district', '')
-    setValue('zipcode', '')
-    setValue('amphoe', isEN ? data.find(d => d.districtCode === codeNum)?.districtNameEn || ''
+    setFormValue('district', '')
+    setFormValue('zipcode', '')
+    setFormValue('amphoe', isEN ? data.find(d => d.districtCode === codeNum)?.districtNameEn || ''
                             : data.find(d => d.districtCode === codeNum)?.districtNameTh || '')
 
-    // ดึงตำบลในอำเภอนี้
     const filtered = data.filter(item => item.districtCode === codeNum)
     setSubdistricts(filtered)
   }
 
   // เมื่อเลือกตำบล
   const handleSubdistrictChange = (code: string) => {
-    const item = subdistricts.find(s => s.subdistrictCode === Number(code))
-    if (item) {
-      setValue('district', isEN ? item.subdistrictNameEn : item.subdistrictNameTh)
-      setValue('zipcode', item.postalCode)
-    }
+  const item = subdistricts.find(s => s.subdistrictCode === Number(code))
+  if (item) {
+    setFormValue('district', isEN ? item.subdistrictNameEn : item.subdistrictNameTh)
+    // แก้ตรงนี้: บังคับให้เป็น string เสมอ
+    setFormValue('zipcode', String(item.postalCode).trim())
   }
+}
 
-  const onSubmit = (data: ShippingForm) => {
-    console.log('ที่อยู่:', data)
-    alert('บันทึกที่อยู่เรียบร้อย!')
-    router.push(`/${lang}/payment?amount=${amount}`)
+  const onSubmit = async (data: ShippingForm) => {
+    const orderItems = items.map(item => ({
+      variantId: item.variantId,
+      title: item.title,
+      price: item.price,
+      image: item.image,
+      varaintTitle: item.varaintTitle
+    }))
+
+    const res = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: data.fullName,
+        phone: data.phone,
+        email: data.email || null,
+        addressLine: data.addressLine,
+        province: watch.province,
+        amphoe: watch.amphoe,
+        district: data.district,
+        zipcode: data.zipcode,
+        totalAmount: amount,
+        items: orderItems
+      })
+    })
+
+    const result = await res.json()
+
+    if (result.success) {
+      toast.success(t('order.sucess'), {
+        description: 'Order ID: ' + result.order_id + t('order.sucess')
+      })
+      router.push(`/${lang}/payment?order_id=${result.order_id}&amount=${amount}`)
+    } else {
+      toast.error(t('order.fail'), {
+        description: result.error || t('order.fail_desc')
+      })
+    }
   }
 
   return (

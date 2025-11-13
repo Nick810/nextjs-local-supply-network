@@ -55,7 +55,7 @@
     "empty_pg": "Your cart is empty",
     "subtotal": "Subtotal",
     "button": {
-      "checkout": "Check out",
+      "checkout": "Checkout",
       "loading": "Please wait..."
     }
   },
@@ -74,6 +74,12 @@
       "dis": "District / Amphoe",
       "prov": "Province",
       "postal": "ZIP code"
+    },
+    "order": {
+      "success": "Order placed successfully!",
+      "success_desc": "Redirecting to payment...", 
+      "fail": "Order failed",
+      "fail_desc": "Unable to create order. Please try again."
     },
     "payment_method": {
       "title": "Payment Method",

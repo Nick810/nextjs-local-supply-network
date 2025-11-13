@@ -7,6 +7,8 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import { routing } from "../i18n/routing";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { Toaster } from 'sonner';
+
  
 export function generateStaticParams() {
   return routing.locales.map((locale: string) => ({locale}));
@@ -34,6 +36,12 @@ export default async function RootLayout({
         <Header lang={lang}/>
           {children}
         <Footer lang={lang} />
+        <Toaster 
+          position="top-center"
+          richColors
+          closeButton
+          duration={4000}
+        />
       </NextIntlClientProvider>
     </div>
   )

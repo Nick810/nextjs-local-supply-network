@@ -47,6 +47,7 @@
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
     "resend": "^6.2.2",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "thai-address-autocomplete-react": "^1.2.2",
     "zod": "^4.1.12",

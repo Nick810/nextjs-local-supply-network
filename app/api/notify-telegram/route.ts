@@ -49,6 +49,7 @@ export async function POST(req: Request) {
     const body = await req.json()
     const {
       order_id,
+      order_number,
       full_name,
       phone,
       email,
@@ -80,25 +81,26 @@ export async function POST(req: Request) {
     ).join('\n')
 
     const message = `
-<b>ออเดอร์ใหม่มาแล้ว!</b>
-<b>Order ID:</b> <code>${order_id}</code>
-<b>สถานะ:</b> <code>${status.toUpperCase()}</code>
+      <b>ออเดอร์ใหม่มาแล้ว!</b>
+      <b>Order No:</b> <code>#${order_number}</code> 
+      <b>Order ID:</b> <code>${order_id}</code>
+      <b>สถานะ:</b> <code>${status.toUpperCase()}</code>
 
-<b>ลูกค้า:</b>
-${full_name}
-${phone}
-${email ? email : '<i>ไม่มีอีเมล</i>'}
+      <b>ลูกค้า:</b>
+      ${full_name}
+      ${phone}
+      ${email ? email : '<i>ไม่มีอีเมล</i>'}
 
-<b>ที่อยู่จัดส่ง:</b>
-${address_line}
-${district} ${amphoe} ${province} ${zipcode}
+      <b>ที่อยู่จัดส่ง:</b>
+      ${address_line}
+      ${district} ${amphoe} ${province} ${zipcode}
 
-<b>สินค้า:</b>
-${itemList}
+      <b>สินค้า:</b>
+      ${itemList}
 
-<b>ยอดรวม:</b> ฿${Number(total_amount).toLocaleString()}
-<a href="https://yourdomain.com/payment?order_id=${order_id}">ชำระเงินที่นี่</a>
-`.trim()
+      <b>ยอดรวม:</b> ฿${Number(total_amount).toLocaleString()}
+      <a href="https://yourdomain.com/payment?order_id=${order_id}">ชำระเงินที่นี่</a>
+      `.trim()
 
     const telegramRes = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useForm, useWatch } from 'react-hook-form' // เพิ่ม useWatch
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -17,18 +17,6 @@ type Props = {
 
 const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL!
 
-const shippingSchema = z.object({
-  fullName: z.string().min(3, 'กรุณากรอกชื่อ-นามสกุล').regex(/^[\u0E00-\u0E7F\s]+$/, 'ใช้ได้เฉพาะตัวอักษรไทย'),
-  email: z.string().email('รูปแบบอีเมลไม่ถูกต้อง').optional().or(z.literal('')),
-  phone: z.string().regex(/^0[6-9]\d{8}$/, 'เบอร์ไม่ถูกต้อง (เช่น 0812345678)'),
-  addressLine: z.string().min(10, 'กรอกรายละเอียดที่อยู่ให้ครบ'),
-  district: z.string().min(1),
-  amphoe: z.string().min(1),
-  province: z.string().min(1),
-  zipcode: z.string().regex(/^\d{5}$/, 'รหัสไปรษณีย์ต้องเป็นตัวเลข 5 หลัก'),
-})
-
-type ShippingForm = z.infer<typeof shippingSchema>
 interface GeoItem {
   provinceCode: number
   provinceNameTh: string
@@ -47,17 +35,30 @@ export default function CheckoutForm({ lang, amount }: Props) {
   const router = useRouter()
   const isEN = lang === 'en'
   
+  const shippingSchema = useMemo(() => z.object({
+    fullName: z.string().min(3, t('shipping_schema.name_1')).regex(/^[\u0E00-\u0E7F\sA-Za-z]+$/, t('shipping_schema.name_2')),
+    email: z.string().email(t('shipping_schema.email')).optional().or(z.literal('')),
+    phone: z.string().regex(/^0[6-9]\d{8}$/, t('shipping_schema.phone')),
+    addressLine: z.string().min(10, t('shipping_schema.address')),
+    district: z.string().min(1, t('shipping_schema.district')),
+    amphoe: z.string().min(1, t('shipping_schema.amphoe')),
+    province: z.string().min(1, t('shipping_schema.province')),
+    zipcode: z.string().regex(/^\d{5}$/, t('shipping_schema.zipcode')),
+  }), [t])
+
+  type ShippingForm = z.infer<typeof shippingSchema>
+
   // เพิ่มบรรทัดนี้
   const items = useCartStore((s) => s.items)
-
+  
   const [data, setData] = useState<GeoItem[]>([])
   const [provinces, setProvinces] = useState<GeoItem[]>([])
   const [districts, setDistricts] = useState<GeoItem[]>([])
   const [subdistricts, setSubdistricts] = useState<GeoItem[]>([])
-
+  
   const [selectedProvCode, setSelectedProvCode] = useState<number>(0)
   const [selectedDistCode, setSelectedDistCode] = useState<number>(0)
-
+  
   const {
     register,
     handleSubmit,
@@ -76,6 +77,7 @@ export default function CheckoutForm({ lang, amount }: Props) {
     },
   })
 
+  
   // เพิ่ม useWatch
   const watch = useWatch({ control })
 

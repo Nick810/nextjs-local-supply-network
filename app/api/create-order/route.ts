@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         color: i.varaintTitle.split('/')[0]?.trim() === 'Default Title' ? null : i.varaintTitle.split('/')[0]?.trim()
       }))
     })
-    .select('id')
+    .select('id, order_number')
     .single()
 
   if (error) {
@@ -62,6 +62,7 @@ export async function POST(request: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           order_id: order.id,
+          order_number: String(order.order_number).padStart(3, '0'),
           full_name: fullName,
           phone,
           email: email || null,

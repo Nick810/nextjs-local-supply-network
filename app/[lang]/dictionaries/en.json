@@ -81,6 +81,17 @@
       "fail": "Order failed",
       "fail_desc": "Unable to create order. Please try again."
     },
+    "shipping_schema": {
+      "name_1": "Please enter full name",
+      "name_2": "Only Thai and English letters allowed",
+      "email": "Invalid email format",
+      "phone": "Invalid phone (e.g. 0812345678)",
+      "address": "Please enter full address",
+      "district": "Required",
+      "amphoe": "Required",
+      "province": "Required",
+      "zipcode": "5-digit postal code"
+    },
     "payment_method": {
       "title": "Payment Method",
       "method": "PromptPay QR",

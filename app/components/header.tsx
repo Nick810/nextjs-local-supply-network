@@ -1,7 +1,7 @@
 'use client';
 
 import Hamburger from "hamburger-react"
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import MobileNav from "./mobilenav";
 import Cart from "./cart";
 import Link from "next/link";
@@ -11,7 +11,6 @@ import Bag from '../../public/bag-icon.svg';
 import { useCartStore } from '@/app/lib/shopify/cart/cart-store'
 import DesktopMenu from "./desktop-menu";
 import LangSelector from "./lang-selector";
-// import { TextData } from "./banner";
 
 interface HeaderProps {
   lang: string
@@ -20,7 +19,23 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ lang }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isCartOpen, setCartOpen] = useState<boolean>(false);
-  const items = useCartStore(s => s.items);
+  const [cartItems, setCartItems] = useState(() => useCartStore.getState().items)
+  const [totalQuantity, setTotalQuantity] = useState(0)
+
+  useEffect(() => {
+    const unsubscribe = useCartStore.subscribe(
+      (state) => {
+        const items = state.items
+        setCartItems(items)
+        setTotalQuantity(items.reduce((sum, item) => sum + (item.quantity || 1), 0))
+      }
+    )
+
+    const initialItems = useCartStore.getState().items
+    setTotalQuantity(initialItems.reduce((sum, item) => sum + (item.quantity || 1), 0))
+
+    return unsubscribe
+  }, [])
   
   return (
     <>
@@ -43,7 +58,11 @@ const Header: FC<HeaderProps> = ({ lang }) => {
             <LangSelector currentLang={lang} />
             <DesktopMenu lang={lang} />
             <button onClick={() => setCartOpen(true)} className="text-black cursor-pointer relative lg:shrink-0">
-              { !!items.length && (<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-600 w-4 h-4 flex justify-center items-center text-white rounded-full text-[0.5rem]">{ items.length }</div>) }
+              {totalQuantity > 0 && (
+                <div className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-600 w-4 h-4 flex justify-center items-center text-white rounded-full text-[0.5rem]">
+                  {totalQuantity}
+                </div>
+              )}
               <Image src={Bag} alt="Shopping Cart Icon" width={28} height={28} priority />
             </button>
           </div>

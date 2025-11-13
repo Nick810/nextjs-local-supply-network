@@ -33,6 +33,7 @@ export default function OrderSummary({ amount }: Props) {
             {
             items.map((item) => {
               const [color, size] = item.varaintTitle.split('/');
+              const { quantity } = item;
 
               return (
                 <li
@@ -46,6 +47,7 @@ export default function OrderSummary({ amount }: Props) {
                         alt={item.title} 
                         className="object-cover rounded-md"
                         />
+                      <span className="absolute -top-3 z-10 -right-3 py-1 px-2 bg-white border border-gray-500 rounded-full text-xs">{ quantity }</span>
                     </div>
 
                     <div className="flex-1 flex flex-col gap-1">

@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from "next-intl"
 import { useCartStore } from '../lib/shopify/cart/cart-store'
 import { toast } from 'sonner'
+import PromptpayLogo from '@/public/promptpay-logo.png'
+import Image from 'next/image'
 
 type Props = {
   lang: string
@@ -151,6 +153,7 @@ export default function CheckoutForm({ lang, amount }: Props) {
       title: item.title,
       price: item.price,
       image: item.image,
+      quantity: item.quantity,
       varaintTitle: item.varaintTitle
     }))
 
@@ -283,18 +286,22 @@ export default function CheckoutForm({ lang, amount }: Props) {
           <h2 className="text-3xl font-bold mb-4!">
             {t('payment_method.title')}
           </h2>
-          <div className="bg-gray-200 text-white p-8 rounded-lg">
+          <div className="bg-blue-900 text-white p-8 rounded-md border-2 border-blue-500 max-w-lg">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+              <Check className="w-8 h-8" />
+              <div className="flex items-center gap-4 g">
                 <div className="bg-white p-3 rounded-full text-black">
                   QR
                 </div>
                 <div>
-                  <p className="font-bold">{t('payment_method.method')}</p>
-                  <p className="text-sm opacity-90">{t('payment_method.description')}</p>
+                  <p className="font-bold text-white!">{t('payment_method.method')}</p>
+                  <p className="text-sm opacity-90 text-white!">{t('payment_method.description')}</p>
+                </div>
+                <div className='relative aspect-video w-full max-w-20'>
+                  <Image src={PromptpayLogo} alt="" fill/>
                 </div>
               </div>
-              <Check className="w-10 h-10" />
+              
             </div>
           </div>
         </section>
@@ -302,9 +309,9 @@ export default function CheckoutForm({ lang, amount }: Props) {
         <button
           type="submit"
           disabled={isSubmitting || !selectedProvCode || !selectedDistCode}
-          className="btn bg-accent"
+          className="btn bg-accent max-w-lg"
         >
-          {isSubmitting ? 'กำลังบันทึก...' : 'ชำระเงิน'}
+          {isSubmitting ? t('button.submitting') : t('button.submit')}
         </button>
       </form>
     </div>

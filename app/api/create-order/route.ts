@@ -40,7 +40,7 @@ export async function POST(request: Request) {
         variant_id: i.variantId,
         title: i.title,
         price: Number(i.price),
-        quantity: 1,
+        quantity: Number(i.quantity) || 1,
         image: i.image,
         size: i.varaintTitle.split('/')[1]?.trim(),
         color: i.varaintTitle.split('/')[0]?.trim() === 'Default Title' ? null : i.varaintTitle.split('/')[0]?.trim()
@@ -75,6 +75,7 @@ export async function POST(request: Request) {
           items: items.map((i: any) => ({
             title: i.title,
             price: i.price,
+            quantity: Number(i.quantity) || 1,
             color: i.varaintTitle.split('/')[0]?.trim() === 'Default Title' ? null : i.varaintTitle.split('/')[0]?.trim(),
             size: i.varaintTitle.split('/')[1]?.trim(),
           })),

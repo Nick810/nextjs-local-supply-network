@@ -49,6 +49,9 @@
     "sizes": "ขนาด",
     "quantity": "จำนวน",
     "details": "รายละเอียด",
+    "adding_product": {
+      "completed": "ใส่ตะกร้าเรียบร้อย"
+    },
     "recommended_products": {
       "title": "คุณอาจสนใจ"
     }
@@ -99,6 +102,10 @@
       "title": "วิธีชำระเงิน",
       "method": "พร้อมเพย์ คิวอาร์",
       "description": "สแกนจ่ายผ่านแอปธนาคาร"
+    },
+    "button": {
+      "submit": "ชำระเงิน",
+      "submitting": "กำลังบันทึก..." 
     }
   },
   "menu": {

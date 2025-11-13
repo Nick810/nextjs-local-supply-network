@@ -46,6 +46,9 @@
     "sizes": "Sizes",
     "quantity": "Quantity",
     "details": "Details",
+    "adding_product": {
+      "completed": "Added to Cart"
+    },
     "recommended_products": {
       "title": "You may also like"
     }
@@ -96,6 +99,10 @@
       "title": "Payment Method",
       "method": "PromptPay QR",
       "description": "Scan with your banking app to pay"
+    },
+    "button": {
+      "submit": "Checkout",
+      "submitting": "Checking out..." 
     }
   },
   "404": {

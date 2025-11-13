@@ -13,6 +13,8 @@ import RichTextRenderer from "../rich-text-renderer";
 import Link from "next/link";
 import { VENDORS } from "@/app/lib/vendors";
 import { useTranslations } from "next-intl";
+import { toast } from 'sonner'
+
 
 interface ProductProps {
   lang: string;
@@ -79,6 +81,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
     () => selectedVariant?.priceV2?.amount || "0",
     [selectedVariant]
   );
+  const t = useTranslations('product');
   const handleAddToCart = useCallback(() => {
     if (!selectedVariant || !selectedVariant.availableForSale) return;
     addItem({
@@ -89,12 +92,11 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
       image: product!.images?.edges[0]?.node.url,
       quantity,
     });
-  }, [addItem, selectedVariant, quantity, product]);
+    toast.success(product?.title + ' ' + t('adding_product.completed'))
+  }, [addItem, selectedVariant, quantity, product, t]);
   const hasOneVariantAndDefaultTitle = variants.length === 1 && variants[0].title === 'Default Title'
 
   const OPTIONS: EmblaOptionsType = { axis: 'y' }
-
-  const t = useTranslations('product');
   const tBtn = useTranslations('button');
 
   const renderPurchaseSection = () => {
@@ -208,11 +210,7 @@ const Product: React.FC<ProductProps> = ({ product, lang }) => {
                   </option>
                 ))}
               </select>
-
-              {/* Custom dropdown arrow */}
-              <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500 text-xs">
-                <Image src="/arrow-down.svg" alt="" width={16} height={16} priority />
-              </div>
+              
             </div>
           </div>
         </div>

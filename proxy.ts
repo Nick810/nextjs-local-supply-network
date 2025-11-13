@@ -1,32 +1,52 @@
+// import createMiddleware from 'next-intl/middleware';
+// import {routing} from './app/i18n/routing';
+
+// export default createMiddleware(routing);
+
+// export const config = {
+//   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+// };
+
+
 // middleware.ts
-import { NextResponse } from 'next/server';
-import { match } from '@formatjs/intl-localematcher';
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './app/i18n/routing';
-import Negotiator from 'negotiator';
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './app/i18n/routing'
+import { NextRequest, NextResponse } from 'next/server'
 
-// function getLocale(request: Request): string {
-//   const negotiator = new Negotiator({ headers: Object.fromEntries(request.headers) });
-//   const languages = negotiator.languages();
-//   return match(languages, locales, defaultLocale);
-// }
+const intlMiddleware = createMiddleware(routing)
 
-export default createMiddleware(routing);
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
 
+  // 1. ถ้าเป็นหน้าเลือกภาษา → ให้ผ่านไปเลย (ไม่ต้อง intlMiddleware)
+  if (pathname === '/language-select') {
+    return NextResponse.next() // สำคัญ! ใช้ next() ไม่ใช่ intlMiddleware
+  }
 
-// export function middleware(request: Request) {
-//   const { pathname } = new URL(request.url);
-//   const pathnameHasLocale = locales.some(
-//     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-//   );
+  // 2. ข้าม api + static
+  if (
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/_next') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next()
+  }
 
-//   if (pathnameHasLocale) return;
+  // 3. ตรวจสอบว่ามี cookie ภาษาหรือยัง
+  const hasLocaleCookie = request.cookies.has('NEXT_LOCALE')
 
-//   const locale = getLocale(request);
-//   const newUrl = new URL(`/${locale}${pathname}`, request.url);
-//   return NextResponse.redirect(newUrl);
-// }
+  // ถ้ายังไม่มี → ส่งไปเลือกภาษา (ไม่มี locale prefix)
+  if (!hasLocaleCookie) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/language-select'
+    url.search = ''
+    return NextResponse.redirect(url)
+  }
+
+  // มี cookie แล้ว → ให้ next-intl จัดการ (เพิ่ม /th หรือ /en)
+  return intlMiddleware(request)
+}
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
-};
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+}

@@ -326,3 +326,15 @@ p, a, span, li, select, option, label, input, textarea, button {
     @apply bg-background text-foreground;
   }
 }
+
+.btn--hover-green {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.btn--hover-green:hover {
+  background-color: #EAF7E9 !important;
+  color: #326e3f !important;
+  border: 2px solid #326e3f; 
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(50, 110, 63, 0.2);
+}

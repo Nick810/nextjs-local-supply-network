@@ -290,7 +290,7 @@ export default function CheckoutForm({ lang, amount }: Props) {
             {t('payment_method.title')}
           </h2>
           <div className="bg-blue-900 text-white p-8 rounded-md border-2 border-blue-500 max-w-lg">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center gap-8">
               <Check className="w-8 h-8" />
               <div className="flex items-center gap-4 g">
                 <div className="bg-white p-3 rounded-full text-black">
@@ -312,7 +312,7 @@ export default function CheckoutForm({ lang, amount }: Props) {
         <button
           type="submit"
           disabled={isSubmitting || !selectedProvCode || !selectedDistCode}
-          className="btn bg-accent max-w-lg"
+          className="btn bg-accent max-w-lg py-4!"
         >
           {isSubmitting ? t('button.submitting') : t('button.submit')}
         </button>

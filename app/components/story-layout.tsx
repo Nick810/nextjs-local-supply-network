@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function StoryLayout({
   allPaths,
@@ -14,6 +15,8 @@ export default function StoryLayout({
 }) {
   const topMenuRef = useRef<HTMLUListElement>(null)
   const [showBottomMenu, setShowBottomMenu] = useState(false)
+  const pathname = usePathname()
+  const currentSlug = pathname.split('/').pop()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,18 +43,27 @@ export default function StoryLayout({
         {/* Top Menu */}
         <ul
           ref={topMenuRef}
-          className="w-full lg:w-3/5 px-4 py-6 space-y-2 bg-gray-50 rounded-md shadow-sm lg:h-[60vh] hidden lg:block"
+          className="w-full lg:w-3/5 px-4 py-6 space-y-2 bg-gray-50 rounded-lg shadow-sm
+                    lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto
+                    custom-scrollbar hidden lg:block"
         >
-          {allPaths.map((path, index) => (
-            <li key={index}>
-              <Link
-                href={`/${lang}/story/${path.slug}`}
-                className="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-600 transition-colors"
-              >
-                {path.slug}
-              </Link>
-            </li>
-          ))}
+          {allPaths.map((path, index) => {
+            const isActive = path.slug === currentSlug
+            return (
+              <li key={index}>
+                <Link
+                  href={`/${lang}/story/${path.slug}`}
+                  className={`block px-4 py-2 rounded-md transition-all duration-200
+                    ${isActive
+                      ? 'bg-accent text-white! font-medium shadow-sm translate-x-1'
+                      : 'text-gray-700 hover:bg-red-100 hover:text-accent hover:translate-x-1'
+                    }`}
+                >
+                  {path.slug}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
         {/* Story Content */}

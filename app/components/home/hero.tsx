@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ lang, title }) => {
       <Image src={HeroBg} alt="" className='object-cover w-full h-full' />
       <div className={`absolute top-1/2 left-0 transform -translate-y-1/2 text-left w-full px-[5%] max-w-[1000px]`}>
         <h1 
-          className={`text-[10vw] md:text-8xl text-black! my-8! futura-bold-important leading-15! md:leading-22! uppercase`}
+          className={`text-[10vw] md:text-8xl text-black! my-8! futura-bold-important leading-15! md:leading-22! uppercase ${lang === 'th' ? 'font-th-h' : ''}`}
           dangerouslySetInnerHTML={{ __html: title }} /> 
         <Link
           href={`/${lang}/collections/all`}

@@ -195,6 +195,25 @@ p, a, span, li, select, option, label, input, textarea, button {
   font-style: normal;
 }
 
+.font-th-h {
+  font-family: "aktiv-grotesk-thai", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* font-family: "aktiv-grotesk-thai", sans-serif;
+font-weight: 300;
+font-style: normal;
+font-family: "aktiv-grotesk-thai", sans-serif;
+font-weight: 500;
+font-style: normal; */
+
+.font-th-p {
+  font-family: "aktiv-grotesk-thai", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .container {
   max-width: var(--max-width-container);
   margin-left: auto;

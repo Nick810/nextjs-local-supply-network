@@ -3,6 +3,7 @@ import Header from "../components/header";
 import '@fontsource/crimson-text';
 import '../styles/reset.css'
 import '../styles/globals.css'
+import '../styles/prose.css'
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import { routing } from "../i18n/routing";
 import { notFound } from "next/navigation";

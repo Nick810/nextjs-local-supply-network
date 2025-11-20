@@ -22,7 +22,7 @@ export default function QRrenderer({ amount }: { amount: string } ) {
   if (!qr) return <p className="text-gray-400">Generating QR code...</p>
 
   return (
-    <div>
+    <div className="m-auto">
       {/* <Image src={qr} alt="PromptPay QR" width={300} height={300} /> */}
       <img 
         src={qr} 

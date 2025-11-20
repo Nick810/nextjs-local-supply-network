@@ -15,7 +15,7 @@ export default function NotFound() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#ffffff] via-[#d2d2d2] to-[#bcbfbc] flex items-center justify-center p-8 overflow-hidden relative">
+    <div className="min-h-screen bg-linear-to-br from-[#ffffff] via-[#d2d2d2] to-[#bcbfbc] flex items-center justify-center p-8 overflow-hidden relative py-32">
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div 

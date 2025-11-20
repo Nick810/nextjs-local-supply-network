@@ -131,7 +131,7 @@ export default async function Page({
         <Filter lang={lang} />
 
         { sortedProducts.length ? 
-            <ul className="grid grid-cols-2 md:grid-cols-3 w-full gap-8">
+            <ul className="grid grid-cols-2 md:grid-cols-3 w-full gap-4">
               {sortedProducts.map((node) => (
                 <ProductCard product={node} key={node.id} slug={slug} lang={lang} />
               ))}

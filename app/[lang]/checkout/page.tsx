@@ -1,4 +1,4 @@
-import CheckoutForm from "@/app/components/checkout";
+import CheckoutForm from "@/app/components/checkout-form";
 import OrderSummary from "@/app/components/order-summary";
 
 type Props = {

@@ -39,11 +39,11 @@ export default function StoryLayout({
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row lg:gap-16">
+      <div className="flex flex-col lg:flex-row lg:gap-16 lg:ml-8">
         {/* Top Menu */}
         <ul
           ref={topMenuRef}
-          className="w-full lg:w-3/5 px-4 py-6 space-y-2 bg-gray-50 rounded-lg shadow-sm
+          className="w-full lg:w-3/5 px-4 py-6 space-y-2  rounded-lg shadow-2xl/5
                     lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto
                     custom-scrollbar hidden lg:block"
         >

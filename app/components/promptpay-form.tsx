@@ -32,7 +32,7 @@ interface GeoItem {
   postalCode: string
 }
 
-export default function CheckoutForm({ lang, amount }: Props) {
+export default function PromptPayForm({ lang, amount }: Props) {
   const t = useTranslations('checkout')
   const router = useRouter()
   const isEN = lang === 'en'

@@ -1,11 +1,9 @@
 // app/api/create-order/route.ts
-import { createClient } from '@/lib/supabase/server' // หรือ path ที่คุณใช้
+import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   const supabase = await createClient()
-
-  // ดึง user (ถ้ามี) — ถ้าไม่มีก็เป็น null
   const { data: { user } } = await supabase.auth.getUser()
 
   const body = await request.json()
@@ -19,23 +17,32 @@ export async function POST(request: Request) {
     district,
     zipcode,
     totalAmount,
-    items
+    items,
+    googleMapsLink,        // เพิ่มบรรทัดนี้
+    shippingMethod         // เพิ่มด้วย (เพื่อใช้ใน Telegram)
   } = body
+
+  // ใช้ที่อยู่จริง หรือ googleMapsLink (เฉพาะส่งด่วน)
+  const finalAddressLine = shippingMethod === 'express' 
+    ? (googleMapsLink || 'ส่งด่วนพิเศษ — รอคุยที่อยู่') 
+    : addressLine
 
   const { data: order, error } = await supabase
     .from('orders')
     .insert({
-      user_id: user?.id || null,                    // ถ้าไม่มี user → null
-      guest_id: user ? null : undefined,            // ถ้าไม่มี user → สร้าง guest_id อัตโนมัติ
+      user_id: user?.id || null,
+      guest_id: user ? null : undefined,
       full_name: fullName,
       phone,
       email: email || null,
-      address_line: addressLine,
-      province,
-      amphoe,
-      district,
-      zipcode,
+      address_line: finalAddressLine,           // ใช้ที่อยู่ที่คำนวณแล้ว
+      province: shippingMethod === 'express' ? null : province,
+      amphoe: shippingMethod === 'express' ? null : amphoe,
+      district: shippingMethod === 'express' ? null : district,
+      zipcode: shippingMethod === 'express' ? null : zipcode,
       total_amount: Number(totalAmount),
+      google_maps_link: googleMapsLink || null, // เพิ่มตรงนี้
+      shipping_method: shippingMethod,          // บันทึกด้วยเลย (ดีมาก)
       items: items.map((i: any) => ({
         variant_id: i.variantId,
         title: i.title,
@@ -54,6 +61,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 400 })
   }
 
+  // แจ้ง Telegram
   try {
     const notifyRes = await fetch(
       new URL('/api/notify-telegram', process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -66,11 +74,11 @@ export async function POST(request: Request) {
           full_name: fullName,
           phone,
           email: email || null,
-          address_line: addressLine,
-          province,
-          amphoe,
-          district,
-          zipcode,
+          address_line: finalAddressLine,  // ใช้ที่อยู่เดียวกัน
+          province: shippingMethod === 'express' ? "-" : province,
+          amphoe: shippingMethod === 'express' ? "-" : amphoe,
+          district: shippingMethod === 'express' ? "-" : district,
+          zipcode: shippingMethod === 'express' ? "-" : zipcode,
           total_amount: totalAmount,
           items: items.map((i: any) => ({
             title: i.title,
@@ -79,16 +87,14 @@ export async function POST(request: Request) {
             color: i.varaintTitle.split('/')[0]?.trim() === 'Default Title' ? null : i.varaintTitle.split('/')[0]?.trim(),
             size: i.varaintTitle.split('/')[1]?.trim(),
           })),
-          status: 'pending'
+          status: shippingMethod === 'express' ? 'pending_express' : 'pending'
         })
       }
     )
 
-    const notifyResult = await notifyRes.json()
     if (!notifyRes.ok) {
-      console.error('Telegram notify failed:', notifyResult)
-    } else {
-      console.log('Telegram notified!', notifyResult)
+      const err = await notifyRes.json()
+      console.error('Telegram notify failed:', err)
     }
   } catch (err) {
     console.error('Failed to send Telegram notification:', err)
@@ -97,6 +103,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     success: true,
     order_id: order.id,
-    message: 'สร้างออเดอร์และแจ้งแอดมินแล้ว'
+    order_number: order.order_number,
+    message: 'สร้างออเดอร์สำเร็จ'
   })
 }

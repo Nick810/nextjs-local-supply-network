@@ -81,7 +81,16 @@
       "prov": "จังหวัด",
       "postal": "รหัสไปรษณีย์"
     },
+    "shipping_method": {
+      "title": "วิธีจัดส่ง",
+      "reg_shipping": "ส่งธรรมดา (Kerry Express)",
+      "reg_shipping_time": "1–3 วัน • กรอกที่อยู่",
+      "exp_shipping": "ด่วนพิเศษ Messenger (Lineman, Grab)",
+      "exp_shipping_time": "1–2 ชม. • แอดมินติดต่อในแชท",
+      "exp_delivery_title": "ติดต่อแอดมินเพื่อนัดหมาย"
+    },
     "order": {
+      "total": "ยอดรวม",
       "success": "สั่งซื้อสำเร็จ!",
       "success_desc": "กำลังพาไปชำระเงิน...", 
       "fail": "เกิดข้อผิดพลาดในการสั่งซื้อ",
@@ -103,9 +112,16 @@
       "method": "พร้อมเพย์ คิวอาร์",
       "description": "สแกนจ่ายผ่านแอปธนาคาร"
     },
+    "google_map": {
+      "title": "ปักหมุดที่อยู่รับสินค้า (ไม่บังคับ)",
+      "placeholder": "วางลิงก์ Google Maps ที่นี่ (เช่น https://maps.app.goo.gl/xxxx)",
+      "helper": "วิธีทำ: เปิด Google Maps → แตะจุดที่ต้องการ → กด 'แชร์' → คัดลอกลิงก์"
+    },
     "button": {
       "submit": "ชำระเงิน",
-      "submitting": "กำลังบันทึก..." 
+      "submitting": "กำลังบันทึก...",
+      "line": "คุยผ่าน Line",
+      "tele": "คุยผ่าน telegram"
     }
   },
   "thank_you": {

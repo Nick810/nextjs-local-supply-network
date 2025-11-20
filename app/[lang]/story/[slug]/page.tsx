@@ -43,7 +43,7 @@ export default async function Page({
       </div>
       <StoryLayout allPaths={allPaths} lang={lang}>
         <article className="prose prose-invert max-w-none pb-16 px-[2%]">
-          {data.title && <h1 className="text-4xl font-bold mb-8!">{data.title}</h1>}
+          {data.title && <h1 className="text-4xl! font-bold mb-8!">{data.title}</h1>}
           <MDXRemote
             source={content}
             options={{

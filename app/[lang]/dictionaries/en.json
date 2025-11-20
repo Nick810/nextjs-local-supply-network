@@ -78,7 +78,16 @@
       "prov": "Province",
       "postal": "ZIP code"
     },
+    "shipping_method": {
+      "title": "Shipping Method",
+      "reg_shipping": "Standard Shipping (Kerry Express)",
+      "reg_shipping_time": "1 – 3 days • Please fill in your address",
+      "exp_shipping": "Flash Delivery (Lineman, Grab, Messenger)",
+      "exp_shipping_time": "1 – 2 hours • Admin will contact you via chat",
+      "exp_delivery_title": "Chat with Admin for Same-Day Delivery"
+    },
     "order": {
+      "total": "Total",
       "success": "Order placed successfully!",
       "success_desc": "Redirecting to payment...", 
       "fail": "Order failed",
@@ -100,9 +109,16 @@
       "method": "PromptPay QR",
       "description": "Scan with your banking app to pay"
     },
+    "google_map": {
+      "title": "Drop a pin for delivery location (optional)",
+      "placeholder": "Paste Google Maps link here (e.g. https://maps.app.goo.gl/xxxx)",
+      "helper": "How: Open Google Maps → Tap your location → Share → Copy link"
+    },
     "button": {
       "submit": "Checkout",
-      "submitting": "Checking out..." 
+      "submitting": "Checking out...",
+      "line": "Chat on Line",
+      "tele": "Chat on telegram"
     }
   },
   "thank_you": {

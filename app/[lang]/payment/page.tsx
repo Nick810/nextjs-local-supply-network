@@ -20,19 +20,21 @@ export default async function Page({ searchParams, params }: Props) {
 
   return (
     <main className="py-32 container">
-      <h1 className="text-xl font-semibold mb-4">Complete Your Payment</h1>
-      <p className="text-gray-600 mb-2">Scan the QR code below using your banking app</p>
-      <p className="text-sm text-gray-500 mb-4">Amount: <strong>฿{Number(amount).toLocaleString()}</strong></p>
+      <div className='flex flex-col text-center'>
+        <h1 className="text-xl font-semibold mb-4">Complete Your Payment</h1>
+        <p className="text-gray-600 mb-2">Scan the QR code below using your banking app</p>
+        <p className="text-sm text-gray-500 mb-4">Amount: <strong>฿{Number(amount).toLocaleString()}</strong></p>
 
-      <QRrenderer amount={"100"}/>
+        <QRrenderer amount={"100"}/>
 
-      <p className="mb-4! text-gray-700">After completing your payment, please upload your payment slip so we can verify your order.</p>
-      <Link
-        href={`/${lang}/upload`}
-        className="bg-accent text-white! rounded btn text-center text-sm!"
-      >
-        Upload Payment Slip
-      </Link>
+        <p className="mb-4! text-gray-700">After completing your payment, please upload your payment slip so we can verify your order.</p>
+        <Link
+          href={`/${lang}/upload`}
+          className="bg-accent text-white! rounded btn text-center text-sm! max-w-lg m-auto"
+        >
+          Upload Payment Slip
+        </Link>
+      </div>
 
     </main>
   );

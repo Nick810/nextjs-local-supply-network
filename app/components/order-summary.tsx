@@ -66,10 +66,10 @@ export default function OrderSummary({ amount }: Props) {
             })}
           </ul>
 
-          <div className="flex justify-between mb-4">
+          {/* <div className="flex justify-between mb-4">
             <p className="text-md font-bold!">Shipping:</p>
             <p className="text-lg font-bold!">฿0</p>
-          </div>
+          </div> */}
 
           <div className="flex justify-between">
             <p className="text-xl font-bold!">Total:</p>

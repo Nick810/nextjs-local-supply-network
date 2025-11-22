@@ -394,7 +394,7 @@ export default function CheckoutForm({ lang, amount }: Props) {
 
   // ───── เปลี่ยนตรงนี้ได้เลย ─────
   const LINE_OA_URL = "https://lin.ee/c1Bz3po"
-  const TELEGRAM_GROUP = "https://t.me/yourgroup"
+  const TELEGRAM_GROUP = "https://t.me/lsn_network_bot"
   // ─────────────────────────────
 
   const [shippingMethod, setShippingMethod] = useState<'regular' | 'express'>('regular')

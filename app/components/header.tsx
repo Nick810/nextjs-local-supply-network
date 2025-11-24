@@ -39,12 +39,12 @@ const Header: FC<HeaderProps> = ({ lang }) => {
   
   return (
     <>
-      <div className="fixed top-0 left-0 overflow-hidden w-screen text-white h-10 z-100 flex items-center">
+      {/* <div className="fixed top-0 left-0 overflow-hidden w-screen text-white h-10 z-100 flex items-center">
         <div className="absolute inset-0 bg-[#C5C5C5] backdrop-blur-md -z-10"></div>
         <p className="text-center! w-full"><span className="text-accent!">FREE SHIPPING</span> ON ORDER OVER 500 THB</p>
-      </div>
+      </div> */}
 
-      <header className="container fixed w-screen max-w-screen! bg-transparent py-2 z-100 top-10">
+      <header className="container fixed w-screen max-w-screen! bg-transparent py-2 z-100 ">
         {/* <p className="bg-[#C5C5C5]"><span className="text-accent">FREE SHIPPING</span>ON ORDER OVER 2,000 THB</p> */}
         <div className="absolute inset-0 bg-white/60 backdrop-blur-md -z-10"></div>
         <div className="flex items-center justify-between">

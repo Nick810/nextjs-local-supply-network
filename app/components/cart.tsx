@@ -106,7 +106,7 @@ const Cart: React.FC<CartProps> = ({ toggled, toggle, bgColor, lang }) => {
   return (
     <div 
       ref={cartRef}
-      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-[600px] h-screen top-23 right-0 z-100`}
+      className={`${isVisible ? "fixed" : "hidden"} w-full max-w-[600px] h-screen top-16 right-0 z-100 pb-32 overflow-y-auto overscroll-y-contain`}
       style={{ backgroundColor: bgColor,
         boxShadow: '4px 0 30px -2px rgba(0,0,0,0.1)'
        }}
